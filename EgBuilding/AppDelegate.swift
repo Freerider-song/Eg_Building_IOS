@@ -6,15 +6,35 @@
 //
 
 import UIKit
-
+import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    let notificationDelegate = ServicePush()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //FirebaseApp.configure()
+        
+        //Messaging.messaging().delegate = self as? MessagingDelegate
+        
+        UNUserNotificationCenter.current().delegate = notificationDelegate as UNUserNotificationCenterDelegate
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .sound]
+          
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
+        
+        //app will attempt to register for push notifications any time it's launched.
+        application.registerForRemoteNotifications()
+        
+        print("register for remote notifications has succeed")
+        
+        //badge
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         return true
+       
     }
 
     // MARK: UISceneSession Lifecycle
