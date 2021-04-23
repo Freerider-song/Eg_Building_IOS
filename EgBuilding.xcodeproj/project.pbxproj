@@ -89,6 +89,30 @@
 		215CFA602631429000F2C3CC /* circle_cyan_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 215CFA232631429000F2C3CC /* circle_cyan_dark.png */; };
 		215CFA64263152B000F2C3CC /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA63263152B000F2C3CC /* DesignableUITextField.swift */; };
 		215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA66263152BA00F2C3CC /* CustomSideMenuNavigationController.swift */; };
+		215CFA6B263262F100F2C3CC /* CaAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA69263262F100F2C3CC /* CaAlarm.swift */; };
+		215CFA6C263262F100F2C3CC /* CaNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA6A263262F100F2C3CC /* CaNotice.swift */; };
+		215CFA6F263264DE00F2C3CC /* CaPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA6E263264DE00F2C3CC /* CaPlan.swift */; };
+		215CFA722632662300F2C3CC /* CaAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA712632662300F2C3CC /* CaAct.swift */; };
+		215CFA752632667E00F2C3CC /* CaActHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA742632667E00F2C3CC /* CaActHistory.swift */; };
+		215CFA782632673200F2C3CC /* CaMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA772632673200F2C3CC /* CaMeter.swift */; };
+		215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CFA7A2632678300F2C3CC /* CaMeterUsage.swift */; };
+		215D0E6426328B110091CD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E6326328B110091CD64 /* GoogleService-Info.plist */; };
+		215D0E6826329C320091CD64 /* ChangePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E6726329C320091CD64 /* ChangePassword.storyboard */; };
+		215D0E6B26329CA60091CD64 /* ChangePasswordAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0E6A26329CA60091CD64 /* ChangePasswordAuthViewController.swift */; };
+		215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0E6D26329CC40091CD64 /* ChangePasswordInputViewController.swift */; };
+		215D0E9826329DF90091CD64 /* arrow_right_hollow.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E8B26329DF50091CD64 /* arrow_right_hollow.png */; };
+		215D0E9926329DF90091CD64 /* change_password_man.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E8C26329DF50091CD64 /* change_password_man.png */; };
+		215D0E9A26329DF90091CD64 /* check_disabled_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E8D26329DF60091CD64 /* check_disabled_yes.png */; };
+		215D0E9B26329DF90091CD64 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E8E26329DF60091CD64 /* logout.png */; };
+		215D0E9C26329DF90091CD64 /* speaker_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E8F26329DF60091CD64 /* speaker_icon.png */; };
+		215D0E9D26329DF90091CD64 /* notice_eg.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9026329DF70091CD64 /* notice_eg.png */; };
+		215D0E9E26329DF90091CD64 /* anonymous_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9126329DF70091CD64 /* anonymous_user.png */; };
+		215D0E9F26329DF90091CD64 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9226329DF70091CD64 /* arrow_right.png */; };
+		215D0EA026329DF90091CD64 /* char_notice_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9326329DF80091CD64 /* char_notice_detail.png */; };
+		215D0EA126329DF90091CD64 /* notice_site.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9426329DF80091CD64 /* notice_site.png */; };
+		215D0EA226329DF90091CD64 /* check_disabled_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9526329DF90091CD64 /* check_disabled_no.png */; };
+		215D0EA326329DF90091CD64 /* btn_yellow_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9626329DF90091CD64 /* btn_yellow_next.png */; };
+		215D0EA426329DF90091CD64 /* new_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9726329DF90091CD64 /* new_icon.png */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +201,30 @@
 		215CFA232631429000F2C3CC /* circle_cyan_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_cyan_dark.png; sourceTree = "<group>"; };
 		215CFA63263152B000F2C3CC /* DesignableUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
 		215CFA66263152BA00F2C3CC /* CustomSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		215CFA69263262F100F2C3CC /* CaAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaAlarm.swift; sourceTree = "<group>"; };
+		215CFA6A263262F100F2C3CC /* CaNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaNotice.swift; sourceTree = "<group>"; };
+		215CFA6E263264DE00F2C3CC /* CaPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaPlan.swift; sourceTree = "<group>"; };
+		215CFA712632662300F2C3CC /* CaAct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaAct.swift; sourceTree = "<group>"; };
+		215CFA742632667E00F2C3CC /* CaActHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaActHistory.swift; sourceTree = "<group>"; };
+		215CFA772632673200F2C3CC /* CaMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaMeter.swift; sourceTree = "<group>"; };
+		215CFA7A2632678300F2C3CC /* CaMeterUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaMeterUsage.swift; sourceTree = "<group>"; };
+		215D0E6326328B110091CD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		215D0E6726329C320091CD64 /* ChangePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePassword.storyboard; sourceTree = "<group>"; };
+		215D0E6A26329CA60091CD64 /* ChangePasswordAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordAuthViewController.swift; sourceTree = "<group>"; };
+		215D0E6D26329CC40091CD64 /* ChangePasswordInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordInputViewController.swift; sourceTree = "<group>"; };
+		215D0E8B26329DF50091CD64 /* arrow_right_hollow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right_hollow.png; sourceTree = "<group>"; };
+		215D0E8C26329DF50091CD64 /* change_password_man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_password_man.png; sourceTree = "<group>"; };
+		215D0E8D26329DF60091CD64 /* check_disabled_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_disabled_yes.png; sourceTree = "<group>"; };
+		215D0E8E26329DF60091CD64 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		215D0E8F26329DF60091CD64 /* speaker_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speaker_icon.png; sourceTree = "<group>"; };
+		215D0E9026329DF70091CD64 /* notice_eg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notice_eg.png; sourceTree = "<group>"; };
+		215D0E9126329DF70091CD64 /* anonymous_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonymous_user.png; sourceTree = "<group>"; };
+		215D0E9226329DF70091CD64 /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
+		215D0E9326329DF80091CD64 /* char_notice_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char_notice_detail.png; sourceTree = "<group>"; };
+		215D0E9426329DF80091CD64 /* notice_site.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notice_site.png; sourceTree = "<group>"; };
+		215D0E9526329DF90091CD64 /* check_disabled_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_disabled_no.png; sourceTree = "<group>"; };
+		215D0E9626329DF90091CD64 /* btn_yellow_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_yellow_next.png; sourceTree = "<group>"; };
+		215D0E9726329DF90091CD64 /* new_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon.png; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +273,7 @@
 				215CF98D26310EEB00F2C3CC /* SceneDelegate.swift */,
 				215CF99426310EEC00F2C3CC /* Assets.xcassets */,
 				215CF99926310EEC00F2C3CC /* Info.plist */,
+				215D0E6326328B110091CD64 /* GoogleService-Info.plist */,
 				215CF9A926311D0B00F2C3CC /* Color.xcassets */,
 			);
 			path = EgBuilding;
@@ -236,6 +285,8 @@
 				215CF98F26310EEB00F2C3CC /* MainViewController.swift */,
 				215CF9B52631353A00F2C3CC /* LoginViewController.swift */,
 				215CF9B82631359C00F2C3CC /* CustomUIViewController.swift */,
+				215D0E6A26329CA60091CD64 /* ChangePasswordAuthViewController.swift */,
+				215D0E6D26329CC40091CD64 /* ChangePasswordInputViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +310,13 @@
 		215CF9A726311B7500F2C3CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				215CFA69263262F100F2C3CC /* CaAlarm.swift */,
+				215CFA6A263262F100F2C3CC /* CaNotice.swift */,
+				215CFA6E263264DE00F2C3CC /* CaPlan.swift */,
+				215CFA712632662300F2C3CC /* CaAct.swift */,
+				215CFA742632667E00F2C3CC /* CaActHistory.swift */,
+				215CFA772632673200F2C3CC /* CaMeter.swift */,
+				215CFA7A2632678300F2C3CC /* CaMeterUsage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +327,7 @@
 				215CF99626310EEC00F2C3CC /* LaunchScreen.storyboard */,
 				215CF99126310EEB00F2C3CC /* Login.storyboard */,
 				215CF9B1263134D000F2C3CC /* Main.storyboard */,
+				215D0E6726329C320091CD64 /* ChangePassword.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +335,19 @@
 		215CF9E4263141D100F2C3CC /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				215D0E9126329DF70091CD64 /* anonymous_user.png */,
+				215D0E8B26329DF50091CD64 /* arrow_right_hollow.png */,
+				215D0E9226329DF70091CD64 /* arrow_right.png */,
+				215D0E9626329DF90091CD64 /* btn_yellow_next.png */,
+				215D0E8C26329DF50091CD64 /* change_password_man.png */,
+				215D0E9326329DF80091CD64 /* char_notice_detail.png */,
+				215D0E9526329DF90091CD64 /* check_disabled_no.png */,
+				215D0E8D26329DF60091CD64 /* check_disabled_yes.png */,
+				215D0E8E26329DF60091CD64 /* logout.png */,
+				215D0E9726329DF90091CD64 /* new_icon.png */,
+				215D0E9026329DF70091CD64 /* notice_eg.png */,
+				215D0E9426329DF80091CD64 /* notice_site.png */,
+				215D0E8F26329DF60091CD64 /* speaker_icon.png */,
 				215CFA0B2631428C00F2C3CC /* _header_back.png */,
 				215CFA222631429000F2C3CC /* _used_btn_day.png */,
 				215CF9E72631428600F2C3CC /* _used_btn_dayweek.png */,
@@ -427,22 +499,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				215CFA5A2631429000F2C3CC /* push_icon.png in Resources */,
+				215D0EA426329DF90091CD64 /* new_icon.png in Resources */,
 				215CFA442631429000F2C3CC /* menu_alarm.png in Resources */,
 				215CFA412631429000F2C3CC /* btn_plus2.png in Resources */,
+				215D0EA326329DF90091CD64 /* btn_yellow_next.png in Resources */,
 				215CFA4B2631429000F2C3CC /* menu_chart.png in Resources */,
 				215CFA502631429000F2C3CC /* small_dot_purple.png in Resources */,
 				215CFA5F2631429000F2C3CC /* _used_btn_day.png in Resources */,
+				215D0EA126329DF90091CD64 /* notice_site.png in Resources */,
 				215CFA552631429000F2C3CC /* btn_menu3.png in Resources */,
 				215CF99826310EEC00F2C3CC /* LaunchScreen.storyboard in Resources */,
+				215D0E9E26329DF90091CD64 /* anonymous_user.png in Resources */,
 				215CFA4F2631429000F2C3CC /* menu_point.png in Resources */,
 				215CFA512631429000F2C3CC /* rectangular.png in Resources */,
 				215CFA2F2631429000F2C3CC /* btn_back.png in Resources */,
 				215CFA362631429000F2C3CC /* btn_search.png in Resources */,
 				215CFA3F2631429000F2C3CC /* notice_icon.png in Resources */,
 				215CFA272631429000F2C3CC /* circle_blue_dark.png in Resources */,
+				215D0EA026329DF90091CD64 /* char_notice_detail.png in Resources */,
 				215CFA5D2631429000F2C3CC /* menu_setting.png in Resources */,
 				215CFA422631429000F2C3CC /* menu_chart2.png in Resources */,
 				215CF9B2263134D000F2C3CC /* Main.storyboard in Resources */,
+				215D0E9826329DF90091CD64 /* arrow_right_hollow.png in Resources */,
 				215CFA3A2631429000F2C3CC /* check_no.png in Resources */,
 				215CF9AA26311D0B00F2C3CC /* Color.xcassets in Resources */,
 				215CFA2C2631429000F2C3CC /* btn_back_colored.png in Resources */,
@@ -454,6 +532,7 @@
 				215CFA342631429000F2C3CC /* gray_bar.png in Resources */,
 				215CFA562631429000F2C3CC /* btn_plus.png in Resources */,
 				215CFA482631429000F2C3CC /* _header_back.png in Resources */,
+				215D0E6426328B110091CD64 /* GoogleService-Info.plist in Resources */,
 				215CFA3E2631429000F2C3CC /* icon_bld2.png in Resources */,
 				215CFA322631429000F2C3CC /* menu_notice.png in Resources */,
 				215CFA392631429000F2C3CC /* small_user.png in Resources */,
@@ -461,7 +540,9 @@
 				215CFA5B2631429000F2C3CC /* small_password.png in Resources */,
 				215CFA462631429000F2C3CC /* energy_04.png in Resources */,
 				215CFA4E2631429000F2C3CC /* main_logo_b.png in Resources */,
+				215D0E9D26329DF90091CD64 /* notice_eg.png in Resources */,
 				215CFA2B2631429000F2C3CC /* alarm_icon.png in Resources */,
+				215D0E6826329C320091CD64 /* ChangePassword.storyboard in Resources */,
 				215CFA3C2631429000F2C3CC /* icon_main_150.png in Resources */,
 				215CFA2A2631429000F2C3CC /* gray_line.png in Resources */,
 				215CFA522631429000F2C3CC /* energy_02.png in Resources */,
@@ -472,10 +553,12 @@
 				215CFA302631429000F2C3CC /* small_dot_pink2.png in Resources */,
 				215CFA242631429000F2C3CC /* _used_btn_dayweek.png in Resources */,
 				215CFA5C2631429000F2C3CC /* _used_btn_month_on.png in Resources */,
+				215D0E9A26329DF90091CD64 /* check_disabled_yes.png in Resources */,
 				215CFA332631429000F2C3CC /* circle_cyan_light.png in Resources */,
 				215CFA432631429000F2C3CC /* circle_green.png in Resources */,
 				215CFA352631429000F2C3CC /* btn_menu.png in Resources */,
 				215CFA382631429000F2C3CC /* gg_1.png in Resources */,
+				215D0E9926329DF90091CD64 /* change_password_man.png in Resources */,
 				215CFA532631429000F2C3CC /* circle_gray.png in Resources */,
 				215CFA472631429000F2C3CC /* check_yes.png in Resources */,
 				215CF99326310EEB00F2C3CC /* Login.storyboard in Resources */,
@@ -488,10 +571,14 @@
 				215CFA492631429000F2C3CC /* dot_yellow.png in Resources */,
 				215CFA542631429000F2C3CC /* small_dot_pink.png in Resources */,
 				215CFA252631429000F2C3CC /* ic_launcher_foreground.xml in Resources */,
+				215D0EA226329DF90091CD64 /* check_disabled_no.png in Resources */,
 				215CFA602631429000F2C3CC /* circle_cyan_dark.png in Resources */,
 				215CFA4C2631429000F2C3CC /* menu_logout.png in Resources */,
 				215CFA4A2631429000F2C3CC /* main_logo_a.png in Resources */,
 				215CFA4D2631429000F2C3CC /* menu_site_state.png in Resources */,
+				215D0E9C26329DF90091CD64 /* speaker_icon.png in Resources */,
+				215D0E9F26329DF90091CD64 /* arrow_right.png in Resources */,
+				215D0E9B26329DF90091CD64 /* logout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,8 +634,10 @@
 				215CFA64263152B000F2C3CC /* DesignableUITextField.swift in Sources */,
 				215CF9C62631362100F2C3CC /* CaPref.swift in Sources */,
 				215CF9B62631353A00F2C3CC /* LoginViewController.swift in Sources */,
+				215D0E6B26329CA60091CD64 /* ChangePasswordAuthViewController.swift in Sources */,
 				215CF9CA2631362100F2C3CC /* CaApplication.swift in Sources */,
 				215CF9CB2631362100F2C3CC /* CaTask.swift in Sources */,
+				215CFA6B263262F100F2C3CC /* CaAlarm.swift in Sources */,
 				215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */,
 				215CF9C42631362100F2C3CC /* CaResult.swift in Sources */,
 				215CF9B92631359C00F2C3CC /* CustomUIViewController.swift in Sources */,
@@ -556,10 +645,17 @@
 				215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */,
 				215CF9CC2631362100F2C3CC /* ServicePush.swift in Sources */,
 				215CF9C72631362100F2C3CC /* CaEngine.swift in Sources */,
+				215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */,
+				215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */,
+				215CFA782632673200F2C3CC /* CaMeter.swift in Sources */,
 				215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */,
 				215CF9C52631362100F2C3CC /* Toast.swift in Sources */,
 				215CF9C92631362100F2C3CC /* CaArg.swift in Sources */,
+				215CFA752632667E00F2C3CC /* CaActHistory.swift in Sources */,
 				215CF9C82631362100F2C3CC /* CaInfo.swift in Sources */,
+				215CFA6C263262F100F2C3CC /* CaNotice.swift in Sources */,
+				215CFA722632662300F2C3CC /* CaAct.swift in Sources */,
+				215CFA6F263264DE00F2C3CC /* CaPlan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

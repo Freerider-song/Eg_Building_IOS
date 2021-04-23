@@ -44,7 +44,7 @@ class CustomUIViewController: UIViewController {
     }
     
     func showPopUpConfirm(message : String) {
-        CaApplication.m_Info.strMessage = message
+        
         let storyboard = UIStoryboard(name: "PopUp", bundle: nil)
         let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "ViewControllerPopUpConfirm")
         

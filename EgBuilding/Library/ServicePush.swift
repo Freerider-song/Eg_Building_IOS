@@ -35,11 +35,11 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
                 
             case "REQUEST_ACCEPT_ACTION":
                 print("Request Accepted")
-                CaApplication.m_Engine.ResponseAckMember(CaApplication.m_Info.nSeqMemberAckRequester, 1, _bShowWaitDialog: false, self)
+       
                 
             case "REQUEST_DECLINE_ACTION":
                 print("Request Declined")
-                CaApplication.m_Engine.ResponseAckMember(CaApplication.m_Info.nSeqMemberAckRequester, 2, _bShowWaitDialog: false, self)
+              
                 
             default:
                 print("default")

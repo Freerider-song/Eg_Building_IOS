@@ -168,7 +168,7 @@ public class CaEngine{
     func GetUsageForAllMeterDay(_ SeqSite: Int, _ Year: Int, _ Month: Int, _ Day: Int, _ viewControl: AnyObject){
      
 
-        let Arg =  CaArg("GetUsageForAllMeterDay", NO_CMD_ARG)
+        let Arg =  CaArg("GetUsageForAllMeterDay", NO_CMD_ARGS)
         Arg.addArg("SeqSite", SeqSite)
         Arg.addArg("Year", Year)
         Arg.addArg("Month", Month)
@@ -219,41 +219,35 @@ public class CaEngine{
         executeCommand(Arg, CB_CHANGE_ADMIN_BLD_SETTINGS,  true, viewControl);
     }
 
-    public void GetBldAlarmList(final int SeqAdmin, final int CountMax, Context Ctx, IaResultHandler ResultHandler){
-        Log.i("ENGINE", "-");
+    func GetBldAlarmList(_ SeqAdmin: Int, _ CountMax: Int, _ viewControl: AnyObject){
 
-        CaArg Arg = new CaArg("GetBldAlarmList", NO_CMD_ARGS, null);
-        Arg.addArg("SeqAdmin", SeqAdmin);
-        Arg.addArg("CountMax", CountMax);
+        let Arg = CaArg("GetBldAlarmList", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+        Arg.addArg("CountMax", CountMax)
 
-        executeCommand(Arg, CB_GET_BLD_ALARM_LIST, false, true, Ctx, ResultHandler);
+        executeCommand(Arg, CB_GET_BLD_ALARM_LIST, true, viewControl);
     }
 
-    public void SetSaveActBegin(final int SeqSaveAct, final int SeqAdmin, final String DateTarget,Context Ctx, IaResultHandler ResultHandler){
-        Log.i("ENGINE", "-");
+    func SetSaveActBegin(_ SeqSaveAct: Int, _ SeqAdmin: Int, _ DateTarget: String, _ viewControl: AnyObject){
 
-        CaArg Arg = new CaArg("SetSaveActBegin", NO_CMD_ARGS, null);
-        Arg.addArg("SeqAdmin", SeqAdmin);
-        Arg.addArg("SeqSaveAct", SeqSaveAct);
-        Arg.addArg("DateTarget", DateTarget);
 
-        executeCommand(Arg, CB_SET_SAVE_ACT_BEGIN, false, true, Ctx, ResultHandler);
+        let Arg = CaArg("SetSaveActBegin", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+        Arg.addArg("SeqSaveAct", SeqSaveAct)
+        Arg.addArg("DateTarget", DateTarget)
+
+        executeCommand(Arg, CB_SET_SAVE_ACT_BEGIN, true, viewControl);
     }
 
-    public void SetSaveActEnd(final int SeqSaveActHistory, final int SeqAdmin, final String yyyyMMdd,Context Ctx, IaResultHandler ResultHandler){
-        Log.i("ENGINE", "-");
+    func SetSaveActEnd(_ SeqSaveActHistory: Int, _ SeqAdmin: Int, _ yyyyMMdd: String, _ viewControl: AnyObject){
 
-        CaArg Arg = new CaArg("SetSaveActEnd", NO_CMD_ARGS, null);
-        Arg.addArg("SeqAdmin", SeqAdmin);
-        Arg.addArg("SeqSaveActHistory", SeqSaveActHistory);
-        Arg.addArg("yyyyMMdd", yyyyMMdd);
+        let Arg = CaArg("SetSaveActEnd", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+        Arg.addArg("SeqSaveActHistory", SeqSaveActHistory)
+        Arg.addArg("yyyyMMdd", yyyyMMdd)
 
-        executeCommand(Arg, CB_SET_SAVE_ACT_END, false, true, Ctx, ResultHandler);
+        executeCommand(Arg, CB_SET_SAVE_ACT_END, true, viewControl);
     }
-    
-    
-    
-    
     
 }
 

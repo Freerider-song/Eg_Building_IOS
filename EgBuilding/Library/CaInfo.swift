@@ -11,6 +11,8 @@ public class CaInfo {
     
     public let KWH_TO_GAS: Double = 0.46625
     
+    
+    
     public let dfStd = DateFormatter() //yyyy-MM-dd HH:mm:ss
     public let dfyyyyMMddHHmmStd = DateFormatter() //yyyy-MM-dd HH:mm
     public let dfyyyyMMddHHmm = DateFormatter() //yyyyMMddHHmm
@@ -24,119 +26,100 @@ public class CaInfo {
     public let dfdd = DateFormatter() //dd
     public let dfMMddHHmmss = DateFormatter()
     
-    //Login 유무
-    public var isLogin: Bool = false
+    public var isLogin : Bool = false
     
-    //핸드폰 정보
-    public var strPushId: String = ""
-    
-    //회원가입 정보
-    public var bSubscribingAsMainMember: Bool = false
-    public var nSeqAptHoSubscribing: Int = 0
-    public var strMemberNameSubscribing: String = ""
-    public var strPhoneSubscribing: String = ""
-    
-    //ChangePassword 정보
-    public var nSeqMemberChanging: Int = 0
-    public var strMemberIdChanging: String = ""
-    
-    
-    //팝업 메세지
-    public var strMessage: String = ""
-    
-    
-    //push notification 정보
-    //public var strPushTitle: String = ""
-    //public var strPushBody: String = ""
-    //public var strPushType: String = ""
-    public var nSeqMemberAckRequester: Int = 0
+    public var m_nResultCode: Int = 0
+    public var m_nSeqAdmin: Int = 0
+    public var m_nTeamType: Int = 0
 
-    
-    //Member 정보
-    public var nSeqMember: Int = 0
-    public var strMemberId: String = ""
-    public var strPassword: String = ""
-    public var strMemberName: String = ""
-    public var strPhone: String = ""
-    public var strMail: String = ""
-    public var bMainMember: Bool = false
-    public var dtCreated: String = ""
-    public var dtModified: String = ""
-    public var dtLastLogin: String = ""
-    //date로 가져오는 경우 nil이 반환되는 문제. API에서 호출된 값이 date타입이 아닌 string임으로 string으로 받아야 함.
-    public var dtChangePassword: String = ""
-    public var nAckRequestTodayCount: Int = 0
-    public var nAckResponseCodeLatest: Int = 0
-    
-    //Alarm 정보
-    public var dtAuthRequested: Date? = nil
-    public var dtAuthResponsed: Date? = nil
-    
-    //설정 정보
-    public var bNotiAll: Bool = true
-    public var bNotiKwh: Bool = true
-    public var bNotiWon: Bool = true
-    public var bNotiPriceLevel: Bool = true
-    public var bNotiUsageAtTime: Bool = true
-    public var dThresholdKwh: Double = 0.0
-    public var dThresholdWon: Double = 0.0
-    public var nNextPriceLevelPercent: Int = 0
-    public var nUsageNotiType: Int = 3 //0=매일, 1=매주일요일, 2=매주월요일, 3=매월1일, 4=매월검침일
-    public var nUsageNotiHour: Int = 9
-    public let usageReportPeriodList = ["매일", "매주 일요일", "매주 월요일", "매달 1일", "매달 검침일"]
-    public let usageReportTimeList = ["0시", "1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시", "13시", "14시", "15시", "16시", "17시", "18시", "19시", "20시", "21시", "22시", "23시"]
-    
-    //단지 & Meter 정보
-    public var nSeqSite: Int = 0
-    public var strSiteAddress: String = ""
-    public var strSiteName: String = ""
-    public var nSiteBuiltYear: Int = 0
-    public var nSiteBuiltMonth: Int = 0
-    public var nSiteReadDay: Int = 1
-    public var dxSite: Double = 0.0
-    public var dySite: Double = 0.0
-    public var nSeqAptDong: Int = 0
-    public var strAptDongName: String = ""
-    public var nSeqAptHo: Int = 0
-    public var strAptHoName: String = ""
-    public var nAptHoArea: Int = 0
-    public var nSeqMeter: Int = 0
-    public var strMeterMac: String = ""
-    public var strMid: String = ""
-    public var strMeterMaker: String = ""
-    public var strMeterModel: String = ""
-    public var nMeterState: Int = 0 //0=unknown, 1= 운영중, 2=보관중, 3=수리중
-    public var nMeterType: Int = 0 //0=unknown, 1=p-type, 2=e-type, 3=g-type, 4=ae-type
-    public var nMeterValidInstr: Int = 1
-    public var dtMeterInstalled: Date? = nil
-    public var dtPriceModified: Date? = nil
-    public var strPriceComment: String = ""
-    
-    public var nAuthType: Int = m_GlobalEngine.AUTH_TYPE_UNKNOWN
-    
-    //이용약관 정보
-    public var nWeb: Int = 0 //1=이용약관, 2=개인정보수집
-    
-    //D01YN 정보
-    public var bYes: Bool = true
-    public var strStoryBoardName: String = ""
-    public var strViewControllerName: String = ""
-    
-    
-    public var nDiscountFamily: Int = 0
-    public var nDiscountSocial: Int = 0
-    public var nMonthlyWonMethod: Int = 0
-    
-    // ArrayList
-    /*
-    public var alFamily: Array<CaFamily> = Array()
-    public var alPrice: Array<CaPrice> = Array()
-    public var alDiscountFamily: Array<CaDiscount> = Array()
-    public var alDiscountSocial: Array<CaDiscount> = Array()
-    public var alAlarm: Array<CaAlarm> = Array()
-    public var alNotice: Array<CaNotice> = Array()
-    public var alQna: Array<CaQna> = Array()
-    */
+    public var m_strAdminName: String = ""
+    public var m_strAdminPhone: String = ""
+    public var m_nUnreadNoticeCount: Int = 0
+    public var m_nUnreadAlarmCount: Int = 0
+    //public var m_dtLastLogin: Date? = nil
+    //public var m_dtCreated: Date? = nil
+    //public var m_dtModified: Date? = nil
+    //public var m_dtChangePassword: Date? = nil
+    public var m_dtLastLogin: String = ""
+    public var m_dtCreated: String = ""
+    public var m_dtModified: String = ""
+    public var m_dtChangePassword: String = ""
+    public var m_nSeqTeam: Int=0
+    public var m_strTeamName: String=""
+    public var m_bNotiAll: Bool=true
+    public var m_bNotiKwh: Bool=true
+    public var m_bNotiWon: Bool=true
+    public var m_bNotiSavingStandard: Bool=true
+    public var m_bNotiSavingGoal: Bool = true
+    public var m_bNotiUsageAtTime: Bool = true
+    public var m_dThresholdThisMonthKwh: Double=0.0
+    public var m_dThresholdThisMonthWon: Double=0.0
+    public var m_nHourNotiThisMonthUsage: Int=0
+
+    public var m_nSeqSite: Int = 0;
+    public var m_nSiteType: Int = 0;
+    public var m_strSiteName: String = "";
+    public var m_nBuiltYear: Int = 0;
+    public var m_nBuiltMonth: Int = 0;
+    public var m_strFloorInfo: String = "";
+    public var m_strHomePage: String = "";
+    public var m_strSiteFax: String = "";
+    public var m_strSitePhone: String = "";
+    public var m_strSiteAddress: String = "";
+    public var m_dSiteDx: Double = 0.0;
+    public var m_dSiteDy: Double = 0.0;
+    public var m_dKwContracted: Double = 0.0;
+    public var m_nReadDay: Int = 0;
+    public var m_nSeqSavePlanActive: Int = 0;
+
+    public var m_nSeqSavePlan: Int = 0;
+    public var m_nSeqSaveRef: Int = 0;
+    public var m_strSavePlanName: String = "";
+    public var m_strSaveRefName: String = "";
+    public var m_dSaveKwhTotalFromElem: Double = 0.0;
+    public var m_dSaveWonTotalFromElem: Double = 0.0;
+    public var m_dSaveKwhTotalFromMeter: Double = 0.0;
+    public var m_dSaveWonTotalFromMeter: Double = 0.0;
+    public var m_dKwhRefForAllMeter: Double = 0.0;
+    public var m_dKwhPlanForAllMeter: Double = 0.0;
+    public var m_dKwhRealForAllMeter: Double = 0.0;
+    public var m_dWonRefForAllMeter: Double = 0.0;
+    public var m_dWonPlanForAllMeter: Double = 0.0;
+    public var m_dWonRealForAllMeter: Double = 0.0;
+    //public var m_dtSavePlanCreated: Date? = nil
+    //public var m_dtSavePlanEnded: Date? = nil
+    public var m_dtSavePlanCreated: String = ""
+    public var m_dtSavePlanEnded: String = ""
+    public var m_nActCount: Int = 0
+    public var m_nActCountWithHistory: Int = 0
+
+    //
+    // GetSaveResult
+    public var m_nTotalSaveActCount: Int = 0;
+    public var m_nTotalSaveActWithHistoryCount: Int = 0;
+    public var m_dAvgKwhForAllMeter: Double = 0.0;
+    public var m_dAvgWonForAllMeter: Double = 0.0;
+
+
+    public var m_strAdminId: String = "";
+    public var m_strPassword: String = "";
+   
+
+
+    //public var m_dtNoticeCreatedMaxForNextRequest: Date? = nil
+    public var m_dtNoticeCreatedMaxForNextRequest: String = ""
+
+
+    public var m_strPushId: String = "";
+
+
+
+    public var m_alNotice: Array<CaNotice> = Array()
+    public var m_alPlan: Array<CaPlan> = Array()
+    public var m_alMeter: Array<CaMeter> = Array()
+    public var m_alAlarm: Array<CaAlarm> = Array()
+
+
     //oneMeter 정보
     public var nTransState: Int = -1
     //public var dfKwh: 
