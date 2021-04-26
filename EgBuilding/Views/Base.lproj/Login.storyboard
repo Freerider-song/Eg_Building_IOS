@@ -31,8 +31,10 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nx-4p-WK1" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
-                                <rect key="frame" x="37" y="358" width="300" height="34"/>
+                                <rect key="frame" x="37" y="364" width="300" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WLT-9J-l7H"/>
                                     <constraint firstAttribute="width" constant="300" id="tPk-Oc-7Os"/>
                                 </constraints>
                                 <color key="textColor" name="gray"/>
@@ -46,8 +48,10 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-VG-VPo" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
-                                <rect key="frame" x="37" y="316" width="300" height="34"/>
+                                <rect key="frame" x="37" y="316" width="300" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Cv2-sN-jxI"/>
                                     <constraint firstAttribute="width" constant="300" id="wHo-ff-aW7"/>
                                 </constraints>
                                 <color key="textColor" name="gray"/>
@@ -61,7 +65,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-HZ-1yM">
-                                <rect key="frame" x="37" y="419" width="300" height="40"/>
+                                <rect key="frame" x="37" y="431" width="300" height="40"/>
                                 <color key="backgroundColor" name="Light_Cyan"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="G30-d4-bbp"/>
@@ -75,13 +79,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 잊으셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmw-pH-Iql">
-                                <rect key="frame" x="51.5" y="494" width="132" height="17"/>
+                                <rect key="frame" x="51.5" y="506" width="132" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntF-cA-qn7">
-                                <rect key="frame" x="201.5" y="487" width="108" height="30"/>
+                                <rect key="frame" x="201.5" y="499" width="108" height="30"/>
                                 <state key="normal" title="비밀번호 변경하기">
                                     <color key="titleColor" name="Light_Cyan"/>
                                 </state>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -113,6 +113,8 @@
 		215D0EA226329DF90091CD64 /* check_disabled_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9526329DF90091CD64 /* check_disabled_no.png */; };
 		215D0EA326329DF90091CD64 /* btn_yellow_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9626329DF90091CD64 /* btn_yellow_next.png */; };
 		215D0EA426329DF90091CD64 /* new_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9726329DF90091CD64 /* new_icon.png */; };
+		215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0EA62636915B0091CD64 /* SideMenuViewController.swift */; };
+		215D0EAB26369DB30091CD64 /* TTGaugeView in Frameworks */ = {isa = PBXBuildFile; productRef = 215D0EAA26369DB30091CD64 /* TTGaugeView */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +227,7 @@
 		215D0E9526329DF90091CD64 /* check_disabled_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_disabled_no.png; sourceTree = "<group>"; };
 		215D0E9626329DF90091CD64 /* btn_yellow_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_yellow_next.png; sourceTree = "<group>"; };
 		215D0E9726329DF90091CD64 /* new_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon.png; sourceTree = "<group>"; };
+		215D0EA62636915B0091CD64 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */,
+				215D0EAB26369DB30091CD64 /* TTGaugeView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +291,7 @@
 				215CF9B82631359C00F2C3CC /* CustomUIViewController.swift */,
 				215D0E6A26329CA60091CD64 /* ChangePasswordAuthViewController.swift */,
 				215D0E6D26329CC40091CD64 /* ChangePasswordInputViewController.swift */,
+				215D0EA62636915B0091CD64 /* SideMenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -457,6 +462,9 @@
 			dependencies = (
 			);
 			name = EgBuilding;
+			packageProductDependencies = (
+				215D0EAA26369DB30091CD64 /* TTGaugeView */,
+			);
 			productName = EgBuilding;
 			productReference = 215CF98826310EEB00F2C3CC /* EgBuilding.app */;
 			productType = "com.apple.product-type.application";
@@ -484,6 +492,9 @@
 				Base,
 			);
 			mainGroup = 215CF97F26310EEB00F2C3CC;
+			packageReferences = (
+				215D0EA926369DB30091CD64 /* XCRemoteSwiftPackageReference "TTGaugeView" */,
+			);
 			productRefGroup = 215CF98926310EEB00F2C3CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -647,6 +658,7 @@
 				215CF9C72631362100F2C3CC /* CaEngine.swift in Sources */,
 				215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */,
 				215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */,
+				215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */,
 				215CFA782632673200F2C3CC /* CaMeter.swift in Sources */,
 				215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */,
 				215CF9C52631362100F2C3CC /* Toast.swift in Sources */,
@@ -867,6 +879,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		215D0EA926369DB30091CD64 /* XCRemoteSwiftPackageReference "TTGaugeView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/honkmaster/TTGaugeView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		215D0EAA26369DB30091CD64 /* TTGaugeView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 215D0EA926369DB30091CD64 /* XCRemoteSwiftPackageReference "TTGaugeView" */;
+			productName = TTGaugeView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 215CF98026310EEB00F2C3CC /* Project object */;
 }

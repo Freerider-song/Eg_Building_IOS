@@ -55,9 +55,11 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         // ID TextField 외관 둥글게 설정 + 회색
         TxtId.layer.cornerRadius = 15
         TxtId.layer.borderWidth = 2.0
+        
        
         TxtId.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
-       
+        
+        
         
         // PW TextField 설정
         TxtPassword.layer.cornerRadius = 15
@@ -224,11 +226,15 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                 
                 print("Login: 성공적으로 불렸습니다")
                 
+                /*
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "MainViewController")
                 view.modalPresentationStyle = .fullScreen
                 self.present(view, animated: true, completion: nil)
+                */
                 
+                done(sender: self)
                 
                 
             break
