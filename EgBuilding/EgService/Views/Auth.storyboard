@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auth View Controller-->
+        <scene sceneID="F6o-Sq-0Pd">
+            <objects>
+                <viewController storyboardIdentifier="AuthViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3p2-iL-knU" customClass="AuthViewController" customModule="EgService" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N5D-hl-OQD">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LY-90-oBd">
+                                <rect key="frame" x="0.0" y="44" width="428" height="799"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPU-DI-gLw">
+                                <rect key="frame" x="0.0" y="843" width="428" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dum-ZA-tkk"/>
+                                    <barButtonItem systemItem="rewind" id="1uh-WS-eYH">
+                                        <connections>
+                                            <action selector="btnGoBack:" destination="3p2-iL-knU" id="vrZ-sD-en4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yJ3-Ac-s5a"/>
+                                    <barButtonItem systemItem="fastForward" id="GNP-p4-iAa">
+                                        <connections>
+                                            <action selector="btnGoForward:" destination="3p2-iL-knU" id="h0K-Dl-a6h"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="haY-C7-VgF"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="saO-wp-faB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1LY-90-oBd" firstAttribute="top" secondItem="saO-wp-faB" secondAttribute="top" id="4f3-L8-SEx"/>
+                            <constraint firstItem="1LY-90-oBd" firstAttribute="leading" secondItem="saO-wp-faB" secondAttribute="leading" id="Gk8-nW-7ym"/>
+                            <constraint firstItem="saO-wp-faB" firstAttribute="bottom" secondItem="IPU-DI-gLw" secondAttribute="bottom" id="Kot-97-j1q"/>
+                            <constraint firstItem="IPU-DI-gLw" firstAttribute="leading" secondItem="saO-wp-faB" secondAttribute="leading" id="Ojd-kS-mAw"/>
+                            <constraint firstItem="IPU-DI-gLw" firstAttribute="top" secondItem="1LY-90-oBd" secondAttribute="bottom" id="ZqC-Nr-oRu"/>
+                            <constraint firstItem="saO-wp-faB" firstAttribute="trailing" secondItem="IPU-DI-gLw" secondAttribute="trailing" id="uTQ-M6-6rx"/>
+                            <constraint firstItem="saO-wp-faB" firstAttribute="trailing" secondItem="1LY-90-oBd" secondAttribute="trailing" id="zgu-sN-d1f"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ceL-jJ-7M7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="76.911544227886068"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

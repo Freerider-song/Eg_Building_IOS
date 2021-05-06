@@ -98,7 +98,7 @@ class ChangePasswordInputViewController: CustomUIViewController, UITextFieldDele
         }
         
         else {
-            CaApplication.m_Engine.ChangeAdminPassword(txtId.text!, txtPwNew.text!, self)
+            CaApplication.m_Engine.ChangeAdminPassword(txtId.text!, txtPwNew.text!, false,self)
         }
     }
     

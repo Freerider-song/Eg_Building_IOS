@@ -130,13 +130,13 @@ class ChangePasswordAuthViewController: CustomUIViewController, UITextFieldDeleg
             return
         }
         
-        CaApplication.m_Engine.RequestAuthCode(txtId.text!, txtPhone.text!, self)
+        CaApplication.m_Engine.RequestAuthCode(txtId.text!, txtPhone.text!, false ,self)
         
     }
     
     @IBAction func onBtnCheckClicked(_ sender: Any) {
         
-        CaApplication.m_Engine.CheckAuthCode(txtPhone.text!, txtAuthCode.text!, 180, self)
+        CaApplication.m_Engine.CheckAuthCode(txtPhone.text!, txtAuthCode.text!, 180,false, self)
         
     }
     

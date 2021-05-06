@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo_a.png" translatesAutoresizingMaskIntoConstraints="NO" id="9vM-0m-5QJ">
+                                <rect key="frame" x="49" y="124" width="316" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9vM-0m-5QJ" secondAttribute="height" multiplier="79:72" id="1Yt-3v-3X5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EG Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxO-59-RNr">
+                                <rect key="frame" x="49" y="432" width="316" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="우리집 에너지 지킴이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbA-13-eqH">
+                                <rect key="frame" x="49" y="472" width="316" height="32"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_main.png" translatesAutoresizingMaskIntoConstraints="NO" id="7su-te-USb">
+                                <rect key="frame" x="167" y="738" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="6Ya-WY-mnw"/>
+                                    <constraint firstAttribute="height" constant="80" id="jPh-4m-Gwc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.25098039215686274" green="0.67843137254901964" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="hxO-59-RNr" firstAttribute="top" secondItem="9vM-0m-5QJ" secondAttribute="bottom" constant="20" id="4nh-xN-SAM"/>
+                            <constraint firstItem="AbA-13-eqH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="9TQ-6a-0bA"/>
+                            <constraint firstItem="9vM-0m-5QJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="Enb-ZY-Qki"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hxO-59-RNr" secondAttribute="trailing" constant="49" id="Sma-te-8gw"/>
+                            <constraint firstItem="hxO-59-RNr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="V8P-jm-hMb"/>
+                            <constraint firstItem="9vM-0m-5QJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="49" id="adi-Ge-fNO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7su-te-USb" secondAttribute="bottom" constant="44" id="ee3-ql-xNl"/>
+                            <constraint firstItem="AbA-13-eqH" firstAttribute="top" secondItem="hxO-59-RNr" secondAttribute="bottom" constant="8" symbolic="YES" id="hGO-M8-AuF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AbA-13-eqH" secondAttribute="trailing" constant="49" id="nXE-ve-7EO"/>
+                            <constraint firstItem="7su-te-USb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pT6-gs-wTb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9vM-0m-5QJ" secondAttribute="trailing" constant="49" id="uvO-nO-1PX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_main.png" width="245.75999450683594" height="245.75999450683594"/>
+        <image name="main_logo_a.png" width="240" height="358.55999755859375"/>
+    </resources>
+</document>

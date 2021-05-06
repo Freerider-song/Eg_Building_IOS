@@ -48,7 +48,7 @@
                                     <constraint firstItem="fZP-dQ-Cvb" firstAttribute="centerY" secondItem="atj-w4-VK3" secondAttribute="centerY" id="vGb-vu-wIo"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1S-FM-vmZ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1S-FM-vmZ">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 사용량 (kWh)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SQ-17-eQB">
@@ -64,15 +64,219 @@
                                             <constraint firstAttribute="height" constant="10" id="pgK-zS-Xlm"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQu-XF-UML" customClass="ABGaugeView" customModule="ABGaugeViewKit">
+                                        <rect key="frame" x="67.5" y="86" width="240" height="240"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="Sfg-cB-YBp"/>
+                                            <constraint firstAttribute="width" constant="240" id="zm7-ff-XdC"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="areas" value="33,33,33"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="needleValue">
+                                                <real key="value" value="55"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcAngle">
+                                                <real key="value" value="1.8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="applyShadow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRoundCap" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="blinkAnimate" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="colorCodes" value="B5EAD7,FDFD96,FF9AA2"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감목표 (000.0)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSW-62-EAy">
+                                        <rect key="frame" x="149.5" y="50" width="46" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="VfX-VS-k3s"/>
+                                            <constraint firstAttribute="height" constant="36" id="lmE-uA-KxY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="Dark_cyan"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감기준 (000.0)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oma-AX-OXq">
+                                        <rect key="frame" x="234.5" y="56" width="46" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="KzH-dj-lXE"/>
+                                            <constraint firstAttribute="height" constant="36" id="rg1-wh-4Au"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="Dark_cyan"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgv-aJ-xYo">
+                                        <rect key="frame" x="158.5" y="233" width="58" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qYj-Kh-jgd">
+                                        <rect key="frame" x="8" y="322" width="359" height="500"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="500" id="BT7-go-6ZM"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingCell" rowHeight="290" id="FFU-DN-YiD" customClass="SavingCell" customModule="EgBuilding" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="359" height="290"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FFU-DN-YiD" id="ghK-Cd-LVp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="290"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENi-FS-cgK" userLabel="Round View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="283"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="냉온방 공조기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb8-ap-gzd">
+                                                                    <rect key="frame" x="25" y="20" width="104" height="23"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="절감목표  42.4 kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFB-hn-nlJ">
+                                                                    <rect key="frame" x="25" y="58" width="126" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" name="Dark_cyan"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="절감기준  31.4 kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfM-6H-5vx">
+                                                                    <rect key="frame" x="25" y="83" width="124" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" name="Dark_cyan"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08시 - 11시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsV-b3-KHl">
+                                                                    <rect key="frame" x="256" y="20" width="73" height="18"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" name="Dark_cyan"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="오늘  42.3 kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLM-o5-OZh">
+                                                                    <rect key="frame" x="211" y="68" width="118" height="22"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                    <color key="textColor" name="Dark_cyan"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-iG-PdO">
+                                                                    <rect key="frame" x="15" y="98" width="329" height="128"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="128" id="4QZ-Mb-UAF"/>
+                                                                    </constraints>
+                                                                    <prototypes>
+                                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingCheckCell" id="RpZ-UE-Q9J" customClass="SavingCheckCell" customModule="EgBuilding" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="28" width="329" height="43.5"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RpZ-UE-Q9J" id="qqV-5j-XJC">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="43.5"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                                <subviews>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-Q3-lub">
+                                                                                        <rect key="frame" x="5" y="12.5" width="114.5" height="18.5"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <state key="normal" title="2층 에어컨 끄기" image="checkmark.square" catalog="system">
+                                                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                                                        </state>
+                                                                                        <state key="selected" image="checkmark.square.fill" catalog="system"/>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="centerY" secondItem="qqV-5j-XJC" secondAttribute="centerY" id="Uri-bD-P6F"/>
+                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="leading" secondItem="qqV-5j-XJC" secondAttribute="leading" constant="5" id="nGk-km-rif"/>
+                                                                                </constraints>
+                                                                            </tableViewCellContentView>
+                                                                            <connections>
+                                                                                <outlet property="btnCheckBox" destination="iJc-Q3-lub" id="axh-nz-UzM"/>
+                                                                            </connections>
+                                                                        </tableViewCell>
+                                                                    </prototypes>
+                                                                </tableView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조치완료" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCI-UM-2eT">
+                                                                    <rect key="frame" x="249" y="241" width="100" height="30"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="100" id="Tnj-sV-8BI"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="ccr-XL-n4S"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="ZFB-hn-nlJ" firstAttribute="top" secondItem="Fb8-ap-gzd" secondAttribute="bottom" constant="15" id="82z-rp-jev"/>
+                                                                <constraint firstItem="PCI-UM-2eT" firstAttribute="top" secondItem="QiF-iG-PdO" secondAttribute="bottom" constant="15" id="8JY-D3-dsd"/>
+                                                                <constraint firstItem="Fb8-ap-gzd" firstAttribute="top" secondItem="ENi-FS-cgK" secondAttribute="top" constant="20" id="CV5-aZ-Did"/>
+                                                                <constraint firstItem="Fb8-ap-gzd" firstAttribute="leading" secondItem="ENi-FS-cgK" secondAttribute="leading" constant="25" id="F94-ku-Cpq"/>
+                                                                <constraint firstItem="TfM-6H-5vx" firstAttribute="top" secondItem="ZFB-hn-nlJ" secondAttribute="bottom" constant="7" id="FmB-bi-Spf"/>
+                                                                <constraint firstAttribute="bottom" secondItem="PCI-UM-2eT" secondAttribute="bottom" constant="12" id="LsB-6a-Q29"/>
+                                                                <constraint firstAttribute="trailing" secondItem="QiF-iG-PdO" secondAttribute="trailing" constant="15" id="Ow9-ss-t75"/>
+                                                                <constraint firstItem="uLM-o5-OZh" firstAttribute="top" secondItem="ZFB-hn-nlJ" secondAttribute="top" constant="10" id="P7j-qF-eDK"/>
+                                                                <constraint firstItem="ZFB-hn-nlJ" firstAttribute="leading" secondItem="Fb8-ap-gzd" secondAttribute="leading" id="UVl-Yl-3na"/>
+                                                                <constraint firstAttribute="trailing" secondItem="uLM-o5-OZh" secondAttribute="trailing" constant="30" id="Zza-1c-KGE"/>
+                                                                <constraint firstItem="QiF-iG-PdO" firstAttribute="leading" secondItem="ENi-FS-cgK" secondAttribute="leading" constant="15" id="dmk-Gu-Q45"/>
+                                                                <constraint firstItem="QiF-iG-PdO" firstAttribute="top" secondItem="TfM-6H-5vx" secondAttribute="bottom" constant="8" symbolic="YES" id="iUB-Dt-wsk"/>
+                                                                <constraint firstItem="TfM-6H-5vx" firstAttribute="leading" secondItem="ZFB-hn-nlJ" secondAttribute="leading" id="l6z-yB-RZU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="NsV-b3-KHl" secondAttribute="trailing" constant="30" id="lYS-Dv-Fpg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="PCI-UM-2eT" secondAttribute="trailing" constant="10" id="qwN-X4-tOX"/>
+                                                                <constraint firstItem="NsV-b3-KHl" firstAttribute="top" secondItem="Fb8-ap-gzd" secondAttribute="top" id="yi9-eP-hJq"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ENi-FS-cgK" firstAttribute="top" secondItem="ghK-Cd-LVp" secondAttribute="top" id="cn0-bP-ekT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ENi-FS-cgK" secondAttribute="trailing" id="eS1-oh-MRW"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ENi-FS-cgK" secondAttribute="bottom" constant="7" id="gK4-pd-6Tr"/>
+                                                        <constraint firstItem="ENi-FS-cgK" firstAttribute="leading" secondItem="ghK-Cd-LVp" secondAttribute="leading" id="hKW-C8-Us2"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="CheckListHeight" destination="4QZ-Mb-UAF" id="fNi-rp-h9B"/>
+                                                    <outlet property="lblSavingResult" destination="PCI-UM-2eT" id="2kz-cq-ujr"/>
+                                                    <outlet property="lblTime" destination="NsV-b3-KHl" id="trH-A4-Wue"/>
+                                                    <outlet property="lblTitle" destination="Fb8-ap-gzd" id="tYS-9u-cUn"/>
+                                                    <outlet property="lblUsageGoal" destination="TfM-6H-5vx" id="idO-10-Rmr"/>
+                                                    <outlet property="lblUsageRef" destination="ZFB-hn-nlJ" id="Lg2-TN-2rS"/>
+                                                    <outlet property="lblUsageToday" destination="uLM-o5-OZh" id="lgt-KR-y4A"/>
+                                                    <outlet property="roundView" destination="ENi-FS-cgK" id="IOo-Wy-hgI"/>
+                                                    <outlet property="tvCheckList" destination="QiF-iG-PdO" id="Adx-sU-ecI"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감조치 시행율    00 %  (0 / 0)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CE0-xd-rKe">
+                                        <rect key="frame" x="30" y="272" width="315" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="OE8-dv-xSt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="qYj-Kh-jgd" firstAttribute="leading" secondItem="R1S-FM-vmZ" secondAttribute="leading" constant="8" id="2UA-UP-unK"/>
+                                    <constraint firstItem="CE0-xd-rKe" firstAttribute="top" secondItem="qQu-XF-UML" secondAttribute="bottom" constant="-54" id="4QF-5w-FHh"/>
+                                    <constraint firstItem="CE0-xd-rKe" firstAttribute="centerX" secondItem="R1S-FM-vmZ" secondAttribute="centerX" id="4b6-2p-qC3"/>
+                                    <constraint firstItem="qQu-XF-UML" firstAttribute="centerX" secondItem="R1S-FM-vmZ" secondAttribute="centerX" id="590-gW-2Kq"/>
+                                    <constraint firstAttribute="trailing" secondItem="qYj-Kh-jgd" secondAttribute="trailing" constant="8" id="6ij-Yq-9nJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="qYj-Kh-jgd" secondAttribute="bottom" constant="8" id="8ww-CJ-AX7"/>
+                                    <constraint firstItem="MSW-62-EAy" firstAttribute="centerX" secondItem="qQu-XF-UML" secondAttribute="centerX" constant="-15" id="9NG-7p-b3O"/>
                                     <constraint firstItem="mkp-GP-irE" firstAttribute="centerY" secondItem="9SQ-17-eQB" secondAttribute="centerY" id="A83-6m-CtA"/>
-                                    <constraint firstItem="9SQ-17-eQB" firstAttribute="top" secondItem="DSp-ML-gcu" secondAttribute="top" constant="15" id="KOr-Ed-4gA"/>
-                                    <constraint firstItem="9SQ-17-eQB" firstAttribute="leading" secondItem="DSp-ML-gcu" secondAttribute="leading" constant="50" id="iJo-4E-GN2"/>
+                                    <constraint firstItem="qQu-XF-UML" firstAttribute="top" secondItem="MSW-62-EAy" secondAttribute="bottom" id="GKp-6L-3yv"/>
+                                    <constraint firstItem="CE0-xd-rKe" firstAttribute="leading" secondItem="R1S-FM-vmZ" secondAttribute="leading" constant="30" id="MOv-RG-MNn"/>
+                                    <constraint firstItem="9SQ-17-eQB" firstAttribute="leading" secondItem="R1S-FM-vmZ" secondAttribute="leading" constant="50" id="U5e-Al-oZ5"/>
+                                    <constraint firstItem="oma-AX-OXq" firstAttribute="centerX" secondItem="qQu-XF-UML" secondAttribute="centerX" constant="70" id="Urk-LX-cSx"/>
+                                    <constraint firstItem="cgv-aJ-xYo" firstAttribute="centerY" secondItem="qQu-XF-UML" secondAttribute="centerY" constant="40" id="Vpu-5X-Ank"/>
+                                    <constraint firstItem="cgv-aJ-xYo" firstAttribute="centerX" secondItem="qQu-XF-UML" secondAttribute="centerX" id="ZWp-PY-Z0A"/>
+                                    <constraint firstItem="9SQ-17-eQB" firstAttribute="top" secondItem="R1S-FM-vmZ" secondAttribute="top" constant="15" id="g0F-KX-M9b"/>
+                                    <constraint firstItem="qQu-XF-UML" firstAttribute="top" secondItem="oma-AX-OXq" secondAttribute="bottom" constant="-6" id="gfF-jp-fPF"/>
+                                    <constraint firstItem="qYj-Kh-jgd" firstAttribute="top" secondItem="CE0-xd-rKe" secondAttribute="bottom" constant="10" id="nVa-x7-YcP"/>
                                     <constraint firstItem="9SQ-17-eQB" firstAttribute="leading" secondItem="mkp-GP-irE" secondAttribute="trailing" constant="8" symbolic="YES" id="o6F-9L-5M4"/>
+                                    <constraint firstItem="qQu-XF-UML" firstAttribute="top" secondItem="9SQ-17-eQB" secondAttribute="bottom" constant="50" id="pbb-Pg-mxl"/>
+                                    <constraint firstAttribute="trailing" secondItem="CE0-xd-rKe" secondAttribute="trailing" constant="30" id="qrX-5y-9Ft"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="t7K-fy-ihT"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="DSp-ML-gcu"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TaQ-jp-FD1"/>
@@ -89,15 +293,24 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="SavingListHeight" destination="BT7-go-6ZM" id="cGA-P7-i5b"/>
+                        <outlet property="gaugeView" destination="qQu-XF-UML" id="jcd-Fy-ARs"/>
+                        <outlet property="lblActCount" destination="CE0-xd-rKe" id="uIt-eY-Hu4"/>
+                        <outlet property="lblKwhPlan" destination="MSW-62-EAy" id="em9-gr-33I"/>
+                        <outlet property="lblKwhReal" destination="cgv-aJ-xYo" id="iol-va-2J1"/>
+                        <outlet property="lblKwhRef" destination="oma-AX-OXq" id="Khk-5h-0Si"/>
+                        <outlet property="tvSavingList" destination="qYj-Kh-jgd" id="YGh-un-8Ys"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZs-Li-37w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="26"/>
+            <point key="canvasLocation" x="-74.400000000000006" y="25.637181409295355"/>
         </scene>
         <!--Custom Side Menu Navigation Controller-->
         <scene sceneID="03F-Yu-lg7">
             <objects>
-                <navigationController storyboardIdentifier="SideMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="So7-Pv-Y0I" customClass="CustomSideMenuNavigationController" customModule="EgService" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SideMenu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="So7-Pv-Y0I" customClass="CustomSideMenuNavigationController" customModule="EgBuilding" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="SQc-eI-zJX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NYP-PV-6H5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -114,7 +327,7 @@
         <!--Side Menu View Controller-->
         <scene sceneID="8dH-Gr-i8x">
             <objects>
-                <viewController storyboardIdentifier="SideMenuViewController" id="9jC-s3-7Nv" customClass="SideMenuViewController" customModule="EgService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuViewController" id="9jC-s3-7Nv" customClass="SideMenuViewController" customModule="EgBuilding" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kc9-FK-Uk1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -483,6 +696,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SUC-GO-l10"/>
+                    <connections>
+                        <outlet property="UIAlarm" destination="ggV-c0-k9b" id="o3S-WY-hGn"/>
+                        <outlet property="UIHome" destination="H6y-gY-i2X" id="T0E-zG-oGE"/>
+                        <outlet property="UILogout" destination="uNf-PC-Eaa" id="LQH-Qu-f5Y"/>
+                        <outlet property="UINotice" destination="Bui-zz-ZXh" id="6ir-yc-08U"/>
+                        <outlet property="UISaving" destination="5Nd-CN-f4g" id="xhk-6I-88P"/>
+                        <outlet property="UISetting" destination="Acx-pQ-SjN" id="TGF-j7-0gL"/>
+                        <outlet property="UIUsageCompare" destination="1g2-rs-Gxv" id="Q8k-iy-Ltr"/>
+                        <outlet property="UIUsageDaily" destination="QRR-wP-47b" id="2Q6-EL-QRL"/>
+                        <outlet property="UIUsageMonthly" destination="DTv-ce-wT0" id="FxK-2A-poz"/>
+                        <outlet property="UIUsageYearly" destination="euv-xB-4pP" id="ray-GC-I9t"/>
+                        <outlet property="btnUnReadAlarm" destination="cgn-uh-BFY" id="7QS-Ba-zHh"/>
+                        <outlet property="btnUnReadNotice" destination="J1k-UG-FiF" id="TFM-Gs-wTw"/>
+                        <outlet property="lblAdminName" destination="Pzh-BZ-0hg" id="txr-g5-U2T"/>
+                        <outlet property="lblSiteName" destination="sHS-Fp-Aas" id="H72-o2-m3r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTb-mZ-BGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -491,6 +720,8 @@
     </scenes>
     <resources>
         <image name="btn_menu.png" width="512" height="512"/>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="gg_1.png" width="256" height="256"/>
         <image name="menu_alarm.png" width="73.44000244140625" height="79.680000305175781"/>
         <image name="menu_chart2.png" width="112.31999969482422" height="118.80000305175781"/>
@@ -500,12 +731,21 @@
         <image name="menu_site_state.png" width="74.879997253417969" height="79.199996948242188"/>
         <image name="menu_usage.png" width="75.839996337890625" height="79.199996948242188"/>
         <image name="small_dot_pink.png" width="60" height="60"/>
+        <namedColor name="Dark_cyan">
+            <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Light_Cyan">
             <color red="0.25098039215686274" green="0.67843137254901964" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Pastel_blue">
             <color red="0.88627450980392153" green="0.9882352941176471" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

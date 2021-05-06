@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ack View Controller-->
+        <scene sceneID="5BJ-zk-W5B">
+            <objects>
+                <viewController storyboardIdentifier="AckViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sUA-lg-Rxm" customClass="AckViewController" customModule="EgService" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wAX-Yc-EDi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alk-m0-Ro2">
+                                <rect key="frame" x="50" y="721" width="119" height="41"/>
+                                <color key="backgroundColor" name="EG_Dark_yellow"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="u1Z-fg-kcW"/>
+                                    <constraint firstAttribute="height" constant="41" id="vTL-Bp-x3Q"/>
+                                </constraints>
+                                <state key="normal" title="승인요청 보내기">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnRequestBtnClicked:" destination="sUA-lg-Rxm" eventType="touchUpInside" id="Aau-5T-1eA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fri-ob-b9U">
+                                <rect key="frame" x="50" y="770" width="119" height="41"/>
+                                <color key="backgroundColor" name="EG_Cyan_dark"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="9hT-uR-QnV"/>
+                                    <constraint firstAttribute="height" constant="41" id="GcP-7I-NAM"/>
+                                </constraints>
+                                <state key="normal" title="종료하기">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnExitBtnClicked:" destination="sUA-lg-Rxm" eventType="touchUpInside" id="awh-sx-h0b"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ack.png" translatesAutoresizingMaskIntoConstraints="NO" id="i3b-SU-tkg">
+                                <rect key="frame" x="50" y="44" width="364" height="818"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="승인 대기중입니다. 오늘의 승인요청 횟수를 초과하여 다시 보내려면 내일 시도하십시오" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvM-cC-Njm">
+                                <rect key="frame" x="16" y="401.5" width="205" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="Kk2-Tj-Ka9"/>
+                                    <constraint firstAttribute="height" constant="102" id="bge-58-YuY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Uq-xG-NPq"/>
+                        <color key="backgroundColor" name="EG_Cyan_light"/>
+                        <constraints>
+                            <constraint firstItem="9Uq-xG-NPq" firstAttribute="bottom" secondItem="i3b-SU-tkg" secondAttribute="bottom" id="DhQ-iw-vdN"/>
+                            <constraint firstItem="fri-ob-b9U" firstAttribute="top" secondItem="alk-m0-Ro2" secondAttribute="bottom" constant="8" symbolic="YES" id="Lgz-Vl-fCc"/>
+                            <constraint firstItem="9Uq-xG-NPq" firstAttribute="trailing" secondItem="i3b-SU-tkg" secondAttribute="trailing" id="SnH-RP-xO1"/>
+                            <constraint firstItem="fri-ob-b9U" firstAttribute="leading" secondItem="9Uq-xG-NPq" secondAttribute="leading" constant="50" id="TRA-qe-oNi"/>
+                            <constraint firstItem="i3b-SU-tkg" firstAttribute="leading" secondItem="9Uq-xG-NPq" secondAttribute="leading" constant="50" id="Z2Y-3O-YhH"/>
+                            <constraint firstItem="CvM-cC-Njm" firstAttribute="centerY" secondItem="9Uq-xG-NPq" secondAttribute="centerY" constant="-0.5" id="cf1-vq-bQ1"/>
+                            <constraint firstItem="alk-m0-Ro2" firstAttribute="leading" secondItem="9Uq-xG-NPq" secondAttribute="leading" constant="50" id="eyi-3O-TyW"/>
+                            <constraint firstItem="i3b-SU-tkg" firstAttribute="top" secondItem="9Uq-xG-NPq" secondAttribute="top" id="fR5-Yk-JvN"/>
+                            <constraint firstItem="9Uq-xG-NPq" firstAttribute="bottom" secondItem="fri-ob-b9U" secondAttribute="bottom" constant="51" id="vFP-tp-Q9a"/>
+                            <constraint firstItem="CvM-cC-Njm" firstAttribute="leading" secondItem="9Uq-xG-NPq" secondAttribute="leading" constant="16" id="w8A-5B-zZ3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnExit" destination="fri-ob-b9U" id="UXP-WI-m7T"/>
+                        <outlet property="btnSend" destination="alk-m0-Ro2" id="XCr-lE-CHm"/>
+                        <outlet property="lblMessage" destination="CvM-cC-Njm" id="Z6K-ZK-hZx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpK-cS-7fo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293.60000000000002" y="38.23088455772114"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ack.png" width="336" height="615.3599853515625"/>
+        <namedColor name="EG_Cyan_dark">
+            <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EG_Cyan_light">
+            <color red="0.25098039215686274" green="0.67843137254901964" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EG_Dark_yellow">
+            <color red="0.95686274509803926" green="0.76470588235294112" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

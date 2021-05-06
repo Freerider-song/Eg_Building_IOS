@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210177ED264388B80027899C /* UsageDaily.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210177EC264388B80027899C /* UsageDaily.storyboard */; };
+		210177F026438CE90027899C /* UsageDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210177EF26438CE90027899C /* UsageDailyViewController.swift */; };
+		210177F326438CFB0027899C /* UsageMonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210177F226438CFB0027899C /* UsageMonthlyViewController.swift */; };
+		210177F626438D090027899C /* UsageYearlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210177F526438D090027899C /* UsageYearlyViewController.swift */; };
+		210177F926438DF90027899C /* UsageMonthly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210177F826438DF90027899C /* UsageMonthly.storyboard */; };
+		210177FC26438E070027899C /* UsageYearly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210177FB26438E070027899C /* UsageYearly.storyboard */; };
+		2101780F2643913F0027899C /* MonthlyChartFormatter31.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178092643913E0027899C /* MonthlyChartFormatter31.swift */; };
+		210178102643913F0027899C /* YearlyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780A2643913E0027899C /* YearlyChartFormatter.swift */; };
+		210178112643913F0027899C /* MonthlyChartFormatter28.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */; };
+		210178122643913F0027899C /* DailyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780C2643913F0027899C /* DailyChartFormatter.swift */; };
+		210178132643913F0027899C /* MonthlyChartFormatter29.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */; };
+		210178142643913F0027899C /* MonthlyChartFormatter30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */; };
+		21017819264391560027899C /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017816264391560027899C /* RadarMarkerView.swift */; };
+		2101781A264391560027899C /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017817264391560027899C /* XYMarkerView.swift */; };
+		2101781B264391560027899C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017818264391560027899C /* BalloonMarker.swift */; };
+		2101781E2643C0470027899C /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2101781D2643C0470027899C /* Notice.storyboard */; };
+		210178212643C6490027899C /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210178202643C6490027899C /* Alarm.storyboard */; };
 		215CF98C26310EEB00F2C3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98B26310EEB00F2C3CC /* AppDelegate.swift */; };
 		215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98D26310EEB00F2C3CC /* SceneDelegate.swift */; };
 		215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98F26310EEB00F2C3CC /* MainViewController.swift */; };
@@ -115,10 +132,29 @@
 		215D0EA426329DF90091CD64 /* new_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 215D0E9726329DF90091CD64 /* new_icon.png */; };
 		215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0EA62636915B0091CD64 /* SideMenuViewController.swift */; };
 		215D0EAB26369DB30091CD64 /* TTGaugeView in Frameworks */ = {isa = PBXBuildFile; productRef = 215D0EAA26369DB30091CD64 /* TTGaugeView */; };
+		215D0F232638FB9D0091CD64 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215D0F222638FB9D0091CD64 /* Saving.storyboard */; };
+		215D0F26263904260091CD64 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0F25263904260091CD64 /* SavingViewController.swift */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210177EC264388B80027899C /* UsageDaily.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsageDaily.storyboard; sourceTree = "<group>"; };
+		210177EF26438CE90027899C /* UsageDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageDailyViewController.swift; sourceTree = "<group>"; };
+		210177F226438CFB0027899C /* UsageMonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageMonthlyViewController.swift; sourceTree = "<group>"; };
+		210177F526438D090027899C /* UsageYearlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageYearlyViewController.swift; sourceTree = "<group>"; };
+		210177F826438DF90027899C /* UsageMonthly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsageMonthly.storyboard; sourceTree = "<group>"; };
+		210177FB26438E070027899C /* UsageYearly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsageYearly.storyboard; sourceTree = "<group>"; };
+		210178092643913E0027899C /* MonthlyChartFormatter31.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter31.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter31.swift"; sourceTree = "<group>"; };
+		2101780A2643913E0027899C /* YearlyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YearlyChartFormatter.swift; path = "../../../../EgService 2/EgService/Formatters/YearlyChartFormatter.swift"; sourceTree = "<group>"; };
+		2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter28.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter28.swift"; sourceTree = "<group>"; };
+		2101780C2643913F0027899C /* DailyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyChartFormatter.swift; path = "../../../../EgService 2/EgService/Formatters/DailyChartFormatter.swift"; sourceTree = "<group>"; };
+		2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter29.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter29.swift"; sourceTree = "<group>"; };
+		2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter30.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter30.swift"; sourceTree = "<group>"; };
+		21017816264391560027899C /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadarMarkerView.swift; path = "../../../../EgService 2/EgService/Components/RadarMarkerView.swift"; sourceTree = "<group>"; };
+		21017817264391560027899C /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XYMarkerView.swift; path = "../../../../EgService 2/EgService/Components/XYMarkerView.swift"; sourceTree = "<group>"; };
+		21017818264391560027899C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BalloonMarker.swift; path = "../../../../EgService 2/EgService/Components/BalloonMarker.swift"; sourceTree = "<group>"; };
+		2101781D2643C0470027899C /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
+		210178202643C6490027899C /* Alarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		215CF98826310EEB00F2C3CC /* EgBuilding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EgBuilding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		215CF98B26310EEB00F2C3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		215CF98D26310EEB00F2C3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +264,8 @@
 		215D0E9626329DF90091CD64 /* btn_yellow_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_yellow_next.png; sourceTree = "<group>"; };
 		215D0E9726329DF90091CD64 /* new_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon.png; sourceTree = "<group>"; };
 		215D0EA62636915B0091CD64 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		215D0F222638FB9D0091CD64 /* Saving.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
+		215D0F25263904260091CD64 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +284,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21017806264391020027899C /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				21017808264391100027899C /* Components */,
+				21017807264391080027899C /* Formatters */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		21017807264391080027899C /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				2101780C2643913F0027899C /* DailyChartFormatter.swift */,
+				2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */,
+				2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */,
+				2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */,
+				210178092643913E0027899C /* MonthlyChartFormatter31.swift */,
+				2101780A2643913E0027899C /* YearlyChartFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		21017808264391100027899C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				21017818264391560027899C /* BalloonMarker.swift */,
+				21017816264391560027899C /* RadarMarkerView.swift */,
+				21017817264391560027899C /* XYMarkerView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		215CF97F26310EEB00F2C3CC = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +337,7 @@
 		215CF98A26310EEB00F2C3CC /* EgBuilding */ = {
 			isa = PBXGroup;
 			children = (
+				21017806264391020027899C /* Chart */,
 				215CFA622631529B00F2C3CC /* CustomUiKit */,
 				215CF9E4263141D100F2C3CC /* Image */,
 				215CF9A626311B6D00F2C3CC /* Library */,
@@ -292,6 +363,10 @@
 				215D0E6A26329CA60091CD64 /* ChangePasswordAuthViewController.swift */,
 				215D0E6D26329CC40091CD64 /* ChangePasswordInputViewController.swift */,
 				215D0EA62636915B0091CD64 /* SideMenuViewController.swift */,
+				215D0F25263904260091CD64 /* SavingViewController.swift */,
+				210177EF26438CE90027899C /* UsageDailyViewController.swift */,
+				210177F226438CFB0027899C /* UsageMonthlyViewController.swift */,
+				210177F526438D090027899C /* UsageYearlyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +408,12 @@
 				215CF99126310EEB00F2C3CC /* Login.storyboard */,
 				215CF9B1263134D000F2C3CC /* Main.storyboard */,
 				215D0E6726329C320091CD64 /* ChangePassword.storyboard */,
+				215D0F222638FB9D0091CD64 /* Saving.storyboard */,
+				210177EC264388B80027899C /* UsageDaily.storyboard */,
+				210177F826438DF90027899C /* UsageMonthly.storyboard */,
+				210177FB26438E070027899C /* UsageYearly.storyboard */,
+				2101781D2643C0470027899C /* Notice.storyboard */,
+				210178202643C6490027899C /* Alarm.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -519,6 +600,7 @@
 				215CFA5F2631429000F2C3CC /* _used_btn_day.png in Resources */,
 				215D0EA126329DF90091CD64 /* notice_site.png in Resources */,
 				215CFA552631429000F2C3CC /* btn_menu3.png in Resources */,
+				210177ED264388B80027899C /* UsageDaily.storyboard in Resources */,
 				215CF99826310EEC00F2C3CC /* LaunchScreen.storyboard in Resources */,
 				215D0E9E26329DF90091CD64 /* anonymous_user.png in Resources */,
 				215CFA4F2631429000F2C3CC /* menu_point.png in Resources */,
@@ -536,6 +618,7 @@
 				215CF9AA26311D0B00F2C3CC /* Color.xcassets in Resources */,
 				215CFA2C2631429000F2C3CC /* btn_back_colored.png in Resources */,
 				215CFA282631429000F2C3CC /* small_dot_grass.png in Resources */,
+				2101781E2643C0470027899C /* Notice.storyboard in Resources */,
 				215CFA372631429000F2C3CC /* small_dot_yellow.png in Resources */,
 				215CFA402631429000F2C3CC /* circle_yellow_dark.png in Resources */,
 				215CFA2D2631429000F2C3CC /* icon_main.png in Resources */,
@@ -570,9 +653,12 @@
 				215CFA352631429000F2C3CC /* btn_menu.png in Resources */,
 				215CFA382631429000F2C3CC /* gg_1.png in Resources */,
 				215D0E9926329DF90091CD64 /* change_password_man.png in Resources */,
+				210177FC26438E070027899C /* UsageYearly.storyboard in Resources */,
 				215CFA532631429000F2C3CC /* circle_gray.png in Resources */,
+				215D0F232638FB9D0091CD64 /* Saving.storyboard in Resources */,
 				215CFA472631429000F2C3CC /* check_yes.png in Resources */,
 				215CF99326310EEB00F2C3CC /* Login.storyboard in Resources */,
+				210177F926438DF90027899C /* UsageMonthly.storyboard in Resources */,
 				215CFA572631429000F2C3CC /* login_id.png in Resources */,
 				215CFA3D2631429000F2C3CC /* menu_usage.png in Resources */,
 				215CFA592631429000F2C3CC /* energy_05.png in Resources */,
@@ -588,6 +674,7 @@
 				215CFA4A2631429000F2C3CC /* main_logo_a.png in Resources */,
 				215CFA4D2631429000F2C3CC /* menu_site_state.png in Resources */,
 				215D0E9C26329DF90091CD64 /* speaker_icon.png in Resources */,
+				210178212643C6490027899C /* Alarm.storyboard in Resources */,
 				215D0E9F26329DF90091CD64 /* arrow_right.png in Resources */,
 				215D0E9B26329DF90091CD64 /* logout.png in Resources */,
 			);
@@ -643,28 +730,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				215CFA64263152B000F2C3CC /* DesignableUITextField.swift in Sources */,
+				2101781A264391560027899C /* XYMarkerView.swift in Sources */,
 				215CF9C62631362100F2C3CC /* CaPref.swift in Sources */,
 				215CF9B62631353A00F2C3CC /* LoginViewController.swift in Sources */,
+				2101780F2643913F0027899C /* MonthlyChartFormatter31.swift in Sources */,
 				215D0E6B26329CA60091CD64 /* ChangePasswordAuthViewController.swift in Sources */,
+				210177F026438CE90027899C /* UsageDailyViewController.swift in Sources */,
+				210177F326438CFB0027899C /* UsageMonthlyViewController.swift in Sources */,
 				215CF9CA2631362100F2C3CC /* CaApplication.swift in Sources */,
 				215CF9CB2631362100F2C3CC /* CaTask.swift in Sources */,
+				210177F626438D090027899C /* UsageYearlyViewController.swift in Sources */,
+				21017819264391560027899C /* RadarMarkerView.swift in Sources */,
 				215CFA6B263262F100F2C3CC /* CaAlarm.swift in Sources */,
 				215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */,
+				215D0F26263904260091CD64 /* SavingViewController.swift in Sources */,
 				215CF9C42631362100F2C3CC /* CaResult.swift in Sources */,
 				215CF9B92631359C00F2C3CC /* CustomUIViewController.swift in Sources */,
 				215CF98C26310EEB00F2C3CC /* AppDelegate.swift in Sources */,
 				215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */,
+				210178102643913F0027899C /* YearlyChartFormatter.swift in Sources */,
 				215CF9CC2631362100F2C3CC /* ServicePush.swift in Sources */,
 				215CF9C72631362100F2C3CC /* CaEngine.swift in Sources */,
 				215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */,
 				215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */,
 				215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */,
+				210178122643913F0027899C /* DailyChartFormatter.swift in Sources */,
 				215CFA782632673200F2C3CC /* CaMeter.swift in Sources */,
 				215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */,
+				210178132643913F0027899C /* MonthlyChartFormatter29.swift in Sources */,
 				215CF9C52631362100F2C3CC /* Toast.swift in Sources */,
+				2101781B264391560027899C /* BalloonMarker.swift in Sources */,
+				210178142643913F0027899C /* MonthlyChartFormatter30.swift in Sources */,
 				215CF9C92631362100F2C3CC /* CaArg.swift in Sources */,
 				215CFA752632667E00F2C3CC /* CaActHistory.swift in Sources */,
 				215CF9C82631362100F2C3CC /* CaInfo.swift in Sources */,
+				210178112643913F0027899C /* MonthlyChartFormatter28.swift in Sources */,
 				215CFA6C263262F100F2C3CC /* CaNotice.swift in Sources */,
 				215CFA722632662300F2C3CC /* CaAct.swift in Sources */,
 				215CFA6F263264DE00F2C3CC /* CaPlan.swift in Sources */,

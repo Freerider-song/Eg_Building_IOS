@@ -25,6 +25,7 @@ public class CaInfo {
     public let dfMM = DateFormatter() //MM
     public let dfdd = DateFormatter() //dd
     public let dfMMddHHmmss = DateFormatter()
+    public let dfHH = DateFormatter()
     
     public var isLogin : Bool = false
     
@@ -139,7 +140,97 @@ public class CaInfo {
         dfyyyy.dateFormat = "yyyy"
         dfMM.dateFormat = "MM"
         dfdd.dateFormat = "dd"
+        dfHH.dateFormat = "HH"
         dfMMddHHmmss.dateFormat = "MM-dd HH:mm:ss"
+    }
+    
+    public func setPlanList(_ planList: Array<[String:Any]>) {
+        
+        m_alPlan.removeAll()
+        
+        for plan in planList {
+            
+            let ca_plan:CaPlan = CaPlan()
+            
+            ca_plan.nSeqPlanElem =  plan["seq_plan_elem"] as! Int
+            ca_plan.nSeqMeter = plan["seq_meter"]! as! Int
+            ca_plan.strMid = plan["mid"]! as! String
+            ca_plan.strMeterDescr = plan["meter_descr"]! as! String
+            ca_plan.nHourFrom = plan["hour_from"]! as! Int
+            ca_plan.nHourTo = plan["hour_to"]! as! Int
+            ca_plan.dKwhRef = plan["kwh_ref"]! as! Double
+            ca_plan.dKwhPlan = plan["kwh_plan"]! as! Double
+            ca_plan.dKwhReal = plan["kwh_real"]! as! Double
+            
+            let jaAct: Array<[String:Any]> = plan["list_act"] as! Array<[String:Any]>
+            
+        
+            for act in jaAct {
+                let ca_act: CaAct = CaAct()
+                
+                ca_act.nSeqAct = act["seq_act"] as! Int
+                ca_act.strActContent = act["act_content"] as! String
+                
+                let jaActHistory: Array<[String: Any]> = act["list_act_history"] as! Array<[String:Any]>
+                for actHistory in jaActHistory {
+                    let ca_actHistory: CaActHistory = CaActHistory()
+                    
+                    ca_actHistory.nSeqActHistory = actHistory["seq_act_history"] as! Int
+                    ca_actHistory.nSeqAdminBegin = actHistory["seq_admin_begin"] as! Int
+                    ca_actHistory.nSeqAdminEnd = actHistory["seq_admin_end"] as! Int
+                    ca_actHistory.dtBegin = actHistory["time_begin"] as! String
+                    ca_actHistory.dtEnd = actHistory["time_end"] as! String
+                    
+                    ca_act.alActHistory.append(ca_actHistory)
+                }
+                ca_plan.alAct.append(ca_act)
+            }
+            
+            
+            m_alPlan.append(ca_plan)
+        }
+        print("CaInfo: setPlan activated...")
+        print(m_alPlan)
+    }
+    
+    public func setMeterList(_ meterList: Array<[String:Any]>) {
+        
+        m_alMeter.removeAll()
+        
+        for meter in meterList {
+            
+            let ca_meter: CaMeter = CaMeter()
+            
+            ca_meter.nSeqMeter =  meter["seq_meter"] as! Int
+            
+            ca_meter.strMid = meter["mid"]! as! String
+            ca_meter.strDescr = meter["descr"]! as! String
+            ca_meter.dKwhRef = meter["kwh_ref"]! as! Double
+            
+            ca_meter.dKwhPlan = meter["kwh_plan"]! as! Double
+            //ca_meter.dKwhReal = meter["kwh_real"]! as! Double
+            
+            let jaUsage: Array<[String:Any]> = meter["list_usage"] as! Array<[String:Any]>
+            
+        
+            for usage in jaUsage {
+                let ca_usage: CaMeterUsage = CaMeterUsage()
+                
+                ca_usage.nYear = usage["year"] as! Int
+                ca_usage.nMonth = usage["month"] as! Int
+                ca_usage.nDay = usage["day"] as! Int
+                ca_usage.bHoliday = usage["is_holiday"] as! Bool
+                ca_usage.dKwh = usage["kwh"] as! Double
+                ca_usage.dWon = usage["won"] as! Double
+                
+                ca_meter.alMeterUsage.append(ca_usage)
+            }
+            
+            
+            m_alMeter.append(ca_meter)
+        }
+        print("CaInfo: setMeter complished...")
+        print(m_alMeter)
     }
     /*
     
@@ -379,4 +470,22 @@ public class CaInfo {
         return result
     }
     */
+    
+    // 숫자 3자리마다 , 출력
+    public func decimal(value: Int) -> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let result = numberFormatter.string(from: NSNumber(value: value))!
+        
+        return result
+    }
+    
+    // 소수 첫째
+    public func decimal(value: Double) -> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let result = numberFormatter.string(from: NSNumber(value: round(value*10)/10))!
+        
+        return result
+    }
 }

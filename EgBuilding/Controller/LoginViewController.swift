@@ -161,7 +161,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                     CaApplication.m_Info.m_strAdminId = m_strId
                     CaApplication.m_Info.m_strPassword = m_strPw
                     
-                    CaApplication.m_Engine.GetBldAdminInfo(CaApplication.m_Info.m_nSeqAdmin, self)
+                    CaApplication.m_Engine.GetBldAdminInfo(CaApplication.m_Info.m_nSeqAdmin, false ,self)
                     
                     
                 } else {
@@ -234,10 +234,52 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                 self.present(view, animated: true, completion: nil)
                 */
                 
-                done(sender: self)
+                let date = Date()
+                let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
+                
+                CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, false, self)
+                
+                //done(sender: self)
                 
                 
             break
+                
+
+        case m_GlobalEngine.CB_GET_SAVE_RESULT_DAILY:
+            
+            let jo:[String: Any] = Result.JSONResult
+            //print(jo["list_plan_elem"])
+            
+            //let jaPlan: [String: Any] = jo["list_plan_elem"] as! [String: Any]
+            let joSave: [String: Any] = jo["save_result_daily"] as! [String: Any]
+            let jaPlan: Array<[String: Any]> = joSave["list_plan_elem"] as! Array<[String: Any]>
+            
+            CaApplication.m_Info.m_nSeqSaveRef = joSave["seq_save_ref"] as! Int
+            CaApplication.m_Info.m_nSeqSite = joSave["seq_site"] as! Int
+            CaApplication.m_Info.m_strSavePlanName = joSave["save_plan_name"] as! String
+            CaApplication.m_Info.m_strSaveRefName = joSave["save_ref_name"] as! String
+            CaApplication.m_Info.m_dSaveKwhTotalFromElem = joSave["save_kwh_total_from_elem"] as! Double
+            CaApplication.m_Info.m_dSaveWonTotalFromElem = joSave["save_won_total_from_elem"] as! Double
+            CaApplication.m_Info.m_dSaveKwhTotalFromMeter = joSave["save_kwh_total_from_meter"] as! Double
+            CaApplication.m_Info.m_dSaveWonTotalFromMeter = joSave["save_kwh_total_from_meter"] as! Double
+            CaApplication.m_Info.m_dKwhPlanForAllMeter = joSave["kwh_plan_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dKwhRealForAllMeter = joSave["kwh_real_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dKwhRefForAllMeter = joSave["kwh_ref_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dWonPlanForAllMeter = joSave["won_plan_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dWonRealForAllMeter = joSave["won_real_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dWonRefForAllMeter = joSave["won_ref_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dtSavePlanEnded = joSave["time_ended"] as! String
+            CaApplication.m_Info.m_dtSavePlanCreated = joSave["time_created"] as! String
+            CaApplication.m_Info.m_nActCount = joSave["act_count"] as! Int
+            CaApplication.m_Info.m_nActCountWithHistory = joSave["act_count_with_history"] as! Int
+
+
+            CaApplication.m_Info.setPlanList(jaPlan)
+
+            print("HOME: getsaveresultdaily called...")
+            
+            done(sender: self)
+            
                 
             default:
                 print("Login: Error!")

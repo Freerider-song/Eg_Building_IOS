@@ -88,16 +88,16 @@ public class CaEngine{
         executeCommand(Arg, CB_CHECK_BLD_LOGIN, true, viewControl)
     }
 
-    func GetBldAdminInfo(_ SeqAdmin: Int, _ viewControl: AnyObject){
+    func GetBldAdminInfo(_ SeqAdmin: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
  
 
         let Arg = CaArg("GetBldAdminInfo", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
 
-        executeCommand(Arg, CB_GET_BLD_ADMIN_INFO, true, viewControl)
+        executeCommand(Arg, CB_GET_BLD_ADMIN_INFO, bShowWaitDialog, viewControl)
     }
 
-    func ChangeAdminPassword(_ Id: String, _ PasswordNew: String, _ viewControl: AnyObject){
+    func ChangeAdminPassword(_ Id: String, _ PasswordNew: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
        
         let Arg = CaArg("ChangeAdminPassword", NO_CMD_ARGS)
         Arg.addArg("Id", Id)
@@ -106,16 +106,16 @@ public class CaEngine{
         executeCommand(Arg, CB_CHANGE_ADMIN_PASSWORD, true, viewControl)
     }
 
-    func RequestAuthCode(_ Id: String, _ Phone: String, _ viewControl: AnyObject){
+    func RequestAuthCode(_ Id: String, _ Phone: String,_ bShowWaitDialog: Bool, _ viewControl: AnyObject){
         
         let Arg = CaArg("RequestAuthCode", NO_CMD_ARGS)
         Arg.addArg("Id", Id)
         Arg.addArg("Phone", Phone)
 
-        executeCommand(Arg, CB_REQUEST_AUTH_CODE,  true, viewControl)
+        executeCommand(Arg, CB_REQUEST_AUTH_CODE,bShowWaitDialog, viewControl)
     }
 
-    func CheckAuthCode(_ Phone: String, _ AuthCode: String, _ SecTimeLimit: Int,_ viewControl: AnyObject){
+    func CheckAuthCode(_ Phone: String, _ AuthCode: String, _ SecTimeLimit: Int,_ bShowWaitDialog: Bool,_ viewControl: AnyObject){
     
 
         let Arg = CaArg("CheckAuthCode", NO_CMD_ARGS)
@@ -123,49 +123,49 @@ public class CaEngine{
         Arg.addArg("AuthCode", AuthCode)
         Arg.addArg("SecTimeLimit", SecTimeLimit)
 
-        executeCommand(Arg, CB_CHECK_AUTH_CODE, true, viewControl);
+        executeCommand(Arg, CB_CHECK_AUTH_CODE, bShowWaitDialog, viewControl)
     }
 
-    func GetBldNoticeList(_ SeqAdmin: Int, _ TimeCreatedMax: String,_ CountNotice: Int, _ viewControl: AnyObject){
+    func GetBldNoticeList(_ SeqAdmin: Int, _ TimeCreatedMax: String,_ CountNotice: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         let Arg = CaArg("GetBldNoticeList", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
         Arg.addArg("TimeCreatedMax", TimeCreatedMax)
         Arg.addArg("CountNotice", CountNotice)
 
-        executeCommand(Arg, CB_GET_BLD_NOTICE_LIST,  true, viewControl);
+        executeCommand(Arg, CB_GET_BLD_NOTICE_LIST, bShowWaitDialog, viewControl)
     }
 
-    func SetBldNoticeListAsRead(_ SeqAdmin: Int, _ strSeqNoticeList: String, _ viewControl: AnyObject){
+    func SetBldNoticeListAsRead(_ SeqAdmin: Int, _ strSeqNoticeList: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         
 
         let Arg = CaArg("SetBldNoticeListAsRead", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
         Arg.addArg("SeqNoticeList", strSeqNoticeList)
 
-        executeCommand(Arg, CB_SET_BLD_NOTICE_AS_READ, true, viewControl)
+        executeCommand(Arg, CB_SET_BLD_NOTICE_AS_READ, bShowWaitDialog, viewControl)
     }
 
-    func GetSaveResultDaily(_ SeqSavePlanActive: Int,_ DateTarget: String, _ viewControl: AnyObject){
+    func GetSaveResultDaily(_ SeqSavePlanActive: Int,_ DateTarget: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         
 
         let Arg = CaArg("GetSaveResultDaily", NO_CMD_ARGS)
         Arg.addArg("SeqSavePlan", SeqSavePlanActive)
         Arg.addArg("DateTarget", DateTarget)
 
-        executeCommand(Arg, CB_GET_SAVE_RESULT_DAILY, true, viewControl)
+        executeCommand(Arg, CB_GET_SAVE_RESULT_DAILY, bShowWaitDialog, viewControl)
     }
 
-    func GetSaveResult(_ SeqSavePlanActive: Int, _ DateFrom: String, _ DateTo: String, _ viewControl: AnyObject){
+    func GetSaveResult(_ SeqSavePlanActive: Int, _ DateFrom: String, _ DateTo: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
 
         let Arg = CaArg("GetSaveResult", NO_CMD_ARGS)
         Arg.addArg("SeqSavePlan", SeqSavePlanActive)
         Arg.addArg("DateFrom", DateFrom)
         Arg.addArg("DateTo", DateTo)
 
-        executeCommand(Arg, CB_GET_SAVE_RESULT, true, viewControl)
+        executeCommand(Arg, CB_GET_SAVE_RESULT, bShowWaitDialog, viewControl)
     }
 
-    func GetUsageForAllMeterDay(_ SeqSite: Int, _ Year: Int, _ Month: Int, _ Day: Int, _ viewControl: AnyObject){
+    func GetUsageForAllMeterDay(_ SeqSite: Int, _ Year: Int, _ Month: Int, _ Day: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
      
 
         let Arg =  CaArg("GetUsageForAllMeterDay", NO_CMD_ARGS)
@@ -174,10 +174,10 @@ public class CaEngine{
         Arg.addArg("Month", Month)
         Arg.addArg("Day", Day)
 
-        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_DAY, true, viewControl)
+        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_DAY, bShowWaitDialog, viewControl)
     }
 
-    func GetUsageForAllMeterMonth(_ SeqSite: Int, _ Year: Int, _ Month: Int, _ viewControl: AnyObject){
+    func GetUsageForAllMeterMonth(_ SeqSite: Int, _ Year: Int, _ Month: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
       
 
         let Arg = CaArg("GetUsageForAllMeterMonth", NO_CMD_ARGS)
@@ -186,22 +186,22 @@ public class CaEngine{
         Arg.addArg("Month", Month)
 
 
-        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_MONTH, true, viewControl);
+        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_MONTH,bShowWaitDialog, viewControl)
     }
 
-    func GetUsageForAllMeterYear(_ SeqSite: Int, _ Year: Int, _ viewControl: AnyObject){
+    func GetUsageForAllMeterYear(_ SeqSite: Int, _ Year: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         
 
         let Arg = CaArg("GetUsageForAllMeterYear", NO_CMD_ARGS)
         Arg.addArg("SeqSite", SeqSite)
         Arg.addArg("Year", Year)
 
-        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_YEAR, true, viewControl);
+        executeCommand(Arg, CB_GET_USAGE_FOR_ALL_METER_YEAR,bShowWaitDialog, viewControl)
     }
 
     func ChangeAdminBldSettings(_ SeqAdmin:Int, _ NotiAll:Bool, _ NotiThisMonthKwh:Bool, _ NotiThisMonthWon: Bool,_ NotiThisMonthUsageAtTime: Bool,
                                 _ NotiMeterKwhOverSaveRef: Bool,_ NotiMeterKwhOverSavePlan: Bool, _ ThresholdThisMonthKwh: Double,
-                                _ ThresholdThisMonthWon:Double, _ HourNotiThisMonthUsage: Int, _ viewControl: AnyObject){
+                                _ ThresholdThisMonthWon:Double, _ HourNotiThisMonthUsage: Int, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         
 
         let Arg = CaArg("ChangeAdminBldSettings", NO_CMD_ARGS)
@@ -216,19 +216,19 @@ public class CaEngine{
         Arg.addArg("ThresholdThisMonthWon", ThresholdThisMonthWon)
         Arg.addArg("HourNotiThisMonthUsage", HourNotiThisMonthUsage)
 
-        executeCommand(Arg, CB_CHANGE_ADMIN_BLD_SETTINGS,  true, viewControl);
+        executeCommand(Arg, CB_CHANGE_ADMIN_BLD_SETTINGS,  bShowWaitDialog, viewControl)
     }
 
-    func GetBldAlarmList(_ SeqAdmin: Int, _ CountMax: Int, _ viewControl: AnyObject){
+    func GetBldAlarmList(_ SeqAdmin: Int, _ CountMax: Int,_ bShowWaitDialog: Bool, _ viewControl: AnyObject){
 
         let Arg = CaArg("GetBldAlarmList", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
         Arg.addArg("CountMax", CountMax)
 
-        executeCommand(Arg, CB_GET_BLD_ALARM_LIST, true, viewControl);
+        executeCommand(Arg, CB_GET_BLD_ALARM_LIST, bShowWaitDialog, viewControl)
     }
 
-    func SetSaveActBegin(_ SeqSaveAct: Int, _ SeqAdmin: Int, _ DateTarget: String, _ viewControl: AnyObject){
+    func SetSaveActBegin(_ SeqSaveAct: Int, _ SeqAdmin: Int, _ DateTarget: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
 
 
         let Arg = CaArg("SetSaveActBegin", NO_CMD_ARGS)
@@ -236,17 +236,17 @@ public class CaEngine{
         Arg.addArg("SeqSaveAct", SeqSaveAct)
         Arg.addArg("DateTarget", DateTarget)
 
-        executeCommand(Arg, CB_SET_SAVE_ACT_BEGIN, true, viewControl);
+        executeCommand(Arg, CB_SET_SAVE_ACT_BEGIN, bShowWaitDialog, viewControl)
     }
 
-    func SetSaveActEnd(_ SeqSaveActHistory: Int, _ SeqAdmin: Int, _ yyyyMMdd: String, _ viewControl: AnyObject){
+    func SetSaveActEnd(_ SeqSaveActHistory: Int, _ SeqAdmin: Int, _ yyyyMMdd: String,_ bShowWaitDialog: Bool, _ viewControl: AnyObject){
 
         let Arg = CaArg("SetSaveActEnd", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
         Arg.addArg("SeqSaveActHistory", SeqSaveActHistory)
         Arg.addArg("yyyyMMdd", yyyyMMdd)
 
-        executeCommand(Arg, CB_SET_SAVE_ACT_END, true, viewControl);
+        executeCommand(Arg, CB_SET_SAVE_ACT_END, bShowWaitDialog, viewControl);
     }
     
 }

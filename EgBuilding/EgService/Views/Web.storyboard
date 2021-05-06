@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Web View Controller-->
+        <scene sceneID="8TL-ZR-y7p">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AGZ-YY-05U" customClass="WebViewController" customModule="EgService" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNw-oG-FQN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjH-ZS-mw5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-0m-REl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StB-Tr-N4W">
+                                        <rect key="frame" x="10" y="23" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Wo5-DJ-pNn"/>
+                                            <constraint firstAttribute="width" constant="40" id="Z4o-Mv-x0S"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_top_back.png"/>
+                                        <connections>
+                                            <action selector="OnBackBtnClicked:" destination="AGZ-YY-05U" eventType="touchUpInside" id="cLU-yn-zWd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용 약관" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seg-Ll-61M">
+                                        <rect key="frame" x="96.5" y="73" width="182" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="char_web.png" translatesAutoresizingMaskIntoConstraints="NO" id="3qb-2l-fKg">
+                                        <rect key="frame" x="299" y="85" width="76" height="74"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="74" id="073-6l-Evw"/>
+                                            <constraint firstAttribute="width" constant="76" id="dEa-b7-cRO"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="EG_Main"/>
+                                <constraints>
+                                    <constraint firstItem="StB-Tr-N4W" firstAttribute="top" secondItem="IjH-ZS-mw5" secondAttribute="top" constant="23" id="6We-Sz-mAB"/>
+                                    <constraint firstAttribute="bottom" secondItem="R7G-0m-REl" secondAttribute="bottom" id="DQX-2L-eGf"/>
+                                    <constraint firstAttribute="trailing" secondItem="3qb-2l-fKg" secondAttribute="trailing" id="FXA-Z3-doQ"/>
+                                    <constraint firstItem="R7G-0m-REl" firstAttribute="top" secondItem="IjH-ZS-mw5" secondAttribute="top" id="Fp7-1B-hq8"/>
+                                    <constraint firstItem="3qb-2l-fKg" firstAttribute="top" secondItem="IjH-ZS-mw5" secondAttribute="top" constant="85" id="WEf-vU-wdM"/>
+                                    <constraint firstItem="seg-Ll-61M" firstAttribute="top" secondItem="IjH-ZS-mw5" secondAttribute="top" constant="73" id="bYp-52-1Wj"/>
+                                    <constraint firstItem="R7G-0m-REl" firstAttribute="leading" secondItem="IjH-ZS-mw5" secondAttribute="leading" id="cMe-hK-kQE"/>
+                                    <constraint firstAttribute="height" constant="159.5" id="jAh-h4-UsY"/>
+                                    <constraint firstAttribute="trailing" secondItem="R7G-0m-REl" secondAttribute="trailing" id="jxN-CF-yNq"/>
+                                    <constraint firstItem="StB-Tr-N4W" firstAttribute="leading" secondItem="IjH-ZS-mw5" secondAttribute="leading" constant="10" id="l3W-q6-uaE"/>
+                                    <constraint firstItem="seg-Ll-61M" firstAttribute="centerX" secondItem="IjH-ZS-mw5" secondAttribute="centerX" id="ocm-ly-UnZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="seg-Ll-61M" secondAttribute="bottom" constant="53" id="uEl-F1-zEd"/>
+                                    <constraint firstAttribute="bottom" secondItem="3qb-2l-fKg" secondAttribute="bottom" constant="0.5" id="z84-MJ-Tob"/>
+                                </constraints>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GO0-x4-BAK">
+                                <rect key="frame" x="8" y="167" width="359" height="487"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Enz-XC-MWz"/>
+                        <color key="backgroundColor" name="EG_Main"/>
+                        <constraints>
+                            <constraint firstItem="Enz-XC-MWz" firstAttribute="bottom" secondItem="GO0-x4-BAK" secondAttribute="bottom" constant="13" id="11C-6H-dV9"/>
+                            <constraint firstItem="IjH-ZS-mw5" firstAttribute="top" secondItem="Enz-XC-MWz" secondAttribute="top" id="6hs-if-kBE"/>
+                            <constraint firstItem="IjH-ZS-mw5" firstAttribute="leading" secondItem="Enz-XC-MWz" secondAttribute="leading" id="FUq-Rg-Jll"/>
+                            <constraint firstItem="IjH-ZS-mw5" firstAttribute="centerX" secondItem="PNw-oG-FQN" secondAttribute="centerX" id="RqW-cn-z5U"/>
+                            <constraint firstItem="GO0-x4-BAK" firstAttribute="leading" secondItem="Enz-XC-MWz" secondAttribute="leading" constant="8" id="XrE-dD-eVi"/>
+                            <constraint firstItem="Enz-XC-MWz" firstAttribute="trailing" secondItem="GO0-x4-BAK" secondAttribute="trailing" constant="8" id="mCo-S2-xYR"/>
+                            <constraint firstItem="GO0-x4-BAK" firstAttribute="top" secondItem="IjH-ZS-mw5" secondAttribute="bottom" constant="7.5" id="nct-z8-ID8"/>
+                            <constraint firstItem="Enz-XC-MWz" firstAttribute="trailing" secondItem="IjH-ZS-mw5" secondAttribute="trailing" id="xJu-8c-7nB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblTitle" destination="seg-Ll-61M" id="iL9-3w-xjf"/>
+                        <outlet property="webView" destination="GO0-x4-BAK" id="z4M-Zc-Qjc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cF7-Ys-pEN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="90.400000000000006" y="45.42728635682159"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_top_back.png" width="96" height="96"/>
+        <image name="char_web.png" width="144" height="147.36000061035156"/>
+        <image name="top_back.png" width="384" height="141.1199951171875"/>
+        <namedColor name="EG_Main">
+            <color red="0.070588235294117646" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
