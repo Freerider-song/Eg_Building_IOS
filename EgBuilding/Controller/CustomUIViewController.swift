@@ -85,6 +85,22 @@ class CustomUIViewController: UIViewController {
             view.modalPresentationStyle = .fullScreen
             self.present(view, animated: true, completion: nil)
             
+        case NSNotification.Name(rawValue: "UIAlarm"):
+            print("Custom: UIAlarm Clicked")
+            
+            let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
+            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "AlarmListViewController")
+            view.modalPresentationStyle = .fullScreen
+            self.present(view, animated: true, completion: nil)
+            
+            
+        case NSNotification.Name(rawValue: "UINotice"):
+            print("Custom: UINotice Clicked")
+            
+            let storyboard = UIStoryboard(name: "Notice", bundle: nil)
+            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "NoticeListViewController")
+            view.modalPresentationStyle = .fullScreen
+            self.present(view, animated: true, completion: nil)
             /*
             
         case NSNotification.Name(rawValue: "UIUsageDaily"):

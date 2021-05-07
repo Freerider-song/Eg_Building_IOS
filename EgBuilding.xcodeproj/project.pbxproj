@@ -24,6 +24,10 @@
 		2101781B264391560027899C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017818264391560027899C /* BalloonMarker.swift */; };
 		2101781E2643C0470027899C /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2101781D2643C0470027899C /* Notice.storyboard */; };
 		210178212643C6490027899C /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210178202643C6490027899C /* Alarm.storyboard */; };
+		210178242644D3E60027899C /* NoticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178232644D3E60027899C /* NoticeListViewController.swift */; };
+		210178272644D3FB0027899C /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178262644D3FB0027899C /* NoticeViewController.swift */; };
+		2101782A2644D40A0027899C /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178292644D40A0027899C /* AlarmListViewController.swift */; };
+		2101782D2644D4140027899C /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101782C2644D4140027899C /* AlarmViewController.swift */; };
 		215CF98C26310EEB00F2C3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98B26310EEB00F2C3CC /* AppDelegate.swift */; };
 		215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98D26310EEB00F2C3CC /* SceneDelegate.swift */; };
 		215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215CF98F26310EEB00F2C3CC /* MainViewController.swift */; };
@@ -155,6 +159,10 @@
 		21017818264391560027899C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BalloonMarker.swift; path = "../../../../EgService 2/EgService/Components/BalloonMarker.swift"; sourceTree = "<group>"; };
 		2101781D2643C0470027899C /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		210178202643C6490027899C /* Alarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
+		210178232644D3E60027899C /* NoticeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListViewController.swift; sourceTree = "<group>"; };
+		210178262644D3FB0027899C /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		210178292644D40A0027899C /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		2101782C2644D4140027899C /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		215CF98826310EEB00F2C3CC /* EgBuilding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EgBuilding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		215CF98B26310EEB00F2C3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		215CF98D26310EEB00F2C3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +375,10 @@
 				210177EF26438CE90027899C /* UsageDailyViewController.swift */,
 				210177F226438CFB0027899C /* UsageMonthlyViewController.swift */,
 				210177F526438D090027899C /* UsageYearlyViewController.swift */,
+				210178232644D3E60027899C /* NoticeListViewController.swift */,
+				210178262644D3FB0027899C /* NoticeViewController.swift */,
+				210178292644D40A0027899C /* AlarmListViewController.swift */,
+				2101782C2644D4140027899C /* AlarmViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -730,6 +742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				215CFA64263152B000F2C3CC /* DesignableUITextField.swift in Sources */,
+				2101782D2644D4140027899C /* AlarmViewController.swift in Sources */,
 				2101781A264391560027899C /* XYMarkerView.swift in Sources */,
 				215CF9C62631362100F2C3CC /* CaPref.swift in Sources */,
 				215CF9B62631353A00F2C3CC /* LoginViewController.swift in Sources */,
@@ -745,6 +758,7 @@
 				215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */,
 				215D0F26263904260091CD64 /* SavingViewController.swift in Sources */,
 				215CF9C42631362100F2C3CC /* CaResult.swift in Sources */,
+				210178272644D3FB0027899C /* NoticeViewController.swift in Sources */,
 				215CF9B92631359C00F2C3CC /* CustomUIViewController.swift in Sources */,
 				215CF98C26310EEB00F2C3CC /* AppDelegate.swift in Sources */,
 				215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */,
@@ -756,6 +770,7 @@
 				215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */,
 				210178122643913F0027899C /* DailyChartFormatter.swift in Sources */,
 				215CFA782632673200F2C3CC /* CaMeter.swift in Sources */,
+				2101782A2644D40A0027899C /* AlarmListViewController.swift in Sources */,
 				215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */,
 				210178132643913F0027899C /* MonthlyChartFormatter29.swift in Sources */,
 				215CF9C52631362100F2C3CC /* Toast.swift in Sources */,
@@ -767,6 +782,7 @@
 				210178112643913F0027899C /* MonthlyChartFormatter28.swift in Sources */,
 				215CFA6C263262F100F2C3CC /* CaNotice.swift in Sources */,
 				215CFA722632662300F2C3CC /* CaAct.swift in Sources */,
+				210178242644D3E60027899C /* NoticeListViewController.swift in Sources */,
 				215CFA6F263264DE00F2C3CC /* CaPlan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

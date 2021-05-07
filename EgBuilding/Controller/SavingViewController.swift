@@ -64,7 +64,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         let dtSavePlanCreated: Date = CaApplication.m_Info.dfStd.date(from: CaApplication.m_Info.m_dtSavePlanCreated)!
         txtDateFrom.text =  CaApplication.m_Info.dfyyyyMMddStd.string(from: dtSavePlanCreated)
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated)
-        
+    
         CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false,self)
         
     
@@ -85,7 +85,6 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        print("테이블 뷰 내용 나왔나요1")
         let Cell = tableView.dequeueReusableCell(withIdentifier: "SavingResultCell", for: indexPath) as! SavingResultCell
         
         let meter = alMeterGross[indexPath.row]
@@ -100,23 +99,29 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         
         if meter.dKwhReal < meter.dKwhPlan {
             Cell.roundView.layer.borderColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
+            Cell.roundView.layer.borderColor = CGColor.init(red: 0.71, green: 0.918, blue: 0.843, alpha: 1) // pastel green
         }
         else if meter.dKwhReal < meter.dKwhRef {
-            Cell.roundView.layer.borderColor = CGColor(red: 253, green: 253, blue: 150, alpha: 1) // pastel yellow
+            Cell.roundView.layer.borderColor = CGColor.init(red: 0.992, green: 0.992, blue: 0.588, alpha: 1) // pastel yellow
         }
         else if meter.dKwhReal >= meter.dKwhRef {
-            Cell.roundView.layer.borderColor = CGColor(red: 255, green: 154, blue: 162, alpha: 1) // pastel red
+            Cell.roundView.layer.borderColor = CGColor.init(red: 0.99, green: 1.00, blue: 0.80, alpha: 1) // pastel red
         }
   
-        print("테이블 뷰 내용 나왔나요")
         return Cell
     }
     
+   
     
+    
+    override func viewDidLayoutSubviews() {
+        super.updateViewConstraints()
+        //self.tableViewHeight?.constant = self.tableView.contentSize.height
+    }
     
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
-        self.tableViewHeight?.constant = self.tableView.contentSize.height
+        //self.tableViewHeight?.constant = self.tableView.contentSize.height
     }
  
     /*
@@ -375,6 +380,10 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             print("GetSaveResult Succeed...")
             
             tableView.reloadData()
+            
+            tableView.beginUpdates()
+            self.tableViewHeight?.constant = self.tableView.contentSize.height
+            tableView.endUpdates()
             
         default:
             print("Saving: ERROR!")

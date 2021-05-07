@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Alarm List View Controller-->
         <scene sceneID="B1X-Z1-FOT">
             <objects>
-                <viewController id="8zp-Yp-Dht" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8zp-Yp-Dht" customClass="AlarmListViewController" customModule="EgBuilding" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EzM-3Z-EIZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,8 +76,8 @@
                                 <rect key="frame" x="10" y="120" width="355" height="542"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="170" id="kmK-qJ-rmc">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmCell" rowHeight="170" id="kmK-qJ-rmc" customClass="AlarmCell" customModule="EgBuilding" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="355" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kmK-qJ-rmc" id="r7I-R2-vaJ">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="170"/>
@@ -133,6 +133,7 @@
                                                         <constraint firstItem="gHC-lM-xcH" firstAttribute="top" secondItem="yI4-82-MQc" secondAttribute="top" constant="15" id="Yye-FM-v3L"/>
                                                         <constraint firstItem="vh3-CK-Xvj" firstAttribute="leading" secondItem="gHC-lM-xcH" secondAttribute="leading" id="dme-T8-OSH"/>
                                                         <constraint firstItem="vh3-CK-Xvj" firstAttribute="top" secondItem="gHC-lM-xcH" secondAttribute="bottom" constant="10" id="jQ4-Vq-ITx"/>
+                                                        <constraint firstAttribute="height" constant="165" id="lOE-2J-XJJ"/>
                                                         <constraint firstItem="4MR-Dq-J04" firstAttribute="top" secondItem="2mT-57-cAK" secondAttribute="bottom" constant="10" id="rjH-hL-o7f"/>
                                                         <constraint firstItem="gHC-lM-xcH" firstAttribute="leading" secondItem="GzV-e8-Ddi" secondAttribute="trailing" constant="10" id="sEo-j0-9nM"/>
                                                         <constraint firstItem="2mT-57-cAK" firstAttribute="leading" secondItem="vh3-CK-Xvj" secondAttribute="leading" id="yfZ-OE-z3D"/>
@@ -146,6 +147,13 @@
                                                 <constraint firstAttribute="trailing" secondItem="yI4-82-MQc" secondAttribute="trailing" id="Uag-f4-zzi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnExecute" destination="4MR-Dq-J04" id="fsI-Ad-QQY"/>
+                                            <outlet property="lbContent" destination="2mT-57-cAK" id="LtS-nl-P5i"/>
+                                            <outlet property="lbTimeCreated" destination="vh3-CK-Xvj" id="ob3-bb-fQp"/>
+                                            <outlet property="lbTitle" destination="gHC-lM-xcH" id="G7h-ya-TSp"/>
+                                            <outlet property="roundView" destination="yI4-82-MQc" id="6PW-rg-tPV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -166,15 +174,18 @@
                             <constraint firstItem="NKw-Z0-l4p" firstAttribute="top" secondItem="cEC-Oq-vxa" secondAttribute="bottom" constant="5" id="rDV-aG-FFD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="HG4-mF-g5I" id="IUl-eY-yFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W16-EX-AYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100" y="53.523238380809602"/>
         </scene>
-        <!--View Controller-->
+        <!--Alarm View Controller-->
         <scene sceneID="xZg-jq-hTc">
             <objects>
-                <viewController id="ZyY-Xa-E3s" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZyY-Xa-E3s" customClass="AlarmViewController" customModule="EgBuilding" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ACF-Bh-O8Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,6 +209,9 @@
                                                     <constraint firstAttribute="width" constant="30" id="gHc-HX-V0F"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="btn_back_colored.png"/>
+                                                <connections>
+                                                    <action selector="onBackBtnClicked:" destination="ZyY-Xa-E3s" eventType="touchUpInside" id="P1X-7N-dzv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="Pastel_blue"/>
@@ -231,8 +245,8 @@
                                         <rect key="frame" x="15" y="168" width="296" height="190"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="orL-Uf-Uei">
-                                                <rect key="frame" x="0.0" y="28" width="296" height="43.5"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmCheckCell" id="orL-Uf-Uei" customClass="AlarmCheckCell" customModule="EgBuilding" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="24.5" width="296" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orL-Uf-Uei" id="lRg-Uo-gI5">
                                                     <rect key="frame" x="0.0" y="0.0" width="296" height="43.5"/>
@@ -251,6 +265,9 @@
                                                         <constraint firstItem="hW3-nn-qOp" firstAttribute="centerY" secondItem="lRg-Uo-gI5" secondAttribute="centerY" id="k2r-dD-rDO"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="btnCheckBox" destination="hW3-nn-qOp" id="RyZ-BH-1Lg"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -264,6 +281,9 @@
                                         <state key="normal" title="절감조치 이행 등록하기">
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onExecuteBtnClicked:" destination="ZyY-Xa-E3s" eventType="touchUpInside" id="8Sf-Jf-qxx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -296,6 +316,12 @@
                             <constraint firstItem="fXe-Hx-9a8" firstAttribute="centerY" secondItem="eGU-7c-x4J" secondAttribute="centerY" id="uOz-Of-NNR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lbKwhPlan" destination="p3k-w0-Uqs" id="362-IB-lHG"/>
+                        <outlet property="lbMeter" destination="fg9-i5-sfW" id="x9H-g2-Hx5"/>
+                        <outlet property="lbSavingTime" destination="TTN-qe-ziz" id="1ou-sm-Nkg"/>
+                        <outlet property="tableView" destination="qff-a0-bEB" id="eGS-qM-bE8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5WM-XL-lu1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -144,6 +144,150 @@ public class CaInfo {
         dfMMddHHmmss.dateFormat = "MM-dd HH:mm:ss"
     }
     
+    public func setAlarmList(_ ja: Array<[String:Any]>){
+        
+        m_alAlarm.removeAll()
+        
+        for joAlarm in ja {
+            let alarm: CaAlarm = CaAlarm()
+            
+            alarm.nSeqAlarm = joAlarm["seq_alarm"]! as! Int
+            alarm.nAlarmType = joAlarm["alarm_type"]! as! Int //1=관리사무소, 2=EG서비스 3=구청관리자
+            alarm.nSeqSavePlanElem = joAlarm["seq_save_plan_elem"]! as! Int
+            alarm.strContent = joAlarm["content"]! as! String
+            alarm.strTitle = joAlarm["title"]! as! String
+            alarm.bRead = (joAlarm["is_read"] as! Int) == 1
+            alarm.dtCreated = joAlarm["time_created"] as! String
+            
+            
+            if (alarm.bRead){
+                alarm.dtRead = joAlarm["time_read"] as! String
+            }
+            
+            
+            m_alAlarm.append(alarm)
+        }
+        
+        
+        print("setAlarmList has succeed")
+        
+    }
+    
+    public func setNoticeList(_ noticeTopList: Array<[String:Any]>, _ noticeNormalList: Array<[String:Any]>){
+        
+        // 상단 고정 Notice 추가
+        var alTop:Array<CaNotice> = Array()
+        
+        for top in noticeTopList {
+            let notice:CaNotice = CaNotice()
+            
+            notice.nSeqNotice = top["seq_notice"]! as! Int
+            notice.nWriterType = top["writer_type"]! as! Int //1=관리사무소, 2=EG서비스 3=구청관리자
+            notice.strTitle = top["title"]! as! String
+            notice.strContent = top["content"]! as! String
+            notice.bTop = true
+            //notice.dtCreated = top["time_created"] as? Date
+            notice.dtCreated = top["time_created"] as! String
+            
+            if ((top["time_read"] as? String) == nil){
+                notice.bRead = false
+            }
+            else {
+                notice.bRead = true
+                notice.dtRead = top["time_read"] as! String             }
+            
+            alTop.append(notice)
+        }
+        
+        //기존 공지사항 중 상단 고정 아닌 것들 저장
+        var alNormal:Array<CaNotice> = Array()
+        
+        for notice in m_alNotice {
+            if notice.bTop {continue}
+            alNormal.append(notice)
+        }
+        
+        m_alNotice.removeAll()  //새로 불러온 공지사항 저장을 위해 alNotice 초기화 후 다시 저장
+        
+        for notice in alTop {
+            m_alNotice.append(notice)
+        }
+        
+        for notice in alNormal {
+            m_alNotice.append(notice)
+        }
+        
+        // 새로 추가된 공지사항 append
+        for normal in noticeNormalList {
+            let notice:CaNotice = CaNotice()
+            
+            notice.nSeqNotice = normal["seq_notice"]! as! Int
+            notice.nWriterType = normal["writer_type"]! as! Int
+            notice.strTitle = normal["title"]! as! String
+            notice.strContent = normal["content"]! as! String
+            notice.bTop = false
+            //notice.dtCreated = normal["time_created"] as? Date
+            notice.dtCreated = normal["time_created"] as! String
+            
+            if ((normal["time_read"] as? String) == nil) {
+                notice.bRead = false
+            }
+            else {
+                notice.bRead = true
+                notice.dtRead = normal["time_read"] as! String
+            }
+            
+            m_alNotice.append(notice)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            //notice.dtCreated가 String 타입이므로 dtNoticeCreatedMaxForNextRequest에는 date형식으로 변환 후 입력
+            dtNoticeCreatedMaxForNextRequest = dateFormatter.date(from: notice.dtCreated)
+            
+        }
+        
+        
+        
+        print("setnotice has succeed")
+        
+    }
+    
+    public func getAlarmReadListString() -> String {
+        var strResult: String = ""
+        
+        for alarm in m_alAlarm {
+            if alarm.bReadStateChanged {
+                strResult = strResult + "\(alarm.nSeqAlarm) ,"
+            }
+        }
+        if strResult.isEmpty {return strResult}
+        
+        let firstIndex = strResult.index(strResult.startIndex, offsetBy: 0)
+        let lastIndex = strResult
+            .index(strResult.endIndex, offsetBy: -1)
+        strResult = "\(strResult[firstIndex..<lastIndex])"
+        
+        return strResult
+    }
+    
+    public func getNoticeReadListString() -> String {
+        var strResult: String = ""
+        
+        for notice in m_alNotice {
+            if notice.bReadStateChanged {
+                strResult = strResult + "\(notice.nSeqNotice) ,"
+            }
+        }
+        if strResult.isEmpty {return strResult}
+        
+        let firstIndex = strResult.index(strResult.startIndex, offsetBy: 0)
+        let lastIndex = strResult
+            .index(strResult.endIndex, offsetBy: -1)
+        strResult = "\(strResult[firstIndex..<lastIndex])"
+        
+        return strResult
+    }
+    
     public func setPlanList(_ planList: Array<[String:Any]>) {
         
         m_alPlan.removeAll()

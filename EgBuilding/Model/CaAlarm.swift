@@ -20,6 +20,8 @@ public class CaAlarm {
     public var bRead: Bool = true
     
     public var bReadStateChanged: Bool = false
+    
+    public var bClickable = false
  
     
     /*public func getTimeCreated() -> String {
