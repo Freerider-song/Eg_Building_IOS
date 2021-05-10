@@ -87,45 +87,54 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         
         //선택된 셀 음영 제거
         tableView.deselectRow(at: indexPath, animated: true)
+        let Cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCheckCell", for: indexPath) as! AlarmCheckCell
+        let act = plan.alAct[indexPath.row]
+        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         
-    
-        let storyboard = UIStoryboard(name: "Notice", bundle: nil)
-        let view = storyboard.instantiateViewController(identifier: "NoticeViewController") as? NoticeViewController
+        if !Cell.btnCheckBox.isSelected {
+            CaApplication.m_Engine.SetSaveActBegin(act.nSeqAct, CaApplication.m_Info.m_nSeqAdmin, today, false, self)
+            Cell.btnCheckBox.isSelected = true
+        }
         
-        let notice = CaApplication.m_Info.m_alNotice[indexPath.row]
-        
-        
-        // CaInfo에 있는 정보까지 수정이 되는 건지는 모르겠다. check필요
-        notice.bRead = true
-        notice.bReadStateChanged = true
-        
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        notice.dtRead = dateFormatter.string(from: now)
-        setNoticeReadStateToDb()
         tableView.reloadData()
-      
-        
-        
-        //noticeViewController로 정보 전달
-        
-        view?.strTitle = notice.strTitle
-        view?.strContent = notice.strContent //
-        view?.nNoticeType = notice.nWriterType
-        view?.dtCreated = notice.dtCreated
-        
-        //화면전환
-        //팝업 형식으로
-        view?.modalPresentationStyle = .overCurrentContext
-        self.present(view!, animated: true, completion: nil)
-        
     }
+    
+    override func onResult(_ Result: CaResult) {
+        switch Result.callback {
+            case m_GlobalEngine.CB_SET_SAVE_ACT_BEGIN:
+                
+                print("Result of SetSaveActBegin Received...")
+                let jo:[String:Any] = Result.JSONResult
+                let nResultCode: Int = jo["result_code"] as! Int
+                
+                if nResultCode == 0 {
+                    alert(title: "확인", message: "해당 절감조치는 이미 이행되었습니다.", text: "확인")
+                }
+                
+            
+            default:
+                print("Unknown type result received : \(Result.callback)")
+        }
+    }
+    
     
   
     @IBAction func onBackBtnClicked(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
+    
     @IBAction func onExecuteBtnClicked(_ sender: UIButton) {
+        let msg = UIAlertController(title: "확인", message: "절감 조치가 이행되었습니다.", preferredStyle: .alert)
+                
+                //Alert에 부여할 Yes이벤트 선언
+                let YES = UIAlertAction(title: "예", style: .default, handler: { (action) -> Void in
+                    self.dismiss(animated: false, completion: nil)
+                })
+                
+                //Alert에 이벤트 연결
+                msg.addAction(YES)
+             
+                //Alert 호출
+                self.present(msg, animated: true, completion: nil)
     }
 }

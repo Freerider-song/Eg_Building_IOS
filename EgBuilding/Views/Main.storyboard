@@ -506,7 +506,7 @@
                                             <constraint firstAttribute="height" constant="50" id="adt-1B-Jx6"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bui-zz-ZXh">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bui-zz-ZXh" userLabel="UINotice">
                                         <rect key="frame" x="0.0" y="408" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehk-vF-vAg">
@@ -584,7 +584,7 @@
                                             <constraint firstItem="PNO-ib-DBa" firstAttribute="top" secondItem="ggV-c0-k9b" secondAttribute="top" constant="10" id="wvU-t2-KJo"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-pQ-SjN">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-pQ-SjN" userLabel="UiSetting">
                                         <rect key="frame" x="0.0" y="508" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mid-Ks-BpD">
@@ -610,7 +610,7 @@
                                             <constraint firstAttribute="height" constant="50" id="ym4-AZ-ukZ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNf-PC-Eaa">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNf-PC-Eaa" userLabel="UILogout">
                                         <rect key="frame" x="0.0" y="558" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCn-7q-LPa">
@@ -699,10 +699,10 @@
                     <connections>
                         <outlet property="UIAlarm" destination="ggV-c0-k9b" id="o3S-WY-hGn"/>
                         <outlet property="UIHome" destination="H6y-gY-i2X" id="T0E-zG-oGE"/>
-                        <outlet property="UILogout" destination="uNf-PC-Eaa" id="LQH-Qu-f5Y"/>
+                        <outlet property="UILogout" destination="uNf-PC-Eaa" id="UQu-pU-Vbc"/>
                         <outlet property="UINotice" destination="Bui-zz-ZXh" id="6ir-yc-08U"/>
                         <outlet property="UISaving" destination="5Nd-CN-f4g" id="xhk-6I-88P"/>
-                        <outlet property="UISetting" destination="Acx-pQ-SjN" id="TGF-j7-0gL"/>
+                        <outlet property="UISetting" destination="Acx-pQ-SjN" id="8wj-IE-WAk"/>
                         <outlet property="UIUsageCompare" destination="1g2-rs-Gxv" id="Q8k-iy-Ltr"/>
                         <outlet property="UIUsageDaily" destination="QRR-wP-47b" id="2Q6-EL-QRL"/>
                         <outlet property="UIUsageMonthly" destination="DTv-ce-wT0" id="FxK-2A-poz"/>

@@ -45,6 +45,9 @@
                                             <constraint firstAttribute="width" constant="30" id="hcH-5r-tk8"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="btn_back_colored.png"/>
+                                        <connections>
+                                            <action selector="onBackBtnClicked:" destination="8zp-Yp-Dht" eventType="touchUpInside" id="UMw-Je-DD6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Pastel_blue"/>

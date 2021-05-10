@@ -27,6 +27,7 @@ public class CaPlan{
     public var dWonReal : Double = 0.0
     
     public var bAllChecked : Bool = true
+    public var bExecute : Bool = false
     
   
     public var alAct : Array<CaAct> = Array()

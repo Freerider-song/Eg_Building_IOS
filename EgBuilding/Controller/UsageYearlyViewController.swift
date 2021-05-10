@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Charts
 
 class UsageYearlyViewController: CustomUIViewController {
 
+    @IBOutlet weak var chartUsageYearly: HorizontalBarChartView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -263,6 +263,25 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //선택된 셀 음영 제거
+        tableView.deselectRow(at: indexPath, animated: true)
+        //let Cell = tableView.dequeueReusableCell(withIdentifier: "SavingCell", for: indexPath) as! SavingCell
+        
+        let plan = CaApplication.m_Info.m_alPlan[indexPath.row]
+        
+        if plan.bExecute {
+            let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
+            let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
+            view?.nSeqPlanElem = plan.nSeqPlanElem
+            view?.modalPresentationStyle = .overCurrentContext
+            self.present(view!, animated: false, completion: nil)
+        }
+       
+        
+        tableView.reloadData()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
         self.SavingListHeight?.constant = self.tvSavingList.contentSize.height

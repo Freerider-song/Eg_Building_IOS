@@ -101,57 +101,6 @@ class CustomUIViewController: UIViewController {
             let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "NoticeListViewController")
             view.modalPresentationStyle = .fullScreen
             self.present(view, animated: true, completion: nil)
-            /*
-            
-        case NSNotification.Name(rawValue: "UIUsageDaily"):
-            print("Custom: UIUsageDaily Clicked")
-            
-            let storyboard = UIStoryboard(name: "UsageDaily", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "UsageDailyViewController")
-            //fullscrean으로 화면 전환
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
-            
-        case NSNotification.Name(rawValue: "UIUsageMonthly"):
-            print("Custom: UIUsageMonthly Clicked")
-            
-            let storyboard = UIStoryboard(name: "UsageMonthly", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "UsageMonthlyViewController")
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
-            
-        case NSNotification.Name(rawValue: "UIUsageYearly"):
-            print("Custom: UIUsageYearly Clicked")
-            
-            let storyboard = UIStoryboard(name: "UsageYearly", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "UsageYearlyViewController")
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
-            
-        case NSNotification.Name(rawValue: "UISiteState"):
-            print("Custom: UISiteState Clicked")
-            
-            let storyboard = UIStoryboard(name: "SiteState", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "SiteStateViewController")
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
-            
-        case NSNotification.Name(rawValue: "UIAlarm"):
-            print("Custom: UIAlarm Clicked")
-            
-            let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "AlarmViewController")
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
-            
-            
-        case NSNotification.Name(rawValue: "UINotice"):
-            print("Custom: UINotice Clicked")
-            
-            let storyboard = UIStoryboard(name: "NoticeList", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "NoticeListViewController")
-            view.modalPresentationStyle = .fullScreen
-            self.present(view, animated: true, completion: nil)
             
         case NSNotification.Name(rawValue: "UISetting"):
             print("Custom: UISetting Clicked")
@@ -164,11 +113,27 @@ class CustomUIViewController: UIViewController {
         case NSNotification.Name(rawValue: "UILogout"):
             print("Custom: UILogout Clicked")
             
-            let storyboard = UIStoryboard(name: "PopUp", bundle: nil)
-            let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "LogoutPopUpViewController")
-            view.modalPresentationStyle = .overFullScreen
-            self.present(view, animated: true, completion: nil)
- */
+            let msg = UIAlertController(title: "로그아웃", message: "로그아웃을 하시면, 로그인 정보가 초기화됩니다. 정말로 로그아웃 하시겠습니까?", preferredStyle: .alert)
+                    
+                    //Alert에 부여할 Yes이벤트 선언
+                    let YES = UIAlertAction(title: "예", style: .default, handler: { (action) -> Void in
+                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                        let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "LoginViewController")
+                        view.modalPresentationStyle = .fullScreen
+                        self.present(view, animated: true, completion: nil)
+                    })
+                    
+                    //Alert에 부여할 No이벤트 선언
+            let NO = UIAlertAction(title: "아니요", style: .default, handler: { (action) -> Void in
+                                    self.dismiss(animated: true, completion: nil)})
+                    
+                
+                    //Alert에 이벤트 연결
+                    msg.addAction(YES)
+                    msg.addAction(NO)
+
+                    //Alert 호출
+                    self.present(msg, animated: true, completion: nil)
             
         default:
             print("default!")

@@ -138,6 +138,8 @@
 		215D0EAB26369DB30091CD64 /* TTGaugeView in Frameworks */ = {isa = PBXBuildFile; productRef = 215D0EAA26369DB30091CD64 /* TTGaugeView */; };
 		215D0F232638FB9D0091CD64 /* Saving.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 215D0F222638FB9D0091CD64 /* Saving.storyboard */; };
 		215D0F26263904260091CD64 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D0F25263904260091CD64 /* SavingViewController.swift */; };
+		21CCC1642648D25500EB219E /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC1632648D25500EB219E /* Setting.storyboard */; };
+		21CCC1662648D26F00EB219E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1652648D26F00EB219E /* SettingViewController.swift */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -274,6 +276,8 @@
 		215D0EA62636915B0091CD64 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		215D0F222638FB9D0091CD64 /* Saving.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Saving.storyboard; sourceTree = "<group>"; };
 		215D0F25263904260091CD64 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
+		21CCC1632648D25500EB219E /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		21CCC1652648D26F00EB219E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				210178262644D3FB0027899C /* NoticeViewController.swift */,
 				210178292644D40A0027899C /* AlarmListViewController.swift */,
 				2101782C2644D4140027899C /* AlarmViewController.swift */,
+				21CCC1652648D26F00EB219E /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				210177FB26438E070027899C /* UsageYearly.storyboard */,
 				2101781D2643C0470027899C /* Notice.storyboard */,
 				210178202643C6490027899C /* Alarm.storyboard */,
+				21CCC1632648D25500EB219E /* Setting.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -633,6 +639,7 @@
 				2101781E2643C0470027899C /* Notice.storyboard in Resources */,
 				215CFA372631429000F2C3CC /* small_dot_yellow.png in Resources */,
 				215CFA402631429000F2C3CC /* circle_yellow_dark.png in Resources */,
+				21CCC1642648D25500EB219E /* Setting.storyboard in Resources */,
 				215CFA2D2631429000F2C3CC /* icon_main.png in Resources */,
 				215CFA582631429000F2C3CC /* energy_06.png in Resources */,
 				215CFA342631429000F2C3CC /* gray_bar.png in Resources */,
@@ -764,6 +771,7 @@
 				215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */,
 				210178102643913F0027899C /* YearlyChartFormatter.swift in Sources */,
 				215CF9CC2631362100F2C3CC /* ServicePush.swift in Sources */,
+				21CCC1662648D26F00EB219E /* SettingViewController.swift in Sources */,
 				215CF9C72631362100F2C3CC /* CaEngine.swift in Sources */,
 				215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */,
 				215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */,

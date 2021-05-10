@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="width" constant="122" id="e6e-Fd-IQl"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nx-4p-WK1" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nx-4p-WK1" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
                                 <rect key="frame" x="37" y="364" width="300" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -47,7 +47,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-VG-VPo" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-VG-VPo" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
                                 <rect key="frame" x="37" y="316" width="300" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -141,10 +141,10 @@
     </scenes>
     <designables>
         <designable name="3Nx-4p-WK1">
-            <size key="intrinsicContentSize" width="76.5" height="34"/>
+            <size key="intrinsicContentSize" width="103.5" height="17"/>
         </designable>
         <designable name="Qwc-VG-VPo">
-            <size key="intrinsicContentSize" width="64.5" height="34"/>
+            <size key="intrinsicContentSize" width="91.5" height="18.5"/>
         </designable>
     </designables>
     <resources>

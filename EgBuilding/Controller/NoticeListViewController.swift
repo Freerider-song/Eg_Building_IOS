@@ -147,7 +147,7 @@ class NoticeListViewController: CustomUIViewController, UITableViewDelegate, UIT
             //화면전환
             //팝업 형식으로
             view?.modalPresentationStyle = .overCurrentContext
-            self.present(view!, animated: true, completion: nil)
+            self.present(view!, animated: false, completion: nil)
             
         }
         //추가 데이터 로드

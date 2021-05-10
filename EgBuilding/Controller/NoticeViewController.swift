@@ -65,7 +65,7 @@ class NoticeViewController: CustomUIViewController {
     
     
     @IBAction func onBackBtnClicked(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
 }

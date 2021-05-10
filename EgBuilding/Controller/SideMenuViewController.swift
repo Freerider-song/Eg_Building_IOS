@@ -22,8 +22,9 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var UIUsageYearly: UIView!
     @IBOutlet weak var UINotice: UIView!
     @IBOutlet weak var UIAlarm: UIView!
-    @IBOutlet weak var UISetting: UIView!
-    @IBOutlet weak var UILogout: UIView!
+    @IBOutlet var UISetting: UIView!
+    @IBOutlet var UILogout: UIView!
+    
     
     @IBOutlet weak var btnUnReadNotice: UIButton!
     @IBOutlet weak var btnUnReadAlarm: UIButton!

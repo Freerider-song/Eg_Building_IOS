@@ -169,7 +169,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
             view?.nSeqPlanElem = alarm.nSeqSavePlanElem
             view?.modalPresentationStyle = .overCurrentContext
-            self.present(view!, animated: true, completion: nil)
+            self.present(view!, animated: false, completion: nil)
         }
         
         
@@ -221,7 +221,11 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
     }
     
 
-
+    @IBAction func onBackBtnClicked(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
