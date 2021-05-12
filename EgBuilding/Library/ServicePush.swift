@@ -25,43 +25,67 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
                                     withCompletionHandler completionHandler: @escaping () -> Void) {
         
         
+        //local noti 클릭시 알림리스트뷰로 전환
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
+        
+        if (response.notification.request.identifier == "notifyNotImplemented" ||  response.notification.request.identifier == "notifyAlarm") {
+            
+        }
+            
+            //action에서는 뷰 전환 안되나/
+            
             switch response.actionIdentifier {
             
             case UNNotificationDismissActionIdentifier:
                 print("Dismiss Action")
-      
+                
             case UNNotificationDefaultActionIdentifier:
                 print("Open Action")
-                
-            case "REQUEST_ACCEPT_ACTION":
-                print("Request Accepted")
-       
+                if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmListViewController") as? AlarmListViewController,
+                    let navController = rootViewController as? UINavigationController{
+                    
+                    navController.pushViewController(view, animated: true)
+                }
                 
             case "REQUEST_DECLINE_ACTION":
                 print("Request Declined")
-              
+       
+            
+            case "EXECUTE_ACTION":
+                print("Execute Button clicked..")
+                
+                if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmViewController") as? AlarmListViewController,
+                    let navController = rootViewController as? UINavigationController{
+                    
+                    navController.pushViewController(view, animated: true)
+                }
                 
             default:
                 print("default")
             }
             completionHandler()
-        }
+        
+    }
     
     
-    public func notifyRequestAckMember(_ strTitle: String, _ strBody: String){
+    public func notifyNotImplemented(_ strTitle: String, _ strBody: String, _ nSeqPlanElem: String){
         
         // Define the custom actions.
-        let acceptAction = UNNotificationAction(identifier: "REQUEST_ACCEPT_ACTION",
-              title: "승인",
+        let acceptAction = UNNotificationAction(identifier: "EXECUTE_ACTION",
+              title: "조치하기",
               options: UNNotificationActionOptions(rawValue: 0))
         
         let declineAction = UNNotificationAction(identifier: "REQUEST_DECLINE_ACTION",
-              title: "거절",
+              title: "취소",
               options: UNNotificationActionOptions(rawValue: 0))
         
         // Define the notification type
         let meetingInviteCategory =
-              UNNotificationCategory(identifier: "REQUEST_ACK_MEMBER",
+              UNNotificationCategory(identifier: "EXECUTE",
               actions: [acceptAction, declineAction],
               intentIdentifiers: [],
               hiddenPreviewsBodyPlaceholder: "",
@@ -74,119 +98,28 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         let push = UNMutableNotificationContent()
         push.title = strTitle
         push.body = strBody
-        push.categoryIdentifier = "REQUEST_ACK_MEMBER"
+        push.categoryIdentifier = "EXECUTE"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyRequestAckMember", content: push, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "notifyNotImplemented", content: push, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
     }
     
-    public func notifyResponseAckMemberAccepted(_ strTitle: String, _ strBody: String){
+
+    public func notifyAlarm(_ strTitle: String, _ strBody: String){
         
         
         let push = UNMutableNotificationContent()
         push.title = strTitle
         push.body = strBody
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyResponseAckMemberAccepted", content: push, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "notifyAlarm", content: push, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
     }
     
-    public func notifyResponseAckMemberRejected(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyResponseAckMemberRejected", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    public func notifyResponseAckMemberCanceled(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyResponseAckMemberCanceled", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    public func notifyAlarmKwh(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyAlarmKwh", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    public func notifyAlarmWon(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyAlarmWon", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    public func notifyAlarmPriceLevel(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyAlarmPriceLevel", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    public func notifyAlarmUsage(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyAlarmUsage", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-    
-    //SendPush API
-    public func notifyAlarmTrans(_ strTitle: String, _ strBody: String){
-        
-        
-        let push = UNMutableNotificationContent()
-        push.title = strTitle
-        push.body = strBody
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "notifyAlarmTrans", content: push, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-    }
-   
-   
+  
 }

@@ -26,6 +26,7 @@ public class CaInfo {
     public let dfdd = DateFormatter() //dd
     public let dfMMddHHmmss = DateFormatter()
     public let dfHH = DateFormatter()
+    public let dfyyMMdd = DateFormatter()
     
     public var isLogin : Bool = false
     
@@ -142,6 +143,7 @@ public class CaInfo {
         dfdd.dateFormat = "dd"
         dfHH.dateFormat = "HH"
         dfMMddHHmmss.dateFormat = "MM-dd HH:mm:ss"
+        dfyyMMdd.dateFormat = "yyMMdd"
     }
     
     public func setAlarmList(_ ja: Array<[String:Any]>){

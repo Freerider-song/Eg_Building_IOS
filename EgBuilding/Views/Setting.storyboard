@@ -280,7 +280,7 @@
                                         <color key="textColor" name="Dark_cyan"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9T-5L-cdw" userLabel="알림설정 View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9T-5L-cdw" userLabel="건물정보 View">
                                         <rect key="frame" x="0.0" y="418" width="368" height="203"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 완공일 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkE-H0-4Wt">
@@ -388,8 +388,8 @@
                                         <color key="textColor" name="Dark_cyan"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-UO-x49" userLabel="알림설정 View">
-                                        <rect key="frame" x="0.0" y="677" width="368" height="203"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-UO-x49" userLabel="사용자설정 View">
+                                        <rect key="frame" x="0.0" y="677" width="368" height="233"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 비밀번호 변경 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-2E-DNV">
                                                 <rect key="frame" x="30" y="53" width="101" height="18"/>
@@ -440,10 +440,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N55-Zz-JFt">
-                                                <rect key="frame" x="109" y="163" width="150" height="40"/>
+                                                <rect key="frame" x="109" y="173" width="150" height="50"/>
                                                 <color key="backgroundColor" name="EG_Dark_yellow"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Jfg-Qg-hme"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Jfg-Qg-hme"/>
                                                     <constraint firstAttribute="width" constant="150" id="Zvg-6K-lUZ"/>
                                                 </constraints>
                                                 <state key="normal" title="로그아웃">
@@ -472,15 +472,14 @@
                                         <constraints>
                                             <constraint firstItem="yMn-d4-bIj" firstAttribute="centerY" secondItem="sb2-n8-VaI" secondAttribute="centerY" id="81A-Zl-Dyb"/>
                                             <constraint firstItem="Wog-2E-DNV" firstAttribute="leading" secondItem="fQG-UO-x49" secondAttribute="leading" constant="30" id="G3S-Wf-II3"/>
-                                            <constraint firstItem="N55-Zz-JFt" firstAttribute="top" secondItem="V1X-9m-0rt" secondAttribute="bottom" constant="16" id="GRJ-eD-mSL"/>
                                             <constraint firstItem="yMn-d4-bIj" firstAttribute="leading" secondItem="sb2-n8-VaI" secondAttribute="trailing" constant="8" symbolic="YES" id="Joq-Dj-8e3"/>
                                             <constraint firstItem="Wog-2E-DNV" firstAttribute="leading" secondItem="Ogh-qE-2mI" secondAttribute="leading" id="JrM-qs-k28"/>
                                             <constraint firstItem="Wog-2E-DNV" firstAttribute="top" secondItem="sb2-n8-VaI" secondAttribute="bottom" constant="20" id="OWa-Ht-Sy0"/>
                                             <constraint firstItem="V1X-9m-0rt" firstAttribute="leading" secondItem="dO8-0Q-1pg" secondAttribute="trailing" constant="8" symbolic="YES" id="T2G-xx-z3S"/>
                                             <constraint firstItem="V1X-9m-0rt" firstAttribute="centerY" secondItem="dO8-0Q-1pg" secondAttribute="centerY" id="Uth-II-Ndi"/>
                                             <constraint firstItem="12u-WT-BzW" firstAttribute="leading" secondItem="Ogh-qE-2mI" secondAttribute="trailing" constant="8" symbolic="YES" id="WRZ-0M-kZz"/>
-                                            <constraint firstAttribute="height" constant="203" id="XKW-wh-Kac"/>
-                                            <constraint firstAttribute="bottom" secondItem="N55-Zz-JFt" secondAttribute="bottom" id="dFQ-SC-8Xp"/>
+                                            <constraint firstAttribute="height" constant="233" id="XKW-wh-Kac"/>
+                                            <constraint firstAttribute="bottom" secondItem="N55-Zz-JFt" secondAttribute="bottom" constant="10" id="dFQ-SC-8Xp"/>
                                             <constraint firstItem="Wog-2E-DNV" firstAttribute="leading" secondItem="dO8-0Q-1pg" secondAttribute="leading" id="dVT-xq-naa"/>
                                             <constraint firstItem="2cS-eA-cad" firstAttribute="centerY" secondItem="Wog-2E-DNV" secondAttribute="centerY" id="e1W-WE-K3K"/>
                                             <constraint firstItem="Ogh-qE-2mI" firstAttribute="top" secondItem="Wog-2E-DNV" secondAttribute="bottom" constant="20" id="e96-Bt-e5g"/>
@@ -535,6 +534,10 @@
                         <outlet property="btnAlarmKwhRef" destination="e78-Wv-e55" id="uyC-eg-Koj"/>
                         <outlet property="btnAlarmUsageAtTime" destination="ody-dU-rsn" id="cjP-dQ-YeL"/>
                         <outlet property="btnAlarmWon" destination="Dcc-6u-z8I" id="8bs-Z5-1mW"/>
+                        <outlet property="btnExecute" destination="N55-Zz-JFt" id="2th-d8-F4B"/>
+                        <outlet property="lbAdminInfo" destination="lHh-Br-XLA" id="0RV-WX-jkE"/>
+                        <outlet property="lbAlarmSetting" destination="UJN-wj-ZyR" id="F0t-Ib-owz"/>
+                        <outlet property="lbBldInfo" destination="Spa-F9-wAl" id="y5M-Ja-MLx"/>
                         <outlet property="lbChangePassword" destination="2cS-eA-cad" id="5Q0-Lh-yTL"/>
                         <outlet property="lbCompletionDay" destination="z5p-Sc-AcN" id="vwn-VC-UCo"/>
                         <outlet property="lbHomePage" destination="nps-3n-rT6" id="WNw-DU-rtg"/>

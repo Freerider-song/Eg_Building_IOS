@@ -32,11 +32,13 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtDateFrom: UITextField!
     @IBOutlet weak var txtDateTo: UITextField!
+    @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var chartUsageTotal: BarChartView!
     @IBOutlet weak var chartSavingAction: BarChartView!
     @IBOutlet weak var chartUsage: HorizontalBarChartView!
     
     let datePicker = UIDatePicker()
+    let datePickerFrom = UIDatePicker()
     
     var year = 0
     var month = 0
@@ -48,6 +50,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     var strDateFrom: String = ""
     var strDateTo: String = ""
     
+    let dtSavePlanCreated: Date = CaApplication.m_Info.dfStd.date(from: CaApplication.m_Info.m_dtSavePlanCreated)!
+    
     @IBOutlet var tableViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -56,12 +60,30 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
+        btnSearch.layer.cornerRadius = 15
+        // DateTime 외관 설정
+        txtDateTo.layer.cornerRadius = 15
+        txtDateTo.layer.borderWidth = 2.0
+        if #available(iOS 13.0, *) {
+            txtDateTo.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        txtDateFrom.layer.cornerRadius = 15
+        txtDateFrom.layer.borderWidth = 2.0
+        if #available(iOS 13.0, *) {
+            txtDateFrom.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        } else {
+            // Fallback on earlier versions
+        }
+        
         let date = Date()
         
         txtDateTo.text = CaApplication.m_Info.dfyyyyMMddStd.string(from: date.dayBefore)
         strDateTo = CaApplication.m_Info.dfyyyyMMdd.string(from: date.dayBefore)
             
-        let dtSavePlanCreated: Date = CaApplication.m_Info.dfStd.date(from: CaApplication.m_Info.m_dtSavePlanCreated)!
+        
         txtDateFrom.text =  CaApplication.m_Info.dfyyyyMMddStd.string(from: dtSavePlanCreated)
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated)
     
@@ -116,33 +138,15 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     
     override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
-        //self.tableViewHeight?.constant = self.tableView.contentSize.height
+        self.tableViewHeight?.constant = self.tableView.contentSize.height
     }
     
-    override func viewWillLayoutSubviews() {
-        super.updateViewConstraints()
-        //self.tableViewHeight?.constant = self.tableView.contentSize.height
-    }
  
-    /*
+ 
+    
     
     func viewSetting() {
-        // DateTime 외관 설정
-        txtDateTo.layer.cornerRadius = 15
-        txtDateTo.layer.borderWidth = 2.0
-        if #available(iOS 13.0, *) {
-            txtDateTo.layer.borderColor = CGColor.init(red: 64, green: 173, blue: 180, alpha: 1) //cyan_light
-        } else {
-            // Fallback on earlier versions
-        }
         
-        txtDateFrom.layer.cornerRadius = 15
-        txtDateFrom.layer.borderWidth = 2.0
-        if #available(iOS 13.0, *) {
-            txtDateFrom.layer.borderColor = CGColor.init(red: 64, green: 173, blue: 180, alpha: 1) //cyan_light
-        } else {
-            // Fallback on earlier versions
-        }
         
         // Zoom 안 되게
         chartUsage.doubleTapToZoomEnabled = false
@@ -159,31 +163,86 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         
         // Marker 설정
         let marker = BalloonMarker(color: UIColor(white: 180/255, alpha: 1), font: .systemFont(ofSize: 12), textColor: .white, insets: UIEdgeInsets(top: 8, left: 8, bottom: 20, right: 8))
-        marker.chartView = chartUsageDaily
+        marker.chartView = chartUsage
         marker.minimumSize = CGSize(width: 80, height: 40)
-        chartUsageDaily.marker = marker
-        chartUsageDaily.backgroundColor = .white
+        chartUsage.marker = marker
+        chartUsage.backgroundColor = .white
+        chartSavingAction.marker = marker
+        chartSavingAction.backgroundColor = .white
+        chartUsageTotal.marker = marker
+        chartUsageTotal.backgroundColor = .white
         
         // x축 값
-        let xAxis = chartUsageDaily.xAxis
+        let TotalXAxis = chartUsageTotal.xAxis
+        TotalXAxis.labelPosition = .bottom
+        TotalXAxis.labelFont = .systemFont(ofSize: 10)
+        TotalXAxis.drawAxisLineEnabled = true
+        TotalXAxis.drawGridLinesEnabled = false
+        
+        // y축 값
+        let TotalLeftAxis = chartUsageTotal.leftAxis
+        TotalLeftAxis.labelFont = .systemFont(ofSize: 10)
+        TotalLeftAxis.drawAxisLineEnabled = true
+        TotalLeftAxis.drawGridLinesEnabled = false
+        TotalLeftAxis.axisMinimum = 0
+
+        let TotalrightAxis = chartUsageTotal.rightAxis
+        TotalrightAxis.enabled = false
+        
+        let llRef = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhRefForAllMeter) , label: "기준")
+        llRef.lineWidth = 0.5
+        llRef.lineColor = .red
+        llRef.lineDashLengths = [8.0]
+        llRef.labelPosition = .bottomLeft
+        chartUsageTotal.leftAxis.addLimitLine(llRef)
+        chartUsage.leftAxis.addLimitLine(llRef)
+
+        let llGoal = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhPlanForAllMeter), label: "목표")
+        llGoal.lineWidth = 0.5
+        llGoal.lineColor = .blue
+        llGoal.lineDashLengths = [8.0]
+        llGoal.labelPosition = .bottomLeft
+        chartUsageTotal.leftAxis.addLimitLine(llGoal)
+        chartUsage.leftAxis.addLimitLine(llGoal)
+       
+    
+        // x축 값
+        let actionXAxis = chartSavingAction.xAxis
+        actionXAxis.labelPosition = .bottom
+        actionXAxis.labelFont = .systemFont(ofSize: 10)
+        actionXAxis.drawAxisLineEnabled = true
+        actionXAxis.drawGridLinesEnabled = false
+        
+        // y축 값
+        let actionLeftAxis = chartSavingAction.leftAxis
+        actionLeftAxis.labelFont = .systemFont(ofSize: 10)
+        actionLeftAxis.drawAxisLineEnabled = true
+        actionLeftAxis.drawGridLinesEnabled = false
+        actionLeftAxis.axisMinimum = 0
+
+        let actionRightAxis = chartSavingAction.rightAxis
+        actionRightAxis.enabled = false
+        
+        // x축 값
+        let xAxis = chartUsage.xAxis
         xAxis.labelPosition = .bottom
         xAxis.labelFont = .systemFont(ofSize: 10)
         xAxis.drawAxisLineEnabled = true
         
         // y축 값
-        let leftAxis = chartUsageDaily.leftAxis
+        let leftAxis = chartUsage.leftAxis
         leftAxis.labelFont = .systemFont(ofSize: 10)
         leftAxis.drawAxisLineEnabled = true
         leftAxis.drawGridLinesEnabled = true
         leftAxis.axisMinimum = 0
 
-        let rightAxis = chartUsageDaily.rightAxis
+        let rightAxis = chartUsage.rightAxis
         rightAxis.enabled = true
         rightAxis.labelFont = .systemFont(ofSize: 10)
         rightAxis.drawAxisLineEnabled = true
         rightAxis.axisMinimum = 0
 
-        let l = chartUsageDaily.legend
+        let l = chartUsage.legend
         l.horizontalAlignment = .left
         l.verticalAlignment = .bottom
         l.orientation = .horizontal
@@ -192,14 +251,115 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         l.formSize = 8
         l.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
         l.xEntrySpace = 4
-
-        chartUsageDaily.fitBars = true
         
-        chartUsageDaily.rightAxis.enabled = false
+        let Tl = chartUsageTotal.legend
+        Tl.horizontalAlignment = .left
+        Tl.verticalAlignment = .bottom
+        Tl.orientation = .horizontal
+        Tl.drawInside = false
+        Tl.form = .square
+        Tl.formSize = 8
+        Tl.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        Tl.xEntrySpace = 4
+        
+        let Sl = chartSavingAction.legend
+        Sl.horizontalAlignment = .left
+        Sl.verticalAlignment = .bottom
+        Sl.orientation = .horizontal
+        Sl.drawInside = false
+        Sl.form = .square
+        Sl.formSize = 8
+        Sl.font = UIFont(name: "HelveticaNeue-Light", size: 11)!
+        Sl.xEntrySpace = 4
+        
+        chartUsage.fitBars = true
+        chartSavingAction.fitBars = true
+        chartUsageTotal.fitBars = true
+        
+        chartUsage.rightAxis.enabled = false
+        chartSavingAction.rightAxis.enabled = false
+        chartUsageTotal.rightAxis.enabled = false
+        
+        chartSavingAction.xAxis.enabled = false
+        chartUsageTotal.xAxis.enabled = false
+        
+        chartUsage.legend.enabled = false
+        
+        print("viewSetting accomplished...")
+    }
+    
+    func setBarChart() {
+        
+        var colors: [NSUIColor] = []
+        
+        var SavingActEntry: [BarChartDataEntry] = []
+        
+        //절감행동 실천 그래프
+        
+        let actTotalCountData = BarChartDataEntry(x: 0, y: Double(CaApplication.m_Info.m_nTotalSaveActCount - CaApplication.m_Info.m_nTotalSaveActWithHistoryCount))
+        let actHistoryCountData = BarChartDataEntry(x: 0, y:Double(CaApplication.m_Info.m_nTotalSaveActWithHistoryCount))
+        colors.append(UIColor(named: "Light_gray")!)
+        colors.append(UIColor(named: "Light_blue")!)
+        
+        SavingActEntry.append(actTotalCountData)
+        SavingActEntry.append(actHistoryCountData)
+        
+        let actLeftAxisFormatter = NumberFormatter()
+        
+        actLeftAxisFormatter.positiveSuffix = " 회"
+        actLeftAxisFormatter.numberStyle = .decimal
+        
+        chartSavingAction.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: actLeftAxisFormatter)
+        
+        let SavingAct = BarChartDataSet(entries: SavingActEntry, label: "실천 횟수")
+        SavingAct.setColors(colors, alpha: 1.0)
+        
+        let savingActChartData = BarChartData(dataSet: SavingAct)
+        
+        chartSavingAction.data = savingActChartData
+        
+        //UsageTotal Bar Chart
+        
+        var usageTotalEntry: [BarChartDataEntry] = []
+        
+        let totalUsageData = BarChartDataEntry(x: 0, y: round(CaApplication.m_Info.m_dAvgKwhForAllMeter*1000)/1000)
+       
+        
+        usageTotalEntry.append(totalUsageData)
+      
+        
+        let usageLeftAxisFormatter = NumberFormatter()
+        
+        usageLeftAxisFormatter.positiveSuffix = " kWh"
+        usageLeftAxisFormatter.numberStyle = .decimal
+        
+        chartUsageTotal.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: usageLeftAxisFormatter)
+        
+        let usageTotal = BarChartDataSet(entries: usageTotalEntry, label: "평균 사용량")
+        var maxYValue: Double = 0.0
+        
+        if(CaApplication.m_Info.m_dAvgKwhForAllMeter<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
+            usageTotal.setColor(UIColor(named:"Pastel_green")!)
+            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 30
+        }
+        else if CaApplication.m_Info.m_dAvgKwhForAllMeter < CaApplication.m_Info.m_dKwhRefForAllMeter {
+            usageTotal.setColor(UIColor(named:"EG_Chart_prev")!)
+            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 30
+        }
+        else {
+            usageTotal.setColor(UIColor(named:"Pastel_red")!)
+            maxYValue = CaApplication.m_Info.m_dAvgKwhForAllMeter + 30
+        }
+        
+        let usageTotalChartData = BarChartData(dataSet: usageTotal)
+        
+        chartUsageTotal.leftAxis.axisMaximum = maxYValue
+        
+        chartUsageTotal.data = usageTotalChartData
     }
     
     // API 호출 결과를 통해 차트 Drawing
-    func setChart(_ dataArray:Array<[String:Any]>) {
+    func setHorizontalChart() {
         
         // (barWidth + barSpace) * 2 + groupSpace = 1
         let groupSpace = 0.4
@@ -207,129 +367,91 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         let barWidth = 0.2
         
         var currDataEntry: [BarChartDataEntry] = []
-        var prevDataEntry: [BarChartDataEntry] = []
+        
         
         // x축 label
-        let formatter:DailyChartFormatter = DailyChartFormatter()
         
-        var reversedArray: Array<[String:Any]> = []
         
+        var colors: [NSUIColor] = []
+        let nCountUsage: Int = alUsageForAllMeter.count
         // currDataEntry와 prevDataEntry에 데이터가 들어간 순서대로 Chart를 Draw함.
         // 근데 Chart를 Draw할 때, 아래에서 위로 Draw함. 왜 이렇게 만들었는지는 모르지만 우리는 위에서부터 0시~23시 순서로
         // Draw해야 하기에 Entry에 데이터를 넣는 순서를 바꿀 필요가 있음.
         // 마찬가지로, DailyChartFormatter가 "(24-i)시" 를 리턴하는 이유임
-        for i in 0..<dataArray.count {
-            reversedArray.append(dataArray[dataArray.count - (i+1)])
-        }
-        
-        print(reversedArray.description)
+      
+       
         
         // 사용량 보여줄 때
-        if bShowKwh {
-            for data in reversedArray {
-                // x에 23-unit해놨는데 그냥 unit도 상관없는 듯
-                let currData = BarChartDataEntry(x: 23 - Double(data["unit"]! as! Int), y: round((data["kwh_curr"]! as! Double)*1000)/1000)
-                let prevData = BarChartDataEntry(x: 23 - Double(data["unit"]! as! Int), y: round((data["kwh_prev"]! as! Double)*1000)/1000)
-                
-                currDataEntry.append(currData)
-                prevDataEntry.append(prevData)
-                
-                // 단위 붙이기
-                let leftAxisFormatter = NumberFormatter()
-                
-                leftAxisFormatter.positiveSuffix = " Kwh"
-                leftAxisFormatter.numberStyle = .decimal
-                
-                chartUsageDaily.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+        
+        for i in 0..<nCountUsage {
+            // x에 23-unit해놨는데 그냥 unit도 상관없는 듯
+            let usage = alUsageForAllMeter[nCountUsage-1-i]
+            let currData = BarChartDataEntry(x: Double(i), y: round((usage.dKwh)*1000)/1000)
+       
+            if(usage.dKwh<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
+                colors.append(UIColor.green)
             }
-        } else {
-            // 금액 보여줄 때
-            for data in reversedArray {
-                let currData = BarChartDataEntry(x: 23 - Double(data["unit"]! as! Int), y: round((data["won_curr"]! as! Double)*1000)/1000)
-                let prevData = BarChartDataEntry(x: 23 - Double(data["unit"]! as! Int), y: round((data["won_prev"]! as! Double)*1000)/1000)
-                
-                currDataEntry.append(currData)
-                prevDataEntry.append(prevData)
-                
-                let leftAxisFormatter = NumberFormatter()
-                
-                leftAxisFormatter.positiveSuffix = " 원"
-                leftAxisFormatter.numberStyle = .decimal
-                
-                chartUsageDaily.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+            else if usage.dKwh<CaApplication.m_Info.m_dKwhRefForAllMeter {
+                colors.append(UIColor(named: "EG_Chart_prev")!)
             }
+            else if usage.dKwh >= CaApplication.m_Info.m_dKwhRefForAllMeter{
+                colors.append(UIColor.red)
+            }
+            
+            print("usage n day is \(usage.nDay)")
+            print(Double(String(usage.nMonth) + "." + String(usage.nDay)))
+            currDataEntry.append(currData)
+          
+            
+            // 단위 붙이기
+            let leftAxisFormatter = NumberFormatter()
+            
+            leftAxisFormatter.positiveSuffix = " kWh"
+            leftAxisFormatter.numberStyle = .decimal
+            
+            chartUsage.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         }
+    
         
         // 0시 ~ 24시 -> 25개. -> dataArray.count + 1
-        chartUsageDaily.xAxis.setLabelCount(dataArray.count+1, force: true)
+        //chartUsage.xAxis.setLabelCount(nCountUsage, force: true)
         
-        let curr = BarChartDataSet(entries: currDataEntry, label: "조회일")
-        curr.setColor(UIColor(named: "EG_Chart_curr")!)
-        let prev = BarChartDataSet(entries: prevDataEntry, label: "전년동일")
-        prev.setColor(UIColor(named: "EG_Chart_prev")!)
+        let curr = BarChartDataSet(entries: currDataEntry, label: "일 사용량")
+        //curr.setColor(UIColor(named: "EG_Chart_curr")!)
+        curr.setColors(colors, alpha: 1.0)
         
-        let chartData = BarChartData(dataSets: [curr, prev])
+        
+        let chartData = BarChartData(dataSets: [curr])
         
         chartData.setValueFont(.systemFont(ofSize: 10, weight: .light))
         
         chartData.barWidth = barWidth
         
         // Data Grouping
-        chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
+        //chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
         
         // X축 간격
-        chartUsageDaily.xAxis.granularity = chartUsageDaily.xAxis.axisMaximum / Double(dataArray.count+1)
-        chartUsageDaily.xAxis.granularityEnabled = true
-        chartUsageDaily.xAxis.labelCount = dataArray.count+1
+        chartUsage.xAxis.granularity = chartUsage.xAxis.axisMaximum / Double(nCountUsage)
+        chartUsage.xAxis.granularityEnabled = true
+        chartUsage.xAxis.labelCount = nCountUsage
+        
         // X축 Label
-        chartUsageDaily.xAxis.valueFormatter = formatter
+        let xAxisFormatter = NumberFormatter()
         
-        chartUsageDaily.animate(yAxisDuration: 2.5)
+        xAxisFormatter.positiveSuffix = " 일"
+        xAxisFormatter.numberStyle = .decimal
         
-        chartUsageDaily.xAxis.axisMinimum = 0.0
-        chartUsageDaily.xAxis.axisMaximum = 0.0 + chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(dataArray.count)
+        chartUsage.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: xAxisFormatter)
         
-        chartUsageDaily.data = chartData
+        
+        chartUsage.animate(yAxisDuration: 2.5)
+        
+        //chartUsage.xAxis.axisMinimum = 0.0
+        //chartUsage.xAxis.axisMaximum = 0.0 + chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(nCountUsage)
+        
+        chartUsage.data = chartData
         
     }
-    
-    func setUsageView() {
-        let kwhCurr = data["total_kwh_curr"]! as! Double
-        let kwhPrev = data["total_kwh_prev"]! as! Double
-        let wonCurr = data["total_won_curr"]! as! Double
-        let wonPrev = data["total_won_prev"]! as! Double
-        
-        lbKwh.text = String(format: "%.1f", kwhCurr) + " kWh"
-        lbWon.text = CaApplication.m_Info.decimal(value: wonCurr) + " 원"
-        
-        let kwhPercent:Double = 100*(kwhCurr-kwhPrev)/kwhPrev
-        let wonPercent:Double = 100*(wonCurr-wonPrev)/wonPrev
-        
-        if kwhPercent < 0 {
-            lbKwhPercent.text = String(format: "%.1f", abs(kwhPercent)) + " %"
-            lbKwhPercent.textColor = .blue
-            
-            ivKwhPercent.image = UIImage(named: "arrow_down.png")
-        } else {
-            lbKwhPercent.text = String(format: "%.1f", kwhPercent) + " %"
-            lbKwhPercent.textColor = .red
-            
-            ivKwhPercent.image = UIImage(named: "arrow_up.png")
-        }
-        
-        if wonPercent < 0 {
-            lbWonPercent.text = String(format: "%.1f", abs(wonPercent)) + " %"
-            lbWonPercent.textColor = .blue
-            
-            ivWonPercent.image = UIImage(named: "arrow_down.png")
-        } else {
-            lbWonPercent.text = String(format: "%.1f", wonPercent) + " %"
-            lbWonPercent.textColor = .red
-            
-            ivWonPercent.image = UIImage(named: "arrow_up.png")
-        }
-    }
- */
 
     override func onResult(_ Result: CaResult) {
         switch Result.callback {
@@ -343,6 +465,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             let jaMeterGross = jo["list_meter_gross"] as! Array<[String:Any]>
             CaApplication.m_Info.setMeterList(jaMeter)
             
+            //chart data
             alUsageForAllMeter.removeAll()
             
             for jo in jaUsageForAllMeter {
@@ -359,6 +482,10 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             }
             print("alUsageForAllMeter Called... Length is " + String(alUsageForAllMeter.count) )
             
+            viewSetting()
+            setHorizontalChart()
+            setBarChart()
+            //list data
             alMeterGross.removeAll()
             
             for jo in jaMeterGross {
@@ -382,16 +509,103 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             tableView.reloadData()
             
             tableView.beginUpdates()
-            self.tableViewHeight?.constant = self.tableView.contentSize.height
+            
+            //self.tableViewHeight?.constant = self.tableView.contentSize.height
+            
             tableView.endUpdates()
             
         default:
             print("Saving: ERROR!")
         }
     }
+    
+    //DateTextField Click시 DatePicker 띄움
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .date
+        //Style = Wheels
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        //Locale
+        datePicker.locale = Locale(identifier: "ko")
+        //Background color
+        datePicker.backgroundColor = UIColor.white
+        //Maximun date = Today
+        datePicker.maximumDate = Date()
+        //Minimum date = 2000/01/01
+        let dateMinString: String = "20180101"
+        let dateMin: Date = CaApplication.m_Info.dfyyyyMMdd.date(from: dateMinString)!
+        datePicker.minimumDate = dateMin
+        
+        //Formate Date
+        datePickerFrom.datePickerMode = .date
+        //Style = Wheels
+        if #available(iOS 13.4, *) {
+            datePickerFrom.preferredDatePickerStyle = .wheels
+        }
+        //Locale
+        datePickerFrom.locale = Locale(identifier: "ko")
+        //Background color
+        datePickerFrom.backgroundColor = UIColor.white
+        //Maximun date = Today
+        datePickerFrom.maximumDate = Date()
+        //Minimum date = 2000/01/01
+        
+        datePickerFrom.minimumDate = dateMin
+        
+       //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        txtDateTo.inputAccessoryView = toolbar
+        txtDateTo.inputView = datePicker
+        
+        txtDateFrom.inputAccessoryView = toolbar
+        txtDateFrom.inputView = datePickerFrom
+
+    }
+
+    // datePicker 선택 완료 시 연, 월, 일 값 저장 후 일별 사용량 데이터 가져옴
+    @objc func donedatePicker(){
+
+        txtDateTo.text = CaApplication.m_Info.dfyyyyMMddStd.string(from: datePicker.date)
+        txtDateFrom.text = CaApplication.m_Info.dfyyyyMMddStd.string(from: datePickerFrom.date)
+        
+        strDateTo = CaApplication.m_Info.dfyyyyMMdd.string(from: datePicker.date)
+        strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: datePickerFrom.date)
+        
+        self.view.endEditing(true)
+        
+        // 여기서는 ShowWaitDialog가 True임을 기억하기
+        //getUsageDaily(year, month, day, true)
+    }
+
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
+    }
+    
    
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
+        var date1 = Int(strDateFrom)
+        var date2 = Int(strDateTo)
+        
+        var nSavePlanCreated = Int(dtSavePlanCreated)
+        
+        if date1 >= date2 {
+            alert(title: "오류", message: "날짜 입력이 잘못되었습니다.", text: "확인")
+        }
+        else if date1 - date2 >= 40 {
+            alert(title: "오류", message: "40일 이내의 데이터만 조회하실 수 있습니다.", text: "확인")
+        }
+        
+        
     }
     
     @IBAction func onBackBtnClicked(_ sender: UIButton) {

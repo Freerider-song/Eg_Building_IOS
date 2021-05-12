@@ -22,8 +22,9 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var UIUsageYearly: UIView!
     @IBOutlet weak var UINotice: UIView!
     @IBOutlet weak var UIAlarm: UIView!
-    @IBOutlet var UISetting: UIView!
-    @IBOutlet var UILogout: UIView!
+
+    @IBOutlet weak var UISetting: UIView!
+    @IBOutlet weak var UILogout: UIView!
     
     
     @IBOutlet weak var btnUnReadNotice: UIButton!
@@ -88,9 +89,12 @@ class SideMenuViewController: UIViewController {
         tapUIUsageCompare.title = "UIUsageCompare"
         self.UIUsageCompare.addGestureRecognizer(tapUIUsageCompare)
         
+        
         let tapUISetting = MyTapGesture(target: self, action: #selector(self.pageMove))
         tapUISetting.title = "UISetting"
         self.UISetting.addGestureRecognizer(tapUISetting)
+        
+       
         
         let tapUILogout = MyTapGesture(target: self, action: #selector(self.pageMove))
         tapUILogout.title = "UILogout"
@@ -150,7 +154,7 @@ class SideMenuViewController: UIViewController {
             
         case "UIAlarm":
             self.dismiss(animated: true, completion: nil)
-            
+            print("Side: UIAlarm pressed..")
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UIAlarm"), object: self)
         
         case "UINotice":
@@ -164,11 +168,13 @@ class SideMenuViewController: UIViewController {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UIUsageCompare"), object: self)
         
         case "UISetting":
+            print("uisetting presssd..")
             self.dismiss(animated: true, completion: nil)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UISetting"), object: self)
             
         case "UILogout":
+            
             self.dismiss(animated: true, completion: nil)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UILogout"), object: self)

@@ -24,6 +24,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet var CheckListHeight: NSLayoutConstraint!
     
     var lvAct : Array<CaAct> = Array()
+    var plan : CaPlan = CaPlan()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,8 +34,10 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     }
     
     override func layoutSubviews() {
+        
+        self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
+        print("checklistheight 조정")
         super.layoutSubviews()
-        //self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,11 +72,40 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
             Cell.btnCheckBox.isSelected = false
             act.bChecked = false
         }
+        print("actbchecked 여기서 체크됨")
         
-     
-
+        let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
+        let nNow: Int = Int(strNow)!
+        
+        if plan.nHourFrom > nNow {
+            
+         
+            Cell.backgroundColor = UIColor.white
+        }
+        else {
+            if plan.dKwhReal <= plan.dKwhPlan{
+                    Cell.backgroundColor = UIColor(named: "Pastel_green")
+            }
+            else if plan.dKwhReal <= plan.dKwhRef{
+                
+                    Cell.backgroundColor = UIColor(named: "Pastel_yellow")
+            }
+            else {
+               
+                    Cell.backgroundColor = UIColor(named: "Pastel_red")
+            }
+        }
+        
+        print("tvChecklist 로딩 완료") //색 입힌 후 tvchecklist 가 로딩된다.
+        
         return Cell
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //선택된 셀 음영 제거
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
 
 class SavingCheckCell: UITableViewCell{
@@ -100,6 +132,13 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         
         tvSavingList.delegate = self
         tvSavingList.dataSource = self
+        
+        // tableView의 rowHeight는 유동적일 수 있다
+        tvSavingList.rowHeight = UITableView.automaticDimension
+        // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
+        tvSavingList.estimatedRowHeight = 290.0
+             
+        print("tvSavingList rowheight 조정")
 
     }
     
@@ -143,10 +182,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         lblActCount.text = "절감조치 시행률    " + String(actRatio) + " %  (" + String(CaApplication.m_Info.m_nActCountWithHistory) + " / " + String(CaApplication.m_Info.m_nActCount) + ")"
     }
     
-    @objc func SavingResultTapped(sender: UITapGestureRecognizer) {
-        
-        
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("플랫 갯수 " + String(CaApplication.m_Info.m_alPlan.count))
         return CaApplication.m_Info.m_alPlan.count
@@ -169,6 +205,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
     //Cell.tvCheckList.dataSource = plan.alAct as? UITableViewDataSource
     Cell.lvAct = plan.alAct
+    Cell.plan = plan
     
     for i in 0..<plan.alAct.count {
         let act = plan.alAct[i]
@@ -183,25 +220,26 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
     let nNow: Int = Int(strNow)!
     
-    
-    
-    
-    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SavingResultTapped))
-    Cell.lblSavingResult.addGestureRecognizer(tapGestureRecognizer)
-    
     if (!plan.bAllChecked && plan.nHourTo > nNow && plan.nHourFrom <= nNow) {
         Cell.lblSavingResult.text = "지금 조치하기"
         Cell.lblSavingResult.backgroundColor = UIColor(named: "Light_cyan")
         Cell.lblSavingResult.textColor = UIColor.white
         Cell.lblSavingResult.layer.cornerRadius = 15
+        print("지금조치하기")
         
     }
     else if (!plan.bAllChecked && plan.nHourTo <= nNow) {
         Cell.lblSavingResult.text = "조치 미흡"
         Cell.lblSavingResult.textColor = UIColor.red
+        print("조치미흡")
     }
     else if (plan.nHourFrom > nNow) {
         Cell.lblSavingResult.text = ""
+        print("미래 절감조치")
+    }
+    else {
+        Cell.lblSavingResult.text = "조치완료"
+        print("조치완료")
     }
     
     if plan.nHourFrom > nNow {
@@ -258,6 +296,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     
     Cell.tvCheckList.backgroundColor = Cell.roundView.backgroundColor
+    print("tvChecklist 색깔 입히기")
     
     return Cell
     
@@ -282,11 +321,14 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         tableView.reloadData()
     }
     
-    override func viewWillLayoutSubviews() {
+ 
+    
+    override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
         self.SavingListHeight?.constant = self.tvSavingList.contentSize.height
-        
-    
+       print("tvsavinglist 높이 맞추기")
+        tvSavingList.reloadData()
+        print("viewdidlayoutsubview에서 tvsavinglist reload")
     }
     
     override func onResult(_ Result: CaResult) {
@@ -319,6 +361,11 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
 
 
             CaApplication.m_Info.setPlanList(jaPlan)
+            
+            // tableView의 rowHeight는 유동적일 수 있다
+            tvSavingList.rowHeight = UITableView.automaticDimension
+            // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
+            tvSavingList.estimatedRowHeight = 290.0
             
             tvSavingList.reloadData()
 

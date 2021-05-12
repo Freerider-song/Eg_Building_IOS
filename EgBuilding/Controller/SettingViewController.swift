@@ -9,6 +9,12 @@ import UIKit
 
 class SettingViewController: CustomUIViewController, UISearchTextFieldDelegate {
 
+    @IBOutlet weak var lbAlarmSetting: UILabel!
+    @IBOutlet weak var lbBldInfo: UILabel!
+    @IBOutlet weak var lbAdminInfo: UILabel!
+    
+    @IBOutlet weak var btnExecute: UIButton!
+    
     @IBOutlet weak var txtThresholdKwh: UITextField!
     @IBOutlet weak var txtThresholdWon: UITextField!
     @IBOutlet weak var txtAlarmUsageAtTime: UITextField!
@@ -64,9 +70,18 @@ class SettingViewController: CustomUIViewController, UISearchTextFieldDelegate {
         
         setAlarmInfo()
         
+        lbAlarmSetting.layer.borderWidth = 2
+        lbAlarmSetting.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        lbBldInfo.layer.borderWidth = 2
+        lbBldInfo.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        lbAdminInfo.layer.borderWidth = 2
+        lbAdminInfo.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        
+        btnExecute.layer.cornerRadius = 15
+        
         txtThresholdKwh.text = String(format: "%.1f", dThresholdKwh)
         //txtUsageFee.text = CaApplication.m_Info.decimal(value: dThresholdWon)
-        txtThresholdWon.text = String(dThresholdWon)
+        txtThresholdWon.text = String(format: "%.0f",dThresholdWon)
         txtAlarmUsageAtTime.text = usageReportTimeList[nNotiHour]
         
         lbSiteName.text = CaApplication.m_Info.m_strSiteName
@@ -80,12 +95,13 @@ class SettingViewController: CustomUIViewController, UISearchTextFieldDelegate {
         lbName.text = CaApplication.m_Info.m_strAdminName
         lbPhone.text = CaApplication.m_Info.m_strAdminPhone
         
+        reportPickerView.delegate = self
+        reportPickerView.dataSource = self
         
-        
-        
-        
+        txtAlarmUsageAtTime.inputView = reportPickerView
         txtThresholdWon.delegate = self
         txtThresholdKwh.delegate = self
+        txtAlarmUsageAtTime.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name:UIResponder.keyboardWillShowNotification , object: nil)
 
@@ -236,7 +252,7 @@ class SettingViewController: CustomUIViewController, UISearchTextFieldDelegate {
                 
                 //Alert에 부여할 Yes이벤트 선언
                 let YES = UIAlertAction(title: "예", style: .default, handler: { (action) -> Void in
-                    requestChangeAdminBldSettings()
+                    self.requestChangeAdminBldSettings()
                 })
                 
                 //Alert에 부여할 No이벤트 선언
@@ -385,6 +401,8 @@ extension SettingViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         nNotiHour = row
+        txtAlarmUsageAtTime.text = usageReportTimeList[row]
+        txtAlarmUsageAtTime.resignFirstResponder()
     }
     
 }

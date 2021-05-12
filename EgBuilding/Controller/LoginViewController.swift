@@ -183,6 +183,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                 CaApplication.m_Info.dtChangePassword = joMemberInfo["time_change_password"] as? Date*/
                 
                 CaApplication.m_Info.m_strAdminName = jo["admin_name"] as! String
+                CaApplication.m_Info.m_strAdminPhone = jo["admin_phone"] as! String
                 CaApplication.m_Info.m_nUnreadNoticeCount = jo["unread_notice_count"] as! Int
                 CaApplication.m_Info.m_nUnreadAlarmCount = jo["unread_alarm_count"] as! Int
                 CaApplication.m_Info.m_dtCreated = jo["time_created"] as? String ?? ""
@@ -312,11 +313,12 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         m_strId = TxtId.text!
         m_strPw = TxtPassword.text!
         m_strDeviceId = CaApplication.m_Info.m_strPushId
+        print("m_strDeviceId is " + m_strDeviceId)
         
         let date = Date()
         
         // 정보 가져올 날짜
-        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date) + "01"
+        let today: String = CaApplication.m_Info.dfyyMMdd.string(from: date) + "01"
         
         CaApplication.m_Engine.CheckBldLogin(self.m_strId, self.m_strPw, "IOS", self.m_strDeviceId, today, self)
     }
