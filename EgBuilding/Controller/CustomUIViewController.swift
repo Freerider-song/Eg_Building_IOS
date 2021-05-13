@@ -11,6 +11,7 @@ class CustomUIViewController: UIViewController {
 
     var bKeyboardOn: Bool = false
     var window: UIWindow?
+    let m_Pref: CaPref = CaPref()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +118,11 @@ class CustomUIViewController: UIViewController {
                     
                     //Alert에 부여할 Yes이벤트 선언
                     let YES = UIAlertAction(title: "예", style: .default, handler: { (action) -> Void in
+                        
+                        //로그읹 정보 초기화
+                        self.m_Pref.setValue(m_GlobalEngine.PREF_MEMBER_ID, "")
+                        self.m_Pref.setValue(m_GlobalEngine.PREF_PASSWORD, "")
+                        
                         let storyboard = UIStoryboard(name: "Login", bundle: nil)
                         let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "LoginViewController")
                         view.modalPresentationStyle = .fullScreen

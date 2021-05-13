@@ -32,8 +32,8 @@
                                             <segue destination="714-G3-mt1" kind="show" id="x3M-QY-HHd"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감 성과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73S-0E-zrm">
-                                        <rect key="frame" x="150" y="15.5" width="75" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간대별 사용량 비교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73S-0E-zrm">
+                                        <rect key="frame" x="104.5" y="15.5" width="166" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -96,11 +96,11 @@
                                     <action selector="onSearchBtnClicked:" destination="H9J-bR-seU" eventType="touchUpInside" id="UZq-bG-9O0"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-ZL-KnC">
-                                <rect key="frame" x="9" y="113" width="356" height="549"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-ZL-KnC">
+                                <rect key="frame" x="10" y="113" width="355" height="549"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-qJ-4ed" customClass="HorizontalBarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="356" height="800"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-qJ-4ed" customClass="HorizontalBarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="800"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="Enb-Eq-7pa"/>
@@ -112,6 +112,7 @@
                                     <constraint firstItem="gpJ-qJ-4ed" firstAttribute="top" secondItem="Psv-ZL-KnC" secondAttribute="top" id="J31-GO-FYB"/>
                                     <constraint firstAttribute="trailing" secondItem="gpJ-qJ-4ed" secondAttribute="trailing" id="cJB-Qc-Ozp"/>
                                     <constraint firstItem="gpJ-qJ-4ed" firstAttribute="leading" secondItem="Psv-ZL-KnC" secondAttribute="leading" id="jzF-Oj-jce"/>
+                                    <constraint firstItem="gpJ-qJ-4ed" firstAttribute="centerX" secondItem="Psv-ZL-KnC" secondAttribute="centerX" id="pE7-nf-c4E"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

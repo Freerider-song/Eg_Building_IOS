@@ -16,7 +16,8 @@ class ChangePasswordInputViewController: CustomUIViewController, UITextFieldDele
     
     var strId: String = ""
     
-    let m_Pref : CaPref = CaPref()
+    //let m_Pref : CaPref = CaPref()
+    
     
     
     var restoreFrameValue : CGFloat = 0.0

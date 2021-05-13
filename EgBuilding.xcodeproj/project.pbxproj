@@ -141,6 +141,7 @@
 		21CCC1642648D25500EB219E /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC1632648D25500EB219E /* Setting.storyboard */; };
 		21CCC1662648D26F00EB219E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1652648D26F00EB219E /* SettingViewController.swift */; };
 		21CCC169264B969700EB219E /* SavingChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC168264B969700EB219E /* SavingChartFormatter.swift */; };
+		21CCC16B264CF58900EB219E /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +282,7 @@
 		21CCC1652648D26F00EB219E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		21CCC167264A1FEB00EB219E /* EgBuilding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EgBuilding.entitlements; sourceTree = "<group>"; };
 		21CCC168264B969700EB219E /* SavingChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingChartFormatter.swift; sourceTree = "<group>"; };
+		21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				210178092643913E0027899C /* MonthlyChartFormatter31.swift */,
 				2101780A2643913E0027899C /* YearlyChartFormatter.swift */,
 				21CCC168264B969700EB219E /* SavingChartFormatter.swift */,
+				21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				215CFA722632662300F2C3CC /* CaAct.swift in Sources */,
 				210178242644D3E60027899C /* NoticeListViewController.swift in Sources */,
 				215CFA6F263264DE00F2C3CC /* CaPlan.swift in Sources */,
+				21CCC16B264CF58900EB219E /* ChartXAxisFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

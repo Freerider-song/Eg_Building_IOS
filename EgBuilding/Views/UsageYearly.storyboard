@@ -32,8 +32,8 @@
                                             <segue destination="Qse-FL-dDP" kind="show" id="mHJ-5b-k34"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감 성과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMs-ae-LHc">
-                                        <rect key="frame" x="150" y="15.5" width="75" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월별 사용량 비교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMs-ae-LHc">
+                                        <rect key="frame" x="122" y="15.5" width="131" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -45,6 +45,9 @@
                                             <constraint firstAttribute="width" constant="30" id="n0d-tE-FpD"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="btn_back_colored.png"/>
+                                        <connections>
+                                            <action selector="onBackBtnClicked:" destination="PGC-OW-qpQ" eventType="touchUpInside" id="hXK-oU-qKZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="Pastel_blue"/>
@@ -89,12 +92,15 @@
                                 <state key="normal" title="조회">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onSearchBtnClicked:" destination="PGC-OW-qpQ" eventType="touchUpInside" id="CMW-xz-xcd"/>
+                                </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPp-QL-sxv">
-                                <rect key="frame" x="9" y="113" width="356" height="549"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPp-QL-sxv">
+                                <rect key="frame" x="10" y="113" width="355" height="549"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zq8-gg-8bq" customClass="HorizontalBarChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="356" height="800"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zq8-gg-8bq" customClass="HorizontalBarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="800"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="E3C-ga-v9g"/>
@@ -106,6 +112,7 @@
                                     <constraint firstItem="Zq8-gg-8bq" firstAttribute="leading" secondItem="MPp-QL-sxv" secondAttribute="leading" id="1eq-Wp-g2r"/>
                                     <constraint firstItem="Zq8-gg-8bq" firstAttribute="top" secondItem="MPp-QL-sxv" secondAttribute="top" id="Cda-Nw-lpH"/>
                                     <constraint firstAttribute="bottom" secondItem="Zq8-gg-8bq" secondAttribute="bottom" id="XxN-Li-lbc"/>
+                                    <constraint firstItem="Zq8-gg-8bq" firstAttribute="centerX" secondItem="MPp-QL-sxv" secondAttribute="centerX" id="sfi-k7-Sxy"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -128,7 +135,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSearch" destination="xrQ-GC-I14" id="wSa-ok-Tdt"/>
                         <outlet property="chartUsageYearly" destination="Zq8-gg-8bq" id="tFj-cD-990"/>
+                        <outlet property="txtDate" destination="CJz-QL-o2T" id="ilo-MV-AAk"/>
+                        <outlet property="txtMeter" destination="05b-eO-NjI" id="WDf-gE-wqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IG-nH-WsV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

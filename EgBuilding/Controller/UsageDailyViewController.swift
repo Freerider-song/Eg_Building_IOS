@@ -33,7 +33,22 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewSetting()
+        
+        // DateTime 외관 설정
+        txtDate.layer.cornerRadius = 15
+        txtDate.layer.borderWidth = 2.0
+        if #available(iOS 13.0, *) {
+            txtDate.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
+        } else {
+            // Fallback on earlier versions
+        }
+        txtMeter.layer.cornerRadius = 15
+        txtMeter.layer.borderWidth = 2
+        txtMeter.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1)
+        
+        
+        btnSearch.layer.cornerRadius = 15
+        
         // DatePicker 설정
         showDatePicker()
         
@@ -87,22 +102,7 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
     
     
     func viewSetting() {
-        // DateTime 외관 설정
-        
-        
-        txtDate.layer.cornerRadius = 15
-        txtDate.layer.borderWidth = 2.0
-        if #available(iOS 13.0, *) {
-            txtDate.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1) //light cyan
-        } else {
-            // Fallback on earlier versions
-        }
-        txtMeter.layer.cornerRadius = 15
-        txtMeter.layer.borderWidth = 2
-        txtMeter.layer.borderColor = CGColor.init(red: 0.51, green: 0.48, blue: 0.48, alpha: 1)
-        
-        
-        btnSearch.layer.cornerRadius = 15
+       
         // Zoom 안 되게
         chartUsageDaily.doubleTapToZoomEnabled = false
         chartUsageDaily.pinchZoomEnabled = false
@@ -232,14 +232,14 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
         print("kwhAllEntry count.. " + String(kwhAllEntry.count))
     
         // 0시 ~ 24시 -> 25개. -> dataArray.count + 1
-        chartUsageDaily.xAxis.setLabelCount(nCountUsage, force: true)
+        chartUsageDaily.xAxis.setLabelCount(nCountUsage+1, force: true)
         
         let kwhMeter = BarChartDataSet(entries: kwhMeterEntry, label: alMeter[nMeter].strDescr)
         kwhMeter.setColor(UIColor(named: "EG_Dark_yellow")!)
         let kwhAll = BarChartDataSet(entries: kwhAllEntry, label: "전체 사용량")
         kwhAll.setColor(UIColor(named: "Light_gray")!)
         
-        let chartData = BarChartData(dataSets: [kwhAll, kwhMeter])
+        let chartData = BarChartData(dataSets: [kwhMeter, kwhAll])
         
         print("chartData is ... ")
         print(chartData.description)
@@ -252,9 +252,9 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
         chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
         
         // X축 간격
-        chartUsageDaily.xAxis.granularity = chartUsageDaily.xAxis.axisMaximum / Double(nCountUsage)
+        chartUsageDaily.xAxis.granularity = chartUsageDaily.xAxis.axisMaximum / Double(nCountUsage+1)
         chartUsageDaily.xAxis.granularityEnabled = true
-        chartUsageDaily.xAxis.labelCount = nCountUsage
+        chartUsageDaily.xAxis.labelCount = nCountUsage+1
         // X축 Label
         chartUsageDaily.xAxis.valueFormatter = formatter
         
@@ -302,6 +302,7 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
                 alMeter.removeAll()
                 
                 if jaMeter.count != 0 {
+                    viewSetting()
                     prepareChartData(jaMeter)
                 }
                 

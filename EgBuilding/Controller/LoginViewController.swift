@@ -26,7 +26,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
     
     let toast: Toast = Toast()
     
-    let m_Pref: CaPref = CaPref()
+    //let m_Pref: CaPref = CaPref()
     
     override func viewDidLoad() {
         super.viewDidLoad()

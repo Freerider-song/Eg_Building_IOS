@@ -56,6 +56,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showDatePicker()
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -193,7 +195,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         llRef.lineWidth = 0.5
         llRef.lineColor = .red
         llRef.lineDashLengths = [8.0]
-        llRef.labelPosition = .bottomLeft
+        llRef.labelPosition = .topLeft
         chartUsageTotal.leftAxis.addLimitLine(llRef)
         chartUsage.leftAxis.addLimitLine(llRef)
 
@@ -201,7 +203,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         llGoal.lineWidth = 0.5
         llGoal.lineColor = .blue
         llGoal.lineDashLengths = [8.0]
-        llGoal.labelPosition = .bottomLeft
+        llGoal.labelPosition = .topLeft
         chartUsageTotal.leftAxis.addLimitLine(llGoal)
         chartUsage.leftAxis.addLimitLine(llGoal)
        
@@ -374,22 +376,47 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         
         var colors: [NSUIColor] = []
         let nCountUsage: Int = alUsageForAllMeter.count
-        // currDataEntry와 prevDataEntry에 데이터가 들어간 순서대로 Chart를 Draw함.
-        // 근데 Chart를 Draw할 때, 아래에서 위로 Draw함. 왜 이렇게 만들었는지는 모르지만 우리는 위에서부터 0시~23시 순서로
-        // Draw해야 하기에 Entry에 데이터를 넣는 순서를 바꿀 필요가 있음.
-        // 마찬가지로, DailyChartFormatter가 "(24-i)시" 를 리턴하는 이유임
       
-       
         
+        // x값을 date형식으로 변환한 후 timeinterval 형식으로 변환
+        var objects : Array<TimeInterval> = []
+        for i in 0..<nCountUsage{
+            let usage = alUsageForAllMeter[nCountUsage-1-i]
+            
+            var strMonth = String(usage.nMonth)
+            var strDay = String(usage.nDay)
+            if (usage.nMonth <= 9) {
+                strMonth = "0" + strMonth
+            }
+            if usage.nDay <= 9 {
+                strDay = "0" + strDay
+            }
+            let strX = "\(usage.nYear)-\(strMonth)-\(strDay) 00:00:00"
+            let dtX = CaApplication.m_Info.dfStd.date(from: strX)
+            let epoch = dtX!.timeIntervalSince1970
+            objects.append(epoch)
+        }
+
+        // Define the reference time interval
+       var referenceTimeInterval: TimeInterval = 0
+        if let minTimeInterval = objects.min() {
+                referenceTimeInterval = minTimeInterval
+            }
+
+
+
         // 사용량 보여줄 때
         
         for i in 0..<nCountUsage {
             // x에 23-unit해놨는데 그냥 unit도 상관없는 듯
             let usage = alUsageForAllMeter[nCountUsage-1-i]
-            let currData = BarChartDataEntry(x: Double(i), y: round((usage.dKwh)*1000)/1000)
+            
+            let xValue = (objects[i] - referenceTimeInterval) / (3600 * 24)
+
+            let currData = BarChartDataEntry(x: xValue, y: round((usage.dKwh)*1000)/1000)
        
             if(usage.dKwh<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
-                colors.append(UIColor.green)
+                colors.append(UIColor(named: "Pastel_green")!)
             }
             else if usage.dKwh<CaApplication.m_Info.m_dKwhRefForAllMeter {
                 colors.append(UIColor(named: "EG_Chart_prev")!)
@@ -398,8 +425,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
                 colors.append(UIColor.red)
             }
             
-            print("usage n day is \(usage.nDay)")
-            print(Double(String(usage.nMonth) + "." + String(usage.nDay)))
+ 
+            
             currDataEntry.append(currData)
           
             
@@ -410,11 +437,24 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             leftAxisFormatter.numberStyle = .decimal
             
             chartUsage.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+            
+            // x값을 timeInterval에서 날짜형식으로 전환하는 formatter
+            let formatter = DateFormatter()
+            //formatter.dateStyle = .short
+            //formatter.timeStyle = .none
+            formatter.locale = Locale.current
+            formatter.setLocalizedDateFormatFromTemplate("MMdd")
+
+            let xValuesNumberFormatter = ChartXAxisFormatter(referenceTimeInterval: referenceTimeInterval, dateFormatter: formatter)
+            
+            chartUsage.xAxis.valueFormatter = xValuesNumberFormatter
         }
+        
+        
     
         
         // 0시 ~ 24시 -> 25개. -> dataArray.count + 1
-        //chartUsage.xAxis.setLabelCount(nCountUsage, force: true)
+        chartUsage.xAxis.setLabelCount(nCountUsage, force: true)
         
         let curr = BarChartDataSet(entries: currDataEntry, label: "일 사용량")
         //curr.setColor(UIColor(named: "EG_Chart_curr")!)
@@ -428,20 +468,15 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         chartData.barWidth = barWidth
         
         // Data Grouping
-        //chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
+        chartData.groupBars(fromX: 0.0, groupSpace: groupSpace, barSpace: barSpace)
         
         // X축 간격
-        chartUsage.xAxis.granularity = chartUsage.xAxis.axisMaximum / Double(nCountUsage)
+        //chartUsage.xAxis.granularity = chartUsage.xAxis.axisMaximum / Double(nCountUsage)
+        
         chartUsage.xAxis.granularityEnabled = true
+    
         chartUsage.xAxis.labelCount = nCountUsage
-        
-        // X축 Label
-        let xAxisFormatter = NumberFormatter()
-        
-        xAxisFormatter.positiveSuffix = " 일"
-        xAxisFormatter.numberStyle = .decimal
-        
-        chartUsage.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: xAxisFormatter)
+
         
         
         chartUsage.animate(yAxisDuration: 2.5)
@@ -593,16 +628,21 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
    
     
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
-        var date1 = Int(strDateFrom)
-        var date2 = Int(strDateTo)
+        let date1 = Int(strDateFrom)!
+        let date2 = Int(strDateTo)!
         
-        var nSavePlanCreated = Int(dtSavePlanCreated)
+        
+        let nSavePlanCreated = Int( CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated))
         
         if date1 >= date2 {
             alert(title: "오류", message: "날짜 입력이 잘못되었습니다.", text: "확인")
         }
-        else if date1 - date2 >= 40 {
-            alert(title: "오류", message: "40일 이내의 데이터만 조회하실 수 있습니다.", text: "확인")
+        
+        else if date1 < nSavePlanCreated! {
+            alert(title: "오류", message: "절감계획 이전의 데이터는 불러올 수 없습니다.", text: "확인")
+        }
+        else{
+            CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false, self)
         }
         
         
