@@ -50,10 +50,20 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         
         let act = lvAct[indexPath.row]
         Cell.btnCheckBox.setTitle(act.strActContent, for: .normal)
-        
+        if act.bChecked {
+            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
+            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
+            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        }
+        else {
+            Cell.btnCheckBox.setImage(UIImage(named: "unchecked_checkbox.png"), for: .normal)
+            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
+            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        }
+        /* caInfo로 옮김
         var flag: Bool = false
         
-        let date = Date()
+        
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         
         
@@ -68,12 +78,14 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
             }
         }
         
-        if flag == true {
+        if flag == false {
             Cell.btnCheckBox.isSelected = false
             act.bChecked = false
         }
+ 
         print("actbchecked 여기서 체크됨")
-        
+        */
+        let date = Date()
         let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
         let nNow: Int = Int(strNow)!
         
@@ -138,17 +150,15 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
         tvSavingList.estimatedRowHeight = 290.0
              
-        print("tvSavingList rowheight 조정")
+        //print("tvSavingList rowheight 조정")
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
-        
         let date = Date()
         let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, false, self)
+        CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, true, self)
     }
     
     func initChart(){
@@ -165,7 +175,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         
         let needleValue = (kwhReal * (100.0)/kwhMax)
         
-        let actRatio = Int(100 * Double(String(format: "%.2f", (CaApplication.m_Info.m_nActCountWithHistory/CaApplication.m_Info.m_nActCount)))!)
+        let actRatio = Int(100 * Double(String(format: "%.2f", (Double(CaApplication.m_Info.m_nActCountWithHistory)/Double(CaApplication.m_Info.m_nActCount))))!)
         
         print("needle value :"  + String(needleValue))
         print("area: " + strArea1 + "," + strArea2 + "," + strArea3)
@@ -223,22 +233,28 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     if (!plan.bAllChecked && plan.nHourTo > nNow && plan.nHourFrom <= nNow) {
         Cell.lblSavingResult.text = "지금 조치하기"
         Cell.lblSavingResult.backgroundColor = UIColor(named: "Light_cyan")
+        Cell.lblSavingResult.layer.cornerRadius = 10
         Cell.lblSavingResult.textColor = UIColor.white
-        Cell.lblSavingResult.layer.cornerRadius = 15
+        plan.bExecute = true
+
         print("지금조치하기")
         
     }
     else if (!plan.bAllChecked && plan.nHourTo <= nNow) {
         Cell.lblSavingResult.text = "조치 미흡"
         Cell.lblSavingResult.textColor = UIColor.red
+        Cell.lblSavingResult.backgroundColor = UIColor.clear
         print("조치미흡")
     }
     else if (plan.nHourFrom > nNow) {
         Cell.lblSavingResult.text = ""
+        Cell.lblSavingResult.backgroundColor = UIColor.clear
         print("미래 절감조치")
     }
     else {
         Cell.lblSavingResult.text = "조치완료"
+        Cell.lblSavingResult.textColor = UIColor.black
+        Cell.lblSavingResult.backgroundColor = UIColor.clear
         print("조치완료")
     }
     
@@ -248,7 +264,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         //Cell.roundView.backgroundColor = UIColor(named: "Light_gray")
         Cell.roundView.layer.borderWidth = 2
         //Cell.roundView.layer.borderColor = CGColor(red: 211, green: 211, blue: 211, alpha: 1) //light gray
-        Cell.roundView.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
+        Cell.roundView.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1) //light gray
         Cell.roundView.backgroundColor = UIColor.white
     }
     else {
@@ -258,12 +274,12 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
                 Cell.roundView.layer.borderWidth = 2
-                Cell.roundView.layer.borderColor = CGColor(red: 0, green: 128, blue: 0, alpha: 1) // green
+                Cell.roundView.layer.borderColor = CGColor(red: 0, green: 128/255, blue: 0, alpha: 1) // green
                 
             }
             else{
             
-                Cell.roundView.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
+                Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
             }
         }
@@ -272,11 +288,11 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 253, green: 253, blue: 150, alpha: 1) // pastel yellow
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
                 Cell.roundView.layer.borderWidth = 2
-                Cell.roundView.layer.borderColor = CGColor(red: 128, green: 128, blue: 0, alpha: 1) // olive
+                Cell.roundView.layer.borderColor = CGColor(red: 128/255, green: 128/255, blue: 0, alpha: 1) // olive
             }
             else{
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 253, green: 253, blue: 150, alpha: 1) // pastel yellow
-                Cell.roundView.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
+                Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
             }
         }
@@ -284,19 +300,18 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
             if plan.nHourTo > nNow {
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 255, green: 154, blue: 162, alpha: 1) // pastel red
                 Cell.roundView.layer.borderWidth = 2
-                Cell.roundView.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1) // red
+                Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 0, blue: 0, alpha: 1) // red
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_red")
             }
             else{
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 255, green: 154, blue: 162, alpha: 1) // pastel red
-                Cell.roundView.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
+                Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_red")
             }
         }
     }
     
     Cell.tvCheckList.backgroundColor = Cell.roundView.backgroundColor
-    print("tvChecklist 색깔 입히기")
     
     return Cell
     

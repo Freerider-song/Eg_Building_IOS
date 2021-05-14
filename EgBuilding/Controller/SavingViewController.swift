@@ -4,9 +4,7 @@
 //
 //  Created by (주)에너넷 on 2021/04/28.
 //
-
 // tableview Height 관련 https://stackoverflow.com/questions/2595118/resizing-uitableview-to-fit-content
-
 import UIKit
 
 import Charts
@@ -89,13 +87,13 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         txtDateFrom.text =  CaApplication.m_Info.dfyyyyMMddStd.string(from: dtSavePlanCreated)
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated)
     
-        CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false,self)
+        //CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false,self)
         
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true,self)
         
     }
     
@@ -122,14 +120,17 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         Cell.lbUsagePlan.text = "절감 목표  " + String(format: "%.1f", meter.dKwhPlan)
         
         if meter.dKwhReal < meter.dKwhPlan {
-            Cell.roundView.layer.borderColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
+            //Cell.roundView.layer.borderColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
             Cell.roundView.layer.borderColor = CGColor.init(red: 0.71, green: 0.918, blue: 0.843, alpha: 1) // pastel green
+            Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
         }
         else if meter.dKwhReal < meter.dKwhRef {
             Cell.roundView.layer.borderColor = CGColor.init(red: 0.992, green: 0.992, blue: 0.588, alpha: 1) // pastel yellow
+            Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
         }
         else if meter.dKwhReal >= meter.dKwhRef {
             Cell.roundView.layer.borderColor = CGColor.init(red: 0.99, green: 1.00, blue: 0.80, alpha: 1) // pastel red
+            Cell.roundView.backgroundColor = UIColor(named: "Pastel_red")
         }
   
         return Cell
@@ -194,16 +195,16 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         let llRef = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhRefForAllMeter) , label: "기준")
         llRef.lineWidth = 0.5
         llRef.lineColor = .red
-        llRef.lineDashLengths = [8.0]
-        llRef.labelPosition = .topLeft
+        //llRef.lineDashLengths = [8.0]
+        llRef.labelPosition = .topRight
         chartUsageTotal.leftAxis.addLimitLine(llRef)
         chartUsage.leftAxis.addLimitLine(llRef)
 
         let llGoal = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhPlanForAllMeter), label: "목표")
         llGoal.lineWidth = 0.5
         llGoal.lineColor = .blue
-        llGoal.lineDashLengths = [8.0]
-        llGoal.labelPosition = .topLeft
+        //llGoal.lineDashLengths = [8.0]
+        llGoal.labelPosition = .topRight
         chartUsageTotal.leftAxis.addLimitLine(llGoal)
         chartUsage.leftAxis.addLimitLine(llGoal)
        
@@ -342,15 +343,15 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         
         if(CaApplication.m_Info.m_dAvgKwhForAllMeter<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
             usageTotal.setColor(UIColor(named:"Pastel_green")!)
-            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 30
+            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 50
         }
         else if CaApplication.m_Info.m_dAvgKwhForAllMeter < CaApplication.m_Info.m_dKwhRefForAllMeter {
             usageTotal.setColor(UIColor(named:"EG_Chart_prev")!)
-            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 30
+            maxYValue = CaApplication.m_Info.m_dKwhRefForAllMeter + 50
         }
         else {
             usageTotal.setColor(UIColor(named:"Pastel_red")!)
-            maxYValue = CaApplication.m_Info.m_dAvgKwhForAllMeter + 30
+            maxYValue = CaApplication.m_Info.m_dAvgKwhForAllMeter + 50
         }
         
         let usageTotalChartData = BarChartData(dataSet: usageTotal)

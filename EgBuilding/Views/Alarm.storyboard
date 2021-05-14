@@ -194,7 +194,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXe-Hx-9a8">
-                                <rect key="frame" x="24" y="117" width="326" height="433"/>
+                                <rect key="frame" x="24.5" y="117" width="326" height="433"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CP1-NU-agS" userLabel="Title bar">
                                         <rect key="frame" x="0.0" y="0.0" width="326" height="55"/>
@@ -249,23 +249,26 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmCheckCell" id="orL-Uf-Uei" customClass="AlarmCheckCell" customModule="EgBuilding" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="24.5" width="296" height="43.5"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="296" height="36.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orL-Uf-Uei" id="lRg-Uo-gI5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="36.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW3-nn-qOp">
-                                                            <rect key="frame" x="16" y="12.5" width="154" height="19"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW3-nn-qOp">
+                                                            <rect key="frame" x="0.0" y="3" width="296" height="30.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <state key="normal" title="2층 에어컨을 꺼주세요" image="checkmark.square" catalog="system">
+                                                            <state key="normal" title="2층 에어컨을 꺼주세요">
                                                                 <color key="titleColor" name="gray"/>
                                                             </state>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="leading" secondItem="lRg-Uo-gI5" secondAttribute="leadingMargin" id="JVX-6S-Gjg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hW3-nn-qOp" secondAttribute="bottom" constant="3" id="7YH-MN-xyh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="hW3-nn-qOp" secondAttribute="trailing" id="YHN-j5-nH2"/>
                                                         <constraint firstItem="hW3-nn-qOp" firstAttribute="centerY" secondItem="lRg-Uo-gI5" secondAttribute="centerY" id="k2r-dD-rDO"/>
+                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="top" secondItem="lRg-Uo-gI5" secondAttribute="top" constant="3" id="lcx-l8-Gr6"/>
+                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="leading" secondItem="lRg-Uo-gI5" secondAttribute="leading" id="rab-Ry-FJA"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -313,9 +316,9 @@
                         <viewLayoutGuide key="safeArea" id="eGU-7c-x4J"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69006974180000002" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="fXe-Hx-9a8" firstAttribute="leading" secondItem="eGU-7c-x4J" secondAttribute="leading" constant="24" id="eNa-aO-SZv"/>
+                            <constraint firstItem="fXe-Hx-9a8" firstAttribute="leading" secondItem="eGU-7c-x4J" secondAttribute="leading" constant="24.5" id="eNa-aO-SZv"/>
                             <constraint firstItem="fXe-Hx-9a8" firstAttribute="centerX" secondItem="eGU-7c-x4J" secondAttribute="centerX" id="k2W-Ba-5Us"/>
-                            <constraint firstItem="eGU-7c-x4J" firstAttribute="trailing" secondItem="fXe-Hx-9a8" secondAttribute="trailing" constant="25" id="sne-IM-6B1"/>
+                            <constraint firstItem="eGU-7c-x4J" firstAttribute="trailing" secondItem="fXe-Hx-9a8" secondAttribute="trailing" constant="24.5" id="sne-IM-6B1"/>
                             <constraint firstItem="fXe-Hx-9a8" firstAttribute="centerY" secondItem="eGU-7c-x4J" secondAttribute="centerY" id="uOz-Of-NNR"/>
                         </constraints>
                     </view>
@@ -345,7 +348,6 @@
         <image name="alarm_icon.png" width="512" height="512"/>
         <image name="btn_back_colored.png" width="100" height="100"/>
         <image name="btn_menu.png" width="512" height="512"/>
-        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="circle_cyan_dark.png" width="72" height="72"/>
         <namedColor name="Dark_cyan">
             <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

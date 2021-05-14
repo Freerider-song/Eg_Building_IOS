@@ -29,6 +29,12 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isUserInteractionEnabled = true
+        
+        // tableView의 rowHeight는 유동적일 수 있다
+        tableView.rowHeight = UITableView.automaticDimension
+        // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
+        tableView.estimatedRowHeight = 45.0
         
         if nSeqPlanElem > 0 {
             for i in 0..<CaApplication.m_Info.m_alPlan.count {
@@ -56,33 +62,23 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         let Cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCheckCell", for: indexPath) as! AlarmCheckCell
         
         let act = plan.alAct[indexPath.row]
-        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        
-        
+      
         Cell.btnCheckBox.setTitle(act.strActContent, for: .normal)
-        
-        var flag: Bool = false
-    
-        for i in 0..<act.alActHistory.count {
-            let actHistory = act.alActHistory[i]
-            let dtBegin: Date = CaApplication.m_Info.dfStd.date(from: actHistory.dtBegin)!
-            let strBegin: String = CaApplication.m_Info.dfyyyyMMdd.string(from: dtBegin)
-            if(today == strBegin){
-                Cell.btnCheckBox.isSelected = true
-                flag = true
-                break
-            }
+        if act.bChecked {
+            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
+            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
+            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         }
-        if flag == false {
-            Cell.btnCheckBox.isSelected = false
+        else {
+            Cell.btnCheckBox.setImage(UIImage(named: "unchecked_checkbox.png"), for: .normal)
+            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
+            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         }
-        
-        
         
         return Cell
     }
     
-    //셀 선택했을시 notice로 넘어가기
+    //셀 선택했을시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //선택된 셀 음영 제거
@@ -91,9 +87,11 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         let act = plan.alAct[indexPath.row]
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         
-        if !Cell.btnCheckBox.isSelected {
+        if !act.bChecked {
             CaApplication.m_Engine.SetSaveActBegin(act.nSeqAct, CaApplication.m_Info.m_nSeqAdmin, today, false, self)
-            Cell.btnCheckBox.isSelected = true
+            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
+            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
+            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         }
         
         tableView.reloadData()

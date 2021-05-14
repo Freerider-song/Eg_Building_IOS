@@ -86,7 +86,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="절감목표 (000.0)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSW-62-EAy">
-                                        <rect key="frame" x="149.5" y="50" width="46" height="36"/>
+                                        <rect key="frame" x="156.5" y="50" width="46" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="VfX-VS-k3s"/>
                                             <constraint firstAttribute="height" constant="36" id="lmE-uA-KxY"/>
@@ -173,18 +173,18 @@
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-Q3-lub">
-                                                                                        <rect key="frame" x="5" y="12.5" width="114.5" height="18.5"/>
+                                                                                        <rect key="frame" x="0.0" y="-3.5" width="145" height="50.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                        <state key="normal" title="2층 에어컨 끄기" image="checkmark.square" catalog="system">
+                                                                                        <state key="normal" title="2층 에어컨 끄기" image="unchecked_checkbox.png">
                                                                                             <color key="titleColor" systemColor="labelColor"/>
+                                                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="5" scale="default"/>
                                                                                         </state>
-                                                                                        <state key="selected" image="checkmark.square.fill" catalog="system"/>
                                                                                     </button>
                                                                                 </subviews>
                                                                                 <constraints>
                                                                                     <constraint firstItem="iJc-Q3-lub" firstAttribute="centerY" secondItem="qqV-5j-XJC" secondAttribute="centerY" id="Uri-bD-P6F"/>
-                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="leading" secondItem="qqV-5j-XJC" secondAttribute="leading" constant="5" id="nGk-km-rif"/>
+                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="leading" secondItem="qqV-5j-XJC" secondAttribute="leading" id="nGk-km-rif"/>
                                                                                 </constraints>
                                                                             </tableViewCellContentView>
                                                                             <connections>
@@ -262,7 +262,7 @@
                                     <constraint firstItem="qQu-XF-UML" firstAttribute="centerX" secondItem="R1S-FM-vmZ" secondAttribute="centerX" id="590-gW-2Kq"/>
                                     <constraint firstAttribute="trailing" secondItem="qYj-Kh-jgd" secondAttribute="trailing" constant="8" id="6ij-Yq-9nJ"/>
                                     <constraint firstAttribute="bottom" secondItem="qYj-Kh-jgd" secondAttribute="bottom" constant="8" id="8ww-CJ-AX7"/>
-                                    <constraint firstItem="MSW-62-EAy" firstAttribute="centerX" secondItem="qQu-XF-UML" secondAttribute="centerX" constant="-15" id="9NG-7p-b3O"/>
+                                    <constraint firstItem="MSW-62-EAy" firstAttribute="centerX" secondItem="qQu-XF-UML" secondAttribute="centerX" constant="-8" id="9NG-7p-b3O"/>
                                     <constraint firstItem="mkp-GP-irE" firstAttribute="centerY" secondItem="9SQ-17-eQB" secondAttribute="centerY" id="A83-6m-CtA"/>
                                     <constraint firstItem="qQu-XF-UML" firstAttribute="top" secondItem="MSW-62-EAy" secondAttribute="bottom" id="GKp-6L-3yv"/>
                                     <constraint firstItem="CE0-xd-rKe" firstAttribute="leading" secondItem="R1S-FM-vmZ" secondAttribute="leading" constant="30" id="MOv-RG-MNn"/>
@@ -721,8 +721,6 @@
     </scenes>
     <resources>
         <image name="btn_menu.png" width="512" height="512"/>
-        <image name="checkmark.square" catalog="system" width="128" height="114"/>
-        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="gg_1.png" width="256" height="256"/>
         <image name="menu_alarm.png" width="73.44000244140625" height="79.680000305175781"/>
         <image name="menu_chart2.png" width="112.31999969482422" height="118.80000305175781"/>
@@ -732,6 +730,7 @@
         <image name="menu_site_state.png" width="74.879997253417969" height="79.199996948242188"/>
         <image name="menu_usage.png" width="75.839996337890625" height="79.199996948242188"/>
         <image name="small_dot_pink.png" width="60" height="60"/>
+        <image name="unchecked_checkbox.png" width="50" height="50"/>
         <namedColor name="Dark_cyan">
             <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

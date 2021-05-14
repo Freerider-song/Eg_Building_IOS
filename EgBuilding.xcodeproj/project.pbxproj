@@ -142,6 +142,8 @@
 		21CCC1662648D26F00EB219E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1652648D26F00EB219E /* SettingViewController.swift */; };
 		21CCC169264B969700EB219E /* SavingChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC168264B969700EB219E /* SavingChartFormatter.swift */; };
 		21CCC16B264CF58900EB219E /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */; };
+		21CCC16E264E178F00EB219E /* unchecked_checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC16C264E178F00EB219E /* unchecked_checkbox.png */; };
+		21CCC16F264E178F00EB219E /* checked_checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC16D264E178F00EB219E /* checked_checkbox.png */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -283,6 +285,8 @@
 		21CCC167264A1FEB00EB219E /* EgBuilding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EgBuilding.entitlements; sourceTree = "<group>"; };
 		21CCC168264B969700EB219E /* SavingChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingChartFormatter.swift; sourceTree = "<group>"; };
 		21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
+		21CCC16C264E178F00EB219E /* unchecked_checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unchecked_checkbox.png; path = ../../../../../Downloads/unchecked_checkbox.png; sourceTree = "<group>"; };
+		21CCC16D264E178F00EB219E /* checked_checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checked_checkbox.png; path = ../../../../../Downloads/checked_checkbox.png; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 		215CF9E4263141D100F2C3CC /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				21CCC16D264E178F00EB219E /* checked_checkbox.png */,
+				21CCC16C264E178F00EB219E /* unchecked_checkbox.png */,
 				215D0E9126329DF70091CD64 /* anonymous_user.png */,
 				215D0E8B26329DF50091CD64 /* arrow_right_hollow.png */,
 				215D0E9226329DF70091CD64 /* arrow_right.png */,
@@ -616,6 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21CCC16E264E178F00EB219E /* unchecked_checkbox.png in Resources */,
 				215CFA5A2631429000F2C3CC /* push_icon.png in Resources */,
 				215D0EA426329DF90091CD64 /* new_icon.png in Resources */,
 				215CFA442631429000F2C3CC /* menu_alarm.png in Resources */,
@@ -661,6 +668,7 @@
 				215CFA5B2631429000F2C3CC /* small_password.png in Resources */,
 				215CFA462631429000F2C3CC /* energy_04.png in Resources */,
 				215CFA4E2631429000F2C3CC /* main_logo_b.png in Resources */,
+				21CCC16F264E178F00EB219E /* checked_checkbox.png in Resources */,
 				215D0E9D26329DF90091CD64 /* notice_eg.png in Resources */,
 				215CFA2B2631429000F2C3CC /* alarm_icon.png in Resources */,
 				215D0E6826329C320091CD64 /* ChangePassword.storyboard in Resources */,

@@ -327,7 +327,27 @@ public class CaInfo {
                     ca_actHistory.dtBegin = actHistory["time_begin"] as! String
                     ca_actHistory.dtEnd = actHistory["time_end"] as! String
                     
+                    
                     ca_act.alActHistory.append(ca_actHistory)
+                }
+                //ca_act.bChecked Check
+                var flag: Bool = false
+                
+                let date = Date()
+                let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
+                for i in 0..<ca_act.alActHistory.count{
+                    let actHistory = ca_act.alActHistory[i]
+                    let dtBegin = CaApplication.m_Info.dfStd.date(from: actHistory.dtBegin)!
+                    if(today == CaApplication.m_Info.dfyyyyMMdd.string(from: dtBegin)){
+                        print("CaInfo: 절감조치: " + ca_act.strActContent + "의 체크박스가 체크 되었슴")
+                        flag = true
+                        break
+                    }
+                }
+                if flag == false {
+                    
+                    ca_act.bChecked = false
+                    
                 }
                 ca_plan.alAct.append(ca_act)
             }

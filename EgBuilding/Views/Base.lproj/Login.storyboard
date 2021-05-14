@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo_a.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M17-YN-Hhv">
-                                <rect key="frame" x="126" y="103" width="122" height="160"/>
+                                <rect key="frame" x="126.5" y="103" width="122" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="3Ow-eq-aEs"/>
                                     <constraint firstAttribute="width" constant="122" id="e6e-Fd-IQl"/>
@@ -35,7 +35,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WLT-9J-l7H"/>
-                                    <constraint firstAttribute="width" constant="300" id="tPk-Oc-7Os"/>
                                 </constraints>
                                 <color key="textColor" name="gray"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,7 +51,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Cv2-sN-jxI"/>
-                                    <constraint firstAttribute="width" constant="300" id="wHo-ff-aW7"/>
                                 </constraints>
                                 <color key="textColor" name="gray"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -68,7 +66,6 @@
                                 <rect key="frame" x="37" y="431" width="300" height="40"/>
                                 <color key="backgroundColor" name="Light_Cyan"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="G30-d4-bbp"/>
                                     <constraint firstAttribute="height" constant="40" id="PKP-ME-yAX"/>
                                 </constraints>
                                 <state key="normal" title="로그인">
@@ -107,7 +104,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qwc-VG-VPo" secondAttribute="trailing" constant="38" id="1sX-WP-YJT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y1H-HZ-1yM" secondAttribute="trailing" constant="38" id="5ln-1r-VtU"/>
                             <constraint firstItem="ntF-cA-qn7" firstAttribute="leading" secondItem="Tmw-pH-Iql" secondAttribute="trailing" constant="18" id="7Z8-nW-XIV"/>
-                            <constraint firstItem="M17-YN-Hhv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="CNy-me-aGK"/>
                             <constraint firstItem="M17-YN-Hhv" firstAttribute="top" secondItem="0ou-55-AzD" secondAttribute="bottom" constant="21" id="Grf-P2-zwT"/>
                             <constraint firstItem="3Nx-4p-WK1" firstAttribute="top" secondItem="Qwc-VG-VPo" secondAttribute="bottom" constant="8" symbolic="YES" id="JeN-Rb-dob"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Nx-4p-WK1" secondAttribute="trailing" constant="38" id="Kzw-bb-aTe"/>
@@ -122,7 +118,6 @@
                             <constraint firstItem="Qwc-VG-VPo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="l0M-av-O7i"/>
                             <constraint firstItem="Tmw-pH-Iql" firstAttribute="top" secondItem="Y1H-HZ-1yM" secondAttribute="bottom" constant="35" id="reS-uu-zvy"/>
                             <constraint firstItem="0ou-55-AzD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tKg-N5-Fds"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M17-YN-Hhv" secondAttribute="trailing" constant="127" id="xfk-Gg-8uY"/>
                             <constraint firstItem="Y1H-HZ-1yM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="zVc-WC-iGk"/>
                         </constraints>
                     </view>
