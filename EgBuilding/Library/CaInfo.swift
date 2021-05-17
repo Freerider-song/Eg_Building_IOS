@@ -350,6 +350,17 @@ public class CaInfo {
                     
                 }
                 ca_plan.alAct.append(ca_act)
+                
+                
+                }
+            
+            for i in 0..<ca_plan.alAct.count {
+                let act = ca_plan.alAct[i]
+                if !act.bChecked {
+                    ca_plan.bAllChecked = false
+                    break
+                }
+                
             }
             
             

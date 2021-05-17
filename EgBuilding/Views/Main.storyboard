@@ -118,15 +118,15 @@
                                             <constraint firstAttribute="height" constant="500" id="BT7-go-6ZM"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingCell" rowHeight="290" id="FFU-DN-YiD" customClass="SavingCell" customModule="EgBuilding" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="24.5" width="359" height="290"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingCell" rowHeight="300" id="FFU-DN-YiD" customClass="SavingCell" customModule="EgBuilding" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="24.5" width="359" height="300"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FFU-DN-YiD" id="ghK-Cd-LVp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="290"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="300"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENi-FS-cgK" userLabel="Round View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="283"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="293"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="냉온방 공조기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb8-ap-gzd">
                                                                     <rect key="frame" x="25" y="20" width="104" height="23"/>
@@ -172,54 +172,59 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="43.5"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-Q3-lub">
-                                                                                        <rect key="frame" x="0.0" y="-3.5" width="145" height="50.5"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="0W6-Uw-8v2">
+                                                                                        <rect key="frame" x="16" y="12" width="20" height="20"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="height" constant="20" id="5DR-IK-bXg"/>
+                                                                                            <constraint firstAttribute="width" constant="20" id="9aT-tB-rVE"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조리가 끝난 전기밥솥 콘센트를 뽑아주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYf-S2-Vnz">
+                                                                                        <rect key="frame" x="44" y="13" width="249.5" height="18"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                        <state key="normal" title="2층 에어컨 끄기" image="unchecked_checkbox.png">
-                                                                                            <color key="titleColor" systemColor="labelColor"/>
-                                                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="5" scale="default"/>
-                                                                                        </state>
-                                                                                    </button>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
                                                                                 </subviews>
                                                                                 <constraints>
-                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="centerY" secondItem="qqV-5j-XJC" secondAttribute="centerY" id="Uri-bD-P6F"/>
-                                                                                    <constraint firstItem="iJc-Q3-lub" firstAttribute="leading" secondItem="qqV-5j-XJC" secondAttribute="leading" id="nGk-km-rif"/>
+                                                                                    <constraint firstItem="0W6-Uw-8v2" firstAttribute="centerY" secondItem="qqV-5j-XJC" secondAttribute="centerY" id="0Rz-5C-PbX"/>
+                                                                                    <constraint firstItem="oYf-S2-Vnz" firstAttribute="leading" secondItem="0W6-Uw-8v2" secondAttribute="trailing" constant="8" symbolic="YES" id="Ezs-DP-xzb"/>
+                                                                                    <constraint firstItem="oYf-S2-Vnz" firstAttribute="centerY" secondItem="qqV-5j-XJC" secondAttribute="centerY" id="u4v-Bq-WTI"/>
+                                                                                    <constraint firstItem="0W6-Uw-8v2" firstAttribute="leading" secondItem="qqV-5j-XJC" secondAttribute="leadingMargin" id="wvm-yZ-Ur8"/>
                                                                                 </constraints>
                                                                             </tableViewCellContentView>
                                                                             <connections>
-                                                                                <outlet property="btnCheckBox" destination="iJc-Q3-lub" id="axh-nz-UzM"/>
+                                                                                <outlet property="ivCheckbox" destination="0W6-Uw-8v2" id="K9H-t1-mtD"/>
+                                                                                <outlet property="lbContent" destination="oYf-S2-Vnz" id="sTP-5B-jLp"/>
                                                                             </connections>
                                                                         </tableViewCell>
                                                                     </prototypes>
                                                                 </tableView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조치완료" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCI-UM-2eT">
-                                                                    <rect key="frame" x="249" y="241" width="100" height="30"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCl-PN-iU4">
+                                                                    <rect key="frame" x="244" y="241" width="100" height="40"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="Tnj-sV-8BI"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="ccr-XL-n4S"/>
+                                                                        <constraint firstAttribute="width" constant="100" id="Bd7-lZ-iwc"/>
+                                                                        <constraint firstAttribute="height" constant="40" id="vV2-56-dC1"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="조치완료"/>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="ZFB-hn-nlJ" firstAttribute="top" secondItem="Fb8-ap-gzd" secondAttribute="bottom" constant="15" id="82z-rp-jev"/>
-                                                                <constraint firstItem="PCI-UM-2eT" firstAttribute="top" secondItem="QiF-iG-PdO" secondAttribute="bottom" constant="15" id="8JY-D3-dsd"/>
                                                                 <constraint firstItem="Fb8-ap-gzd" firstAttribute="top" secondItem="ENi-FS-cgK" secondAttribute="top" constant="20" id="CV5-aZ-Did"/>
                                                                 <constraint firstItem="Fb8-ap-gzd" firstAttribute="leading" secondItem="ENi-FS-cgK" secondAttribute="leading" constant="25" id="F94-ku-Cpq"/>
                                                                 <constraint firstItem="TfM-6H-5vx" firstAttribute="top" secondItem="ZFB-hn-nlJ" secondAttribute="bottom" constant="7" id="FmB-bi-Spf"/>
-                                                                <constraint firstAttribute="bottom" secondItem="PCI-UM-2eT" secondAttribute="bottom" constant="12" id="LsB-6a-Q29"/>
+                                                                <constraint firstAttribute="bottom" secondItem="UCl-PN-iU4" secondAttribute="bottom" constant="12" id="HQw-T6-aSL"/>
                                                                 <constraint firstAttribute="trailing" secondItem="QiF-iG-PdO" secondAttribute="trailing" constant="15" id="Ow9-ss-t75"/>
                                                                 <constraint firstItem="uLM-o5-OZh" firstAttribute="top" secondItem="ZFB-hn-nlJ" secondAttribute="top" constant="10" id="P7j-qF-eDK"/>
                                                                 <constraint firstItem="ZFB-hn-nlJ" firstAttribute="leading" secondItem="Fb8-ap-gzd" secondAttribute="leading" id="UVl-Yl-3na"/>
                                                                 <constraint firstAttribute="trailing" secondItem="uLM-o5-OZh" secondAttribute="trailing" constant="30" id="Zza-1c-KGE"/>
+                                                                <constraint firstAttribute="trailing" secondItem="UCl-PN-iU4" secondAttribute="trailing" constant="15" id="bwa-Sm-heO"/>
                                                                 <constraint firstItem="QiF-iG-PdO" firstAttribute="leading" secondItem="ENi-FS-cgK" secondAttribute="leading" constant="15" id="dmk-Gu-Q45"/>
                                                                 <constraint firstItem="QiF-iG-PdO" firstAttribute="top" secondItem="TfM-6H-5vx" secondAttribute="bottom" priority="750" constant="8" symbolic="YES" id="iUB-Dt-wsk"/>
                                                                 <constraint firstItem="TfM-6H-5vx" firstAttribute="leading" secondItem="ZFB-hn-nlJ" secondAttribute="leading" id="l6z-yB-RZU"/>
                                                                 <constraint firstAttribute="trailing" secondItem="NsV-b3-KHl" secondAttribute="trailing" constant="30" id="lYS-Dv-Fpg"/>
-                                                                <constraint firstAttribute="trailing" secondItem="PCI-UM-2eT" secondAttribute="trailing" constant="10" id="qwN-X4-tOX"/>
+                                                                <constraint firstItem="UCl-PN-iU4" firstAttribute="top" secondItem="QiF-iG-PdO" secondAttribute="bottom" constant="15" id="pu3-Oz-rgr"/>
                                                                 <constraint firstItem="NsV-b3-KHl" firstAttribute="top" secondItem="Fb8-ap-gzd" secondAttribute="top" id="yi9-eP-hJq"/>
                                                             </constraints>
                                                         </view>
@@ -233,7 +238,7 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="CheckListHeight" destination="4QZ-Mb-UAF" id="fNi-rp-h9B"/>
-                                                    <outlet property="lblSavingResult" destination="PCI-UM-2eT" id="2kz-cq-ujr"/>
+                                                    <outlet property="btnSavingResult" destination="UCl-PN-iU4" id="cQl-hG-88n"/>
                                                     <outlet property="lblTime" destination="NsV-b3-KHl" id="trH-A4-Wue"/>
                                                     <outlet property="lblTitle" destination="Fb8-ap-gzd" id="tYS-9u-cUn"/>
                                                     <outlet property="lblUsageGoal" destination="TfM-6H-5vx" id="idO-10-Rmr"/>
@@ -740,9 +745,6 @@
         <namedColor name="Pastel_blue">
             <color red="0.88627450980392153" green="0.9882352941176471" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

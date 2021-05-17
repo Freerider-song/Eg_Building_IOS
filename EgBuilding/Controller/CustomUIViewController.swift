@@ -166,15 +166,6 @@ class CustomUIViewController: UIViewController {
         alertController.addAction(okButton)
         return self.present(alertController, animated: true, completion: nil)
     }
-    /*
-    func showPopUpConfirm(message : String) {
-        
-        let storyboard = UIStoryboard(name: "PopUp", bundle: nil)
-        let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "ViewControllerPopUpConfirm")
-        
-        view.modalPresentationStyle = .overCurrentContext
-        self.present(view, animated: true, completion: nil)
-    }
-    */
+ 
 
 }

@@ -78,35 +78,21 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
     
             myCell.btnExecute.isHidden = false
             
+            
             for i in 0..<CaApplication.m_Info.m_alPlan.count {
                 let plan = CaApplication.m_Info.m_alPlan[i]
                 
                 if(plan.nSeqPlanElem == alarm.nSeqSavePlanElem) {
+                    /*
                     for j in 0..<plan.alAct.count {
                         let act = plan.alAct[j]
-                        var flag: Bool = false
                         
-                        for k in 0..<act.alActHistory.count {
-                            let actHistory = act.alActHistory[k]
-                            if(actHistory.dtBegin == ""){}
-                            else{
-                            let dtBegin: Date = CaApplication.m_Info.dfStd.date(from: actHistory.dtBegin)!
-                            let strBegin: String = CaApplication.m_Info.dfyyyyMMdd.string(from: dtBegin)
-                                if(today==strBegin){
-                                    flag = true
-                                    break
-                                    
-                                }
-                            }
-                        }
-                        if flag == false {
-                            act.bChecked = false
-                        }
                         if (!act.bChecked) {
                             plan.bAllChecked = false
                             break
                         }
-                    }
+                    }*/
+ 
                     if plan.bAllChecked {
                         myCell.btnExecute.setTitle("조치 완료", for: .normal)
                         myCell.btnExecute.isEnabled = false
@@ -118,7 +104,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                         myCell.btnExecute.backgroundColor = UIColor(named: "Pastel_blue")
                         
                     }
-                    else if plan.nHourTo > Int(CaApplication.m_Info.dfHH.string(from: date))! && plan.nHourFrom <= Int(CaApplication.m_Info.dfHH.string(from: date))! {
+                    else if (plan.nHourTo > Int(CaApplication.m_Info.dfHH.string(from: date))!) && (plan.nHourFrom <= Int(CaApplication.m_Info.dfHH.string(from: date))!) {
                         myCell.btnExecute.setTitle("지금조치하기", for: .normal)
                         myCell.btnExecute.isEnabled = true
                         alarm.bClickable = true
@@ -127,7 +113,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                     }
                     
                     else {
-                        myCell.btnExecute.isEnabled = false
+                        myCell.btnExecute.isHidden = true
                     }
                     break
                 }
@@ -149,6 +135,8 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
     }
     
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -168,7 +156,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
             let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
             view?.nSeqPlanElem = alarm.nSeqSavePlanElem
-            view?.modalPresentationStyle = .overCurrentContext
+            view?.modalPresentationStyle = .popover
             self.present(view!, animated: false, completion: nil)
         }
         

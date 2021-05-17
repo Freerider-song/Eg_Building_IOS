@@ -3,7 +3,8 @@
 //  EgBuilding
 //
 //  Created by (주)에너넷 on 2021/04/22.
-//
+// view를 overcurrentContext로 Present시 dismiss후 메인뷰로 돌아와도 viewdidappear 호출 되지 않ㄴ느다.
+//https://medium.com/livefront/why-isnt-viewwillappear-getting-called-d02417b00396
 
 import UIKit
 import ABGaugeViewKit
@@ -19,7 +20,8 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var roundView: UIView!
     @IBOutlet var tvCheckList: UITableView!
-    @IBOutlet var lblSavingResult: UILabel!
+    @IBOutlet weak var btnSavingResult: UIButton!
+    
     
     @IBOutlet var CheckListHeight: NSLayoutConstraint!
     
@@ -49,42 +51,15 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         let Cell = tableView.dequeueReusableCell(withIdentifier: "SavingCheckCell", for: indexPath) as! SavingCheckCell
         
         let act = lvAct[indexPath.row]
-        Cell.btnCheckBox.setTitle(act.strActContent, for: .normal)
+        Cell.lbContent.text = act.strActContent
+        
         if act.bChecked {
-            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
-            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
-            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+            Cell.ivCheckbox.image = UIImage(named: "checked_checkbox.png")
         }
         else {
-            Cell.btnCheckBox.setImage(UIImage(named: "unchecked_checkbox.png"), for: .normal)
-            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
-            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+            Cell.ivCheckbox.image = UIImage(named: "unchecked_checkbox.png")
         }
-        /* caInfo로 옮김
-        var flag: Bool = false
-        
-        
-        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        
-        
-        for i in 0..<act.alActHistory.count {
-            let actHistory = act.alActHistory[i]
-            let dtBegin = CaApplication.m_Info.dfStd.date(from: actHistory.dtBegin)!
-            if(today == CaApplication.m_Info.dfyyyyMMdd.string(from: dtBegin)){
-                Cell.btnCheckBox.isSelected = true
-                print("HOME: 절감조치: " + act.strActContent + "의 체크박스가 체크 되었슴")
-                flag = true
-                break
-            }
-        }
-        
-        if flag == false {
-            Cell.btnCheckBox.isSelected = false
-            act.bChecked = false
-        }
- 
-        print("actbchecked 여기서 체크됨")
-        */
+      
         let date = Date()
         let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
         let nNow: Int = Int(strNow)!
@@ -121,7 +96,9 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
 }
 
 class SavingCheckCell: UITableViewCell{
-    @IBOutlet var btnCheckBox: UIButton!
+   
+    @IBOutlet weak var lbContent: UILabel!
+    @IBOutlet weak var ivCheckbox: UIImageView!
     
 }
 
@@ -155,11 +132,17 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+       
         let date = Date()
         let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, true, self)
+        
+        tvSavingList.reloadData()
     }
+    
+    
+    
+
     
     func initChart(){
         
@@ -217,6 +200,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     Cell.lvAct = plan.alAct
     Cell.plan = plan
     
+    /*
     for i in 0..<plan.alAct.count {
         let act = plan.alAct[i]
         if !act.bChecked {
@@ -224,37 +208,43 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
             break
         }
     }
-    
+    */
     let date = Date()
     
     let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
     let nNow: Int = Int(strNow)!
     
     if (!plan.bAllChecked && plan.nHourTo > nNow && plan.nHourFrom <= nNow) {
-        Cell.lblSavingResult.text = "지금 조치하기"
-        Cell.lblSavingResult.backgroundColor = UIColor(named: "Light_cyan")
-        Cell.lblSavingResult.layer.cornerRadius = 10
-        Cell.lblSavingResult.textColor = UIColor.white
+        Cell.btnSavingResult.setTitle("지금조치하기", for: .normal)
+        Cell.btnSavingResult.backgroundColor = UIColor(named: "Light_cyan")
+        Cell.btnSavingResult.layer.cornerRadius = 10
+        Cell.btnSavingResult.setTitleColor(UIColor.white, for: .normal)
         plan.bExecute = true
+        
+        Cell.btnSavingResult.tag = indexPath.row
+          
+          // call the subscribeTapped method when tapped
+        Cell.btnSavingResult.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
 
         print("지금조치하기")
         
     }
     else if (!plan.bAllChecked && plan.nHourTo <= nNow) {
-        Cell.lblSavingResult.text = "조치 미흡"
-        Cell.lblSavingResult.textColor = UIColor.red
-        Cell.lblSavingResult.backgroundColor = UIColor.clear
+        Cell.btnSavingResult.setTitle("조치미흡", for: .normal)
+        Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
+        Cell.btnSavingResult.backgroundColor = UIColor.clear
         print("조치미흡")
     }
     else if (plan.nHourFrom > nNow) {
-        Cell.lblSavingResult.text = ""
-        Cell.lblSavingResult.backgroundColor = UIColor.clear
+        Cell.btnSavingResult.setTitle("", for: .normal)
+        //Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
+        Cell.btnSavingResult.backgroundColor = UIColor.clear
         print("미래 절감조치")
     }
     else {
-        Cell.lblSavingResult.text = "조치완료"
-        Cell.lblSavingResult.textColor = UIColor.black
-        Cell.lblSavingResult.backgroundColor = UIColor.clear
+        Cell.btnSavingResult.setTitle("조치완료", for: .normal)
+        Cell.btnSavingResult.setTitleColor(UIColor.black, for: .normal)
+        Cell.btnSavingResult.backgroundColor = UIColor.clear
         print("조치완료")
     }
     
@@ -313,15 +303,30 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
     Cell.tvCheckList.backgroundColor = Cell.roundView.backgroundColor
     
+    
+    
+    
     return Cell
     
    }
+    
+    @objc func buttonTapped(_ sender: UIButton){
+      // use the tag of button as index
+        let plan = CaApplication.m_Info.m_alPlan[sender.tag]
+        let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
+        let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
+        view?.nSeqPlanElem = plan.nSeqPlanElem
+        view?.modalPresentationStyle = .fullScreen
+        self.present(view!, animated: false, completion: nil)
+            
+  
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //선택된 셀 음영 제거
         tableView.deselectRow(at: indexPath, animated: true)
         //let Cell = tableView.dequeueReusableCell(withIdentifier: "SavingCell", for: indexPath) as! SavingCell
-        
+        /*
         let plan = CaApplication.m_Info.m_alPlan[indexPath.row]
         
         if plan.bExecute {
@@ -334,6 +339,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
        
         
         tableView.reloadData()
+ */
     }
     
  

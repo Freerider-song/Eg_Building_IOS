@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         case m_GlobalEngine.ALARM_PLAN_ELEM_END, m_GlobalEngine.ALARM_PLAN_ELEM_BEGIN,
              m_GlobalEngine.ALARM_SAVE_ACT_MISSED:
-            print("ResponseAckMemberCanceled Push received...")
+            print("notify not Implemented Push received...")
             sp.notifyNotImplemented(strTitle, strBody, strSeqPlanElem)
        
         default:

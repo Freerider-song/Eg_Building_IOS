@@ -32,8 +32,19 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         
         let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
         
-        if (response.notification.request.identifier == "notifyNotImplemented" ||  response.notification.request.identifier == "notifyAlarm") {
+        if (response.notification.request.identifier == "notifyNotImplemented"){
             
+            if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmViewController") as? AlarmListViewController,
+                let navController = rootViewController as? UINavigationController{
+                
+                navController.pushViewController(view, animated: true)
+            }
+        } else if response.notification.request.identifier == "notifyAlarm" {
+            if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmListViewController") as? AlarmListViewController,
+                let navController = rootViewController as? UINavigationController{
+                
+                navController.pushViewController(view, animated: true)
+            }
         }
             
             //action에서는 뷰 전환 안되나/
@@ -45,11 +56,7 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
                 
             case UNNotificationDefaultActionIdentifier:
                 print("Open Action")
-                if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmListViewController") as? AlarmListViewController,
-                    let navController = rootViewController as? UINavigationController{
-                    
-                    navController.pushViewController(view, animated: true)
-                }
+                
                 
             case "REQUEST_DECLINE_ACTION":
                 print("Request Declined")
@@ -57,12 +64,7 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
             
             case "EXECUTE_ACTION":
                 print("Execute Button clicked..")
-                
-                if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmViewController") as? AlarmListViewController,
-                    let navController = rootViewController as? UINavigationController{
-                    
-                    navController.pushViewController(view, animated: true)
-                }
+               
                 
             default:
                 print("default")

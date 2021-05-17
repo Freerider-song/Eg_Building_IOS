@@ -69,7 +69,7 @@
                                     <constraint firstAttribute="height" constant="55" id="pGE-8m-Tej"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 총 50건" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H72-pW-Ufx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 총 30건" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H72-pW-Ufx">
                                 <rect key="frame" x="296" y="75" width="63" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -249,30 +249,37 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlarmCheckCell" id="orL-Uf-Uei" customClass="AlarmCheckCell" customModule="EgBuilding" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="24.5" width="296" height="36.5"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="296" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="orL-Uf-Uei" id="lRg-Uo-gI5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="36.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW3-nn-qOp">
-                                                            <rect key="frame" x="0.0" y="3" width="296" height="30.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <state key="normal" title="2층 에어컨을 꺼주세요">
-                                                                <color key="titleColor" name="gray"/>
-                                                            </state>
-                                                        </button>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked_checkbox.png" translatesAutoresizingMaskIntoConstraints="NO" id="kpz-MT-mCq">
+                                                            <rect key="frame" x="16" y="12" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="JMi-ck-sIV"/>
+                                                                <constraint firstAttribute="height" constant="20" id="TT4-Rt-sKv"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조리가 끝난 전기밥솥 콘센트를 뽑아주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGn-D7-N1u">
+                                                            <rect key="frame" x="44" y="13.5" width="234" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="hW3-nn-qOp" secondAttribute="bottom" constant="3" id="7YH-MN-xyh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="hW3-nn-qOp" secondAttribute="trailing" id="YHN-j5-nH2"/>
-                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="centerY" secondItem="lRg-Uo-gI5" secondAttribute="centerY" id="k2r-dD-rDO"/>
-                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="top" secondItem="lRg-Uo-gI5" secondAttribute="top" constant="3" id="lcx-l8-Gr6"/>
-                                                        <constraint firstItem="hW3-nn-qOp" firstAttribute="leading" secondItem="lRg-Uo-gI5" secondAttribute="leading" id="rab-Ry-FJA"/>
+                                                        <constraint firstItem="kpz-MT-mCq" firstAttribute="centerY" secondItem="lRg-Uo-gI5" secondAttribute="centerY" id="Lfq-YX-U3Y"/>
+                                                        <constraint firstItem="mGn-D7-N1u" firstAttribute="centerY" secondItem="lRg-Uo-gI5" secondAttribute="centerY" id="PDa-dI-BnY"/>
+                                                        <constraint firstItem="mGn-D7-N1u" firstAttribute="leading" secondItem="kpz-MT-mCq" secondAttribute="trailing" constant="8" symbolic="YES" id="cI9-eT-ZTq"/>
+                                                        <constraint firstItem="kpz-MT-mCq" firstAttribute="leading" secondItem="lRg-Uo-gI5" secondAttribute="leadingMargin" id="f5D-O4-6eb"/>
+                                                        <constraint firstItem="kpz-MT-mCq" firstAttribute="leading" secondItem="lRg-Uo-gI5" secondAttribute="leadingMargin" id="xYn-eo-vTf"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="btnCheckBox" destination="hW3-nn-qOp" id="RyZ-BH-1Lg"/>
+                                                    <outlet property="ivCheckbox" destination="kpz-MT-mCq" id="o4d-ad-nCv"/>
+                                                    <outlet property="lbContent" destination="mGn-D7-N1u" id="vOa-V8-zAR"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -314,7 +321,8 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eGU-7c-x4J"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69006974180000002" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.24512744842366105" green="0.26884945956143469" blue="0.26884945956143469" alpha="0.6274728332923738" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" name="Pastel_blue"/>
                         <constraints>
                             <constraint firstItem="fXe-Hx-9a8" firstAttribute="leading" secondItem="eGU-7c-x4J" secondAttribute="leading" constant="24.5" id="eNa-aO-SZv"/>
                             <constraint firstItem="fXe-Hx-9a8" firstAttribute="centerX" secondItem="eGU-7c-x4J" secondAttribute="centerX" id="k2W-Ba-5Us"/>
@@ -349,6 +357,7 @@
         <image name="btn_back_colored.png" width="100" height="100"/>
         <image name="btn_menu.png" width="512" height="512"/>
         <image name="circle_cyan_dark.png" width="72" height="72"/>
+        <image name="unchecked_checkbox.png" width="50" height="50"/>
         <namedColor name="Dark_cyan">
             <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -360,9 +369,6 @@
         </namedColor>
         <namedColor name="Pastel_blue">
             <color red="0.88627450980392153" green="0.9882352941176471" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gray">
-            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
