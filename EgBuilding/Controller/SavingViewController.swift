@@ -95,7 +95,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true,self)
+        CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true, self)
         
         
     }
@@ -105,6 +105,10 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         print(" 테이블 뷰 갯수 왜 안나옴" + String(alMeterGross.count))
         return alMeterGross.count
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -558,7 +562,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             
             //self.tableViewHeight?.constant = self.tableView.contentSize.height
             
-            tableView.endUpdates()
+            tableView.endUpdates() //이거 지우면 테이블뷰가 안뜨는 현상 발ㅆ
             
         default:
             print("Saving: ERROR!")
@@ -622,7 +626,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
 
         txtDateTo.text = CaApplication.m_Info.dfyyyyMMddStd.string(from: datePicker.date)
         txtDateFrom.text = CaApplication.m_Info.dfyyyyMMddStd.string(from: datePickerFrom.date)
-        
+        //첫번쨰로 txtDateTo의 값을 바꿨을때 txtDateFrom의 날짜가 오늘날짜로 같이 바뀌는 문제가 발생중
         strDateTo = CaApplication.m_Info.dfyyyyMMdd.string(from: datePicker.date)
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: datePickerFrom.date)
         

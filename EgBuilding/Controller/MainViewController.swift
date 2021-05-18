@@ -38,6 +38,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     override func layoutSubviews() {
         
         self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
+        tvCheckList.reloadData()
         print("checklistheight 조정")
         super.layoutSubviews()
     }
@@ -54,9 +55,11 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         Cell.lbContent.text = act.strActContent
         
         if act.bChecked {
+            print("act 이름: \(act.strActContent)는 체크되어있음!" )
             Cell.ivCheckbox.image = UIImage(named: "checked_checkbox.png")
         }
         else {
+            print("act 이름: \(act.strActContent)는 체크 안되어있음! ")
             Cell.ivCheckbox.image = UIImage(named: "unchecked_checkbox.png")
         }
       
@@ -226,26 +229,26 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
           // call the subscribeTapped method when tapped
         Cell.btnSavingResult.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
 
-        print("지금조치하기")
+        //print("지금조치하기")
         
     }
     else if (!plan.bAllChecked && plan.nHourTo <= nNow) {
         Cell.btnSavingResult.setTitle("조치미흡", for: .normal)
         Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        print("조치미흡")
+        //print("조치미흡")
     }
     else if (plan.nHourFrom > nNow) {
         Cell.btnSavingResult.setTitle("", for: .normal)
         //Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        print("미래 절감조치")
+        //print("미래 절감조치")
     }
     else {
         Cell.btnSavingResult.setTitle("조치완료", for: .normal)
         Cell.btnSavingResult.setTitleColor(UIColor.black, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        print("조치완료")
+        //print("조치완료")
     }
     
     if plan.nHourFrom > nNow {

@@ -89,10 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
      
         let nPushType = Int(strPushType)
-       
-      
-        
-        print("push : title=\(strTitle) body=\(strBody)")
+        let nSeqPlanElem = Int(strSeqPlanElem)
         
        
         let sp: ServicePush = ServicePush()
@@ -111,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case m_GlobalEngine.ALARM_PLAN_ELEM_END, m_GlobalEngine.ALARM_PLAN_ELEM_BEGIN,
              m_GlobalEngine.ALARM_SAVE_ACT_MISSED:
             print("notify not Implemented Push received...")
-            sp.notifyNotImplemented(strTitle, strBody, strSeqPlanElem)
+            sp.notifyNotImplemented(strTitle, strBody, nSeqPlanElem!)
        
         default:
             print("Unknown push type: " + strPushType)
@@ -146,4 +143,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
 

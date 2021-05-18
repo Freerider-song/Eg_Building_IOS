@@ -12,6 +12,8 @@ import UserNotificationsUI
 
 
 public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
+    
+    var savePlanElem: Int = 0
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                    willPresent notification: UNNotification,
@@ -20,6 +22,7 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
        }
     
     //notification action 관련 함수
+    // This function will be called right after user tap on the notification
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                     didReceive response: UNNotificationResponse,
                                     withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -34,49 +37,55 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         
         if (response.notification.request.identifier == "notifyNotImplemented"){
             
-            if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmViewController") as? AlarmListViewController,
-                let navController = rootViewController as? UINavigationController{
-                
-                navController.pushViewController(view, animated: true)
-            }
+            let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
+            print("didReceive: savePlanElem is \(savePlanElem)")
+            view?.nSeqPlanElem = savePlanElem
+            view?.modalPresentationStyle = .overCurrentContext
+            rootViewController.present(view!, animated: true, completion: nil)
+            
         } else if response.notification.request.identifier == "notifyAlarm" {
-            if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmListViewController") as? AlarmListViewController,
-                let navController = rootViewController as? UINavigationController{
+            if  let view = storyboard.instantiateViewController(withIdentifier: "AlarmListViewController") as? AlarmListViewController {
                 
-                navController.pushViewController(view, animated: true)
+                view.modalPresentationStyle = .fullScreen
+                rootViewController.present(view, animated: true, completion: nil)
             }
         }
             
-            //action에서는 뷰 전환 안되나/
+        //action에서는 뷰 전환 안되나/
+        
+        switch response.actionIdentifier {
+        
+        case UNNotificationDismissActionIdentifier:
+            print("Dismiss Action")
             
-            switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier:
+            print("Open Action")
             
-            case UNNotificationDismissActionIdentifier:
-                print("Dismiss Action")
-                
-            case UNNotificationDefaultActionIdentifier:
-                print("Open Action")
-                
-                
-            case "REQUEST_DECLINE_ACTION":
-                print("Request Declined")
-       
             
-            case "EXECUTE_ACTION":
-                print("Execute Button clicked..")
-               
-                
-            default:
-                print("default")
-            }
-            completionHandler()
+        case "REQUEST_DECLINE_ACTION":
+            print("Request Declined")
+   
+        
+        case "EXECUTE_ACTION":
+            print("Execute Button clicked..")
+           
+            
+        default:
+            print("default")
+        }
+        // tell the app that we have finished processing the user’s action / response
+        completionHandler()
         
     }
     
     
-    public func notifyNotImplemented(_ strTitle: String, _ strBody: String, _ nSeqPlanElem: String){
+    public func notifyNotImplemented(_ strTitle: String, _ strBody: String, _ nSeqPlanElem: Int){
         
         // Define the custom actions.
+        
+        savePlanElem = nSeqPlanElem
+        print("ServicePush: savePlanElem is \(savePlanElem)")
+        
         let acceptAction = UNNotificationAction(identifier: "EXECUTE_ACTION",
               title: "조치하기",
               options: UNNotificationActionOptions(rawValue: 0))

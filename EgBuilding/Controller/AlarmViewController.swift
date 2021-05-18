@@ -40,6 +40,8 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
         tableView.estimatedRowHeight = 45.0
         
+        print("Alarm: alPlan 갯수: \(CaApplication.m_Info.m_alPlan.count) and nSeqPlanElem: \(nSeqPlanElem)")
+        
         if nSeqPlanElem > 0 {
             for i in 0..<CaApplication.m_Info.m_alPlan.count {
                 if CaApplication.m_Info.m_alPlan[i].nSeqPlanElem == nSeqPlanElem {

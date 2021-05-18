@@ -156,7 +156,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
             let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
             view?.nSeqPlanElem = alarm.nSeqSavePlanElem
-            view?.modalPresentationStyle = .popover
+            view?.modalPresentationStyle = .fullScreen
             self.present(view!, animated: false, completion: nil)
         }
         
