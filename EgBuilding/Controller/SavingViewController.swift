@@ -16,6 +16,8 @@ class SavingResultCell : UITableViewCell {
     @IBOutlet weak var lbUsagePlan: UILabel!
     @IBOutlet weak var roundView: UIView!
     
+    
+    
 }
 
 extension Date {
@@ -95,6 +97,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(_ animated: Bool) {
         CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true,self)
         
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,11 +142,12 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
    
     
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
         self.tableViewHeight?.constant = self.tableView.contentSize.height
     }
     
+
  
  
     
@@ -193,20 +197,26 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         TotalrightAxis.enabled = false
         
         let llRef = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhRefForAllMeter) , label: "기준")
-        llRef.lineWidth = 0.5
+        let llRefHo = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhRefForAllMeter) , label: "")
+        llRef.lineWidth = 1
         llRef.lineColor = .red
+        llRefHo.lineWidth = 1
+        llRefHo.lineColor = .red
         //llRef.lineDashLengths = [8.0]
         llRef.labelPosition = .topRight
         chartUsageTotal.leftAxis.addLimitLine(llRef)
-        chartUsage.leftAxis.addLimitLine(llRef)
+        chartUsage.leftAxis.addLimitLine(llRefHo)
 
         let llGoal = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhPlanForAllMeter), label: "목표")
-        llGoal.lineWidth = 0.5
+        let llGoalHo = ChartLimitLine(limit: round(CaApplication.m_Info.m_dKwhPlanForAllMeter), label: "")
+        llGoal.lineWidth = 1
         llGoal.lineColor = .blue
+        llGoalHo.lineWidth = 1
+        llGoalHo.lineColor = .blue
         //llGoal.lineDashLengths = [8.0]
         llGoal.labelPosition = .topRight
         chartUsageTotal.leftAxis.addLimitLine(llGoal)
-        chartUsage.leftAxis.addLimitLine(llGoal)
+        chartUsage.leftAxis.addLimitLine(llGoalHo)
        
     
         // x축 값
@@ -318,7 +328,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         SavingAct.setColors(colors, alpha: 1.0)
         
         let savingActChartData = BarChartData(dataSet: SavingAct)
-        
+        chartSavingAction.animate(yAxisDuration: 2.5)
         chartSavingAction.data = savingActChartData
         
         //UsageTotal Bar Chart
@@ -357,7 +367,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         let usageTotalChartData = BarChartData(dataSet: usageTotal)
         
         chartUsageTotal.leftAxis.axisMaximum = maxYValue
-        
+        chartUsageTotal.animate(yAxisDuration: 2.5)
         chartUsageTotal.data = usageTotalChartData
     }
     
@@ -417,10 +427,10 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             let currData = BarChartDataEntry(x: xValue, y: round((usage.dKwh)*1000)/1000)
        
             if(usage.dKwh<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
-                colors.append(UIColor(named: "Pastel_green")!)
+                colors.append(UIColor.blue)
             }
             else if usage.dKwh<CaApplication.m_Info.m_dKwhRefForAllMeter {
-                colors.append(UIColor(named: "EG_Chart_prev")!)
+                colors.append(UIColor(named: "EG_Dark_yellow")!)
             }
             else if usage.dKwh >= CaApplication.m_Info.m_dKwhRefForAllMeter{
                 colors.append(UIColor.red)

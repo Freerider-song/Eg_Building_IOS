@@ -160,10 +160,10 @@
                                         </constraints>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWR-bd-hQU">
-                                        <rect key="frame" x="0.0" y="885" width="355" height="600"/>
+                                        <rect key="frame" x="0.0" y="885" width="355" height="700"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="600" id="I7M-yH-7A0"/>
+                                            <constraint firstAttribute="height" constant="700" id="I7M-yH-7A0"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SavingResultCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavingResultCell" rowHeight="119" id="UYJ-nk-Mf2" customClass="SavingResultCell" customModule="EgBuilding" customModuleProvider="target">
