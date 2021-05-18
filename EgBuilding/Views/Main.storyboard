@@ -206,7 +206,8 @@
                                                                         <constraint firstAttribute="width" constant="100" id="Bd7-lZ-iwc"/>
                                                                         <constraint firstAttribute="height" constant="40" id="vV2-56-dC1"/>
                                                                     </constraints>
-                                                                    <state key="normal" title="조치완료"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <state key="normal" title="지금조치하기"/>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>

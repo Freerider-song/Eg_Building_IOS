@@ -431,7 +431,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             let currData = BarChartDataEntry(x: xValue, y: round((usage.dKwh)*1000)/1000)
        
             if(usage.dKwh<CaApplication.m_Info.m_dKwhPlanForAllMeter) {
-                colors.append(UIColor.blue)
+                colors.append(UIColor(named: "Pastel_green")!)
             }
             else if usage.dKwh<CaApplication.m_Info.m_dKwhRefForAllMeter {
                 colors.append(UIColor(named: "EG_Dark_yellow")!)

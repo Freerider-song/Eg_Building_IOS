@@ -262,7 +262,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     else {
         if plan.dKwhReal <= plan.dKwhPlan{
-            print("꼐측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
+            print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
             if plan.nHourTo > nNow {
                 //Cell.roundView.layer.backgroundColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")

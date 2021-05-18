@@ -33,6 +33,7 @@ public class CaInfo {
     public var m_nResultCode: Int = 0
     public var m_nSeqAdmin: Int = 0
     public var m_nTeamType: Int = 0
+    public var nPushPlanElem: Int = 0
 
     public var m_strAdminName: String = ""
     public var m_strAdminPhone: String = ""

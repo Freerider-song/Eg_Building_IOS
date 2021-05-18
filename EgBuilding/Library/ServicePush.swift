@@ -13,7 +13,7 @@ import UserNotificationsUI
 
 public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
     
-    var savePlanElem: Int = 0
+
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter,
                                    willPresent notification: UNNotification,
@@ -38,9 +38,9 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         if (response.notification.request.identifier == "notifyNotImplemented"){
             
             let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
-            print("didReceive: savePlanElem is \(savePlanElem)")
-            view?.nSeqPlanElem = savePlanElem
-            view?.modalPresentationStyle = .overCurrentContext
+            print("didReceive: savePlanElem is \(CaApplication.m_Info.nPushPlanElem)")
+            view?.nSeqPlanElem = CaApplication.m_Info.nPushPlanElem
+            view?.modalPresentationStyle = .fullScreen
             rootViewController.present(view!, animated: true, completion: nil)
             
         } else if response.notification.request.identifier == "notifyAlarm" {
@@ -83,9 +83,9 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         
         // Define the custom actions.
         
-        savePlanElem = nSeqPlanElem
-        print("ServicePush: savePlanElem is \(savePlanElem)")
-        
+        CaApplication.m_Info.nPushPlanElem = nSeqPlanElem
+        print("ServicePush: savePlanElem is \(CaApplication.m_Info.nPushPlanElem)")
+        /*
         let acceptAction = UNNotificationAction(identifier: "EXECUTE_ACTION",
               title: "조치하기",
               options: UNNotificationActionOptions(rawValue: 0))
@@ -105,11 +105,12 @@ public class ServicePush: NSObject , UNUserNotificationCenterDelegate{
         // Register the notification type.
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.setNotificationCategories([meetingInviteCategory])
+        */
         
         let push = UNMutableNotificationContent()
         push.title = strTitle
         push.body = strBody
-        push.categoryIdentifier = "EXECUTE"
+        //fggggpush.categoryIdentifier = "EXECUTE"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "notifyNotImplemented", content: push, trigger: trigger)

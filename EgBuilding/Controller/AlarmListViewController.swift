@@ -34,7 +34,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
         tableView.layer.cornerRadius = 10
         
-        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
+        //CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
     }
     
     //Alarm에서 절감조치하고 돌아올 시 viewdidappear 호출 -> 새로고침
@@ -43,7 +43,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
         
-        CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, today, false, self)
+        CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, today, true, self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

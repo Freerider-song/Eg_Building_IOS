@@ -71,6 +71,11 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         getUsageMonthly(year, month, false)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+     
+        getUsageMonthly(year, month, true)
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

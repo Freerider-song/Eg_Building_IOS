@@ -75,9 +75,8 @@ class UsageDailyViewController: CustomUIViewController, UITextViewDelegate, UIPi
         // 따라서, View가 Load될 때는 WaitDialog를 False로 하고, 이후 재호출시에는 True로 한다.
         getUsageDaily(year, month, day, false)
 
-        
     }
-    
+   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
