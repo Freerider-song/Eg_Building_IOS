@@ -15,18 +15,14 @@ class ChangePasswordInputViewController: CustomUIViewController, UITextFieldDele
     @IBOutlet var txtPwConfirm: UITextField!
     
     var strId: String = ""
-    
-    //let m_Pref : CaPref = CaPref()
-    
-    
-    
+
     var restoreFrameValue : CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewSetting()
 
-     
         txtId.delegate = self
         txtPwNew.delegate = self
         txtPwConfirm.delegate = self

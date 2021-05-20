@@ -32,6 +32,9 @@ public class CaEngine{
     public let CB_GET_BLD_ALARM_LIST = 1017;
     public let CB_SET_SAVE_ACT_BEGIN = 1018;
     public let CB_SET_SAVE_ACT_END = 1019;
+    public let CB_GET_UNREAD_BLD_NOTICE_COUNT = 1020
+    public let CB_GET_UNREAD_BLD_ALARM_COUNT = 1021
+    
 
 
 
@@ -78,7 +81,7 @@ public class CaEngine{
     func CheckBldLogin(_ AdminId: String, _ Password: String, _ Os:String, _ DeviceId: String, _ Version: String, _ viewControl: AnyObject){
         print("ENGINE", "Id=" + AdminId + ", Password=" + Password)
 
-        let Arg = CaArg("CheckBldLogin", NO_CMD_ARGS)
+        let Arg = CaArg("CheckBldLogin", NO_CMD_ARGS) //arg.command = "CheckBldLogin", 
         Arg.addArg("AdminId", AdminId)
         Arg.addArg("Password", Password)
         Arg.addArg("Os", Os)
@@ -247,6 +250,24 @@ public class CaEngine{
         Arg.addArg("yyyyMMdd", yyyyMMdd)
 
         executeCommand(Arg, CB_SET_SAVE_ACT_END, bShowWaitDialog, viewControl);
+    }
+    
+    func GetUnreadBldNoticeCount(_ SeqAdmin: Int, _ bShowWaitDialog: Bool, _ viewControl: AnyObject){
+
+        let Arg = CaArg("GetUnreadBldNoticeCount", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+  
+
+        executeCommand(Arg, CB_GET_UNREAD_BLD_NOTICE_COUNT, bShowWaitDialog, viewControl);
+    }
+    
+    func GetUnreadBldAlarmCount(_ SeqAdmin: Int, _ bShowWaitDialog: Bool, _ viewControl: AnyObject){
+
+        let Arg = CaArg("GetUnreadBldAlarmCount", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+  
+
+        executeCommand(Arg, CB_GET_UNREAD_BLD_ALARM_COUNT, bShowWaitDialog, viewControl);
     }
     
 }

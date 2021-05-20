@@ -28,6 +28,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     var lvAct : Array<CaAct> = Array()
     var plan : CaPlan = CaPlan()
     
+    //tableViewCell 안에 tableView를 넣어 관리하고 싶을 때
     override func awakeFromNib() {
         super.awakeFromNib()
         tvCheckList.delegate = self
@@ -37,10 +38,13 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     
     override func layoutSubviews() {
         
+        //super.layoutSubView()를 먼저 실행하게 될 경우 오류 발생.
+        super.layoutSubviews()
         self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
         tvCheckList.reloadData()
+        //m_Main.tvSavingList.reloadData() 실패
         print("checklistheight 조정")
-        super.layoutSubviews()
+    
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,11 +59,11 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         Cell.lbContent.text = act.strActContent
         
         if act.bChecked {
-            print("act 이름: \(act.strActContent)는 체크되어있음!" )
+           
             Cell.ivCheckbox.image = UIImage(named: "checked_checkbox.png")
         }
         else {
-            print("act 이름: \(act.strActContent)는 체크 안되어있음! ")
+         
             Cell.ivCheckbox.image = UIImage(named: "unchecked_checkbox.png")
         }
       
@@ -67,9 +71,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
         let nNow: Int = Int(strNow)!
         
-        if plan.nHourFrom > nNow {
-            
-         
+        if plan.nHourFrom > nNow { //아직 다가오지 않은 미래 절감조치의 경우
             Cell.backgroundColor = UIColor.white
         }
         else {
@@ -86,7 +88,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
             }
         }
         
-        print("tvChecklist 로딩 완료") //색 입힌 후 tvchecklist 가 로딩된다.
+        print("Main: tvChecklist Loaded...") //색 입힌 후 tvchecklist 가 로딩된다.
         
         return Cell
         }
@@ -127,25 +129,22 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         
         // tableView의 rowHeight는 유동적일 수 있다
         tvSavingList.rowHeight = UITableView.automaticDimension
-        // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
+        // tableView의 계산된 높이 값은 290이다. 즉 Default Height이다.
         tvSavingList.estimatedRowHeight = 290.0
-             
-        //print("tvSavingList rowheight 조정")
-
+        
+        
     }
     
+ 
     override func viewDidAppear(_ animated: Bool) {
-       
+    
+        //절감 조치 이후에 새로고침 되어야 하므로 viewDidAppear에서 API 호출
         let date = Date()
         let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
+        //view가 다 load되어 있는 상태이므로 bshowWating을 true로 하여도 view가 dismiss되지 않는다.
         CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, true, self)
-        
-        tvSavingList.reloadData()
+   
     }
-    
-    
-    
-
     
     func initChart(){
         
@@ -162,16 +161,12 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         let needleValue = (kwhReal * (100.0)/kwhMax)
         
         let actRatio = Int(100 * Double(String(format: "%.2f", (Double(CaApplication.m_Info.m_nActCountWithHistory)/Double(CaApplication.m_Info.m_nActCount))))!)
-        
-        print("needle value :"  + String(needleValue))
-        print("area: " + strArea1 + "," + strArea2 + "," + strArea3)
-        //gaugeView.areas =  "20.5,29.5,50"
+       
+        //이 Tool은 area를 다음과 같이 문자열로 표현해야 작동한다.
         gaugeView.areas = strArea1 + "," + strArea2 + "," + strArea3
-        //gaugeView.needleValue = 55.5
         gaugeView.needleValue = CGFloat(needleValue)
         
         lblKwhReal.text = String(kwhReal)
-        
         lblKwhPlan.text = "절감목표(" + String(kwhPlan) + ")"
         lblKwhRef.text = "절감기준(" + String(kwhRef) + ")"
         
@@ -180,7 +175,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("플랫 갯수 " + String(CaApplication.m_Info.m_alPlan.count))
+        print("Main: alPlan count is " + String(CaApplication.m_Info.m_alPlan.count))
         return CaApplication.m_Info.m_alPlan.count
        
        }
@@ -199,19 +194,10 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
     Cell.roundView.layer.cornerRadius = 15
     
-    //Cell.tvCheckList.dataSource = plan.alAct as? UITableViewDataSource
+    // Cell에 lvAct, plan 선언 후 Cell안에 있는 tableView에서 사용할 의도
     Cell.lvAct = plan.alAct
     Cell.plan = plan
-    
-    /*
-    for i in 0..<plan.alAct.count {
-        let act = plan.alAct[i]
-        if !act.bChecked {
-            plan.bAllChecked = false
-            break
-        }
-    }
-    */
+
     let date = Date()
     
     let strNow: String = CaApplication.m_Info.dfHH.string(from: date)
@@ -224,39 +210,32 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         Cell.btnSavingResult.setTitleColor(UIColor.white, for: .normal)
         plan.bExecute = true
         
+        //조치완료 등 테이블뷰 셀 안에 있는 버튼 클릭 시 Obj-c 함수가 실행된다
         Cell.btnSavingResult.tag = indexPath.row
-          
-          // call the subscribeTapped method when tapped
         Cell.btnSavingResult.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-
-        //print("지금조치하기")
         
     }
     else if (!plan.bAllChecked && plan.nHourTo <= nNow) {
         Cell.btnSavingResult.setTitle("조치미흡", for: .normal)
         Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        //print("조치미흡")
+
     }
     else if (plan.nHourFrom > nNow) {
         Cell.btnSavingResult.setTitle("", for: .normal)
-        //Cell.btnSavingResult.setTitleColor(UIColor.red, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        //print("미래 절감조치")
+   
     }
     else {
         Cell.btnSavingResult.setTitle("조치완료", for: .normal)
         Cell.btnSavingResult.setTitleColor(UIColor.black, for: .normal)
         Cell.btnSavingResult.backgroundColor = UIColor.clear
-        //print("조치완료")
+
     }
     
     if plan.nHourFrom > nNow {
-        
-        //Cell.roundView.layer.backgroundColor = CGColor(red: 211, green: 211, blue: 211, alpha: 1) //light gray
-        //Cell.roundView.backgroundColor = UIColor(named: "Light_gray")
+        print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
         Cell.roundView.layer.borderWidth = 2
-        //Cell.roundView.layer.borderColor = CGColor(red: 211, green: 211, blue: 211, alpha: 1) //light gray
         Cell.roundView.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1) //light gray
         Cell.roundView.backgroundColor = UIColor.white
     }
@@ -264,40 +243,41 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         if plan.dKwhReal <= plan.dKwhPlan{
             print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
             if plan.nHourTo > nNow {
-                //Cell.roundView.layer.backgroundColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
+            
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
                 Cell.roundView.layer.borderWidth = 2
                 Cell.roundView.layer.borderColor = CGColor(red: 0, green: 128/255, blue: 0, alpha: 1) // green
                 
             }
             else{
-            
+                
                 Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
             }
         }
         else if plan.dKwhReal <= plan.dKwhRef{
+            print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
             if plan.nHourTo > nNow {
-                //Cell.roundView.layer.backgroundColor = CGColor(red: 253, green: 253, blue: 150, alpha: 1) // pastel yellow
+               
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
                 Cell.roundView.layer.borderWidth = 2
                 Cell.roundView.layer.borderColor = CGColor(red: 128/255, green: 128/255, blue: 0, alpha: 1) // olive
             }
             else{
-                //Cell.roundView.layer.backgroundColor = CGColor(red: 253, green: 253, blue: 150, alpha: 1) // pastel yellow
+                
                 Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
             }
         }
         else {
             if plan.nHourTo > nNow {
-                //Cell.roundView.layer.backgroundColor = CGColor(red: 255, green: 154, blue: 162, alpha: 1) // pastel red
+                
                 Cell.roundView.layer.borderWidth = 2
                 Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 0, blue: 0, alpha: 1) // red
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_red")
             }
             else{
-                //Cell.roundView.layer.backgroundColor = CGColor(red: 255, green: 154, blue: 162, alpha: 1) // pastel red
+                
                 Cell.roundView.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_red")
             }
@@ -305,10 +285,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     
     Cell.tvCheckList.backgroundColor = Cell.roundView.backgroundColor
-    
-    
-    
-    
+ 
     return Cell
     
    }
@@ -322,37 +299,22 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         view?.modalPresentationStyle = .fullScreen
         self.present(view!, animated: false, completion: nil)
             
-  
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //선택된 셀 음영 제거
         tableView.deselectRow(at: indexPath, animated: true)
-        //let Cell = tableView.dequeueReusableCell(withIdentifier: "SavingCell", for: indexPath) as! SavingCell
-        /*
-        let plan = CaApplication.m_Info.m_alPlan[indexPath.row]
-        
-        if plan.bExecute {
-            let storyboard = UIStoryboard(name: "Alarm", bundle: nil)
-            let view = storyboard.instantiateViewController(identifier: "AlarmViewController") as? AlarmViewController
-            view?.nSeqPlanElem = plan.nSeqPlanElem
-            view?.modalPresentationStyle = .overCurrentContext
-            self.present(view!, animated: false, completion: nil)
-        }
-       
-        
-        tableView.reloadData()
- */
     }
     
- 
     
     override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
+
         self.SavingListHeight?.constant = self.tvSavingList.contentSize.height
-       print("tvsavinglist 높이 맞추기")
+        // Reload 해야 오류가 나지 않는다.
+       
         tvSavingList.reloadData()
-        print("viewdidlayoutsubview에서 tvsavinglist reload")
+        print("viewDidlayoutsubview: tvsavinglist reloaded...")
     }
     
     override func onResult(_ Result: CaResult) {
@@ -386,16 +348,10 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
 
             CaApplication.m_Info.setPlanList(jaPlan)
             
-            // tableView의 rowHeight는 유동적일 수 있다
-            tvSavingList.rowHeight = UITableView.automaticDimension
-            // tableView의 계산된 높이 값은 68이다. 즉 Default Height이다.
-            tvSavingList.estimatedRowHeight = 290.0
-            
             tvSavingList.reloadData()
 
-            
             initChart()
-            print("HOME: getsaveresultdaily called...")
+            print("Main: getSaveResultDaily called...")
             
                                 
         default:
@@ -404,4 +360,5 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
 
 }
+
 

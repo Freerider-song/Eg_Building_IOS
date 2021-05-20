@@ -26,7 +26,6 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
     
     let toast: Toast = Toast()
     
-    //let m_Pref: CaPref = CaPref()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,18 +54,12 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         // ID TextField 외관 둥글게 설정 + 회색
         TxtId.layer.cornerRadius = 15
         TxtId.layer.borderWidth = 2.0
-        
-       
         TxtId.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
-        
-        
         
         // PW TextField 설정
         TxtPassword.layer.cornerRadius = 15
         TxtPassword.layer.borderWidth = 2.0
-        
         TxtPassword.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
-       
         
         // Login Button 둥글게
         BtnLogin.layer.cornerRadius = 15
@@ -76,11 +69,9 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         BtnLogin.layer.shadowRadius = 1 // 반경
         BtnLogin.layer.shadowOpacity = 0.3 // alpha값
         
- 
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
         lblVersion.text = version
-
         
         // 키보드 입력
         TxtId.delegate = self
@@ -130,14 +121,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         print("Push key: " + CaApplication.m_Info.m_strPushId)
     }
     
-    // Alert 설정, 알람 띄우는 역할
-    override func alert(title : String, message : String, text : String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: text, style: UIAlertAction.Style.cancel, handler: nil)
-        alertController.addAction(okButton)
-        return self.present(alertController, animated: true, completion: nil)
-    }
-    
+
     // API 응답했을 때 호출됨
     override func onResult(_ Result: CaResult) {
         
@@ -149,8 +133,6 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                 let nResultCode = jo["result_code"]! as! Int
                 if  nResultCode == 1 {
                     print("Login: Login Success!")
-                    
-                   
                     
                     // 로그인 정보 저장
                     m_Pref.setValue(m_GlobalEngine.PREF_MEMBER_ID , m_strId)
@@ -176,12 +158,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
             case m_GlobalEngine.CB_GET_BLD_ADMIN_INFO:
                 let jo:[String:Any] = Result.JSONResult
                 let jaListSite: Array<[String:Any]> = Result.JSONResult["list_site"]! as! Array<[String : Any]>
-                
-                /*CaApplication.m_Info.dtCreated = jo["time_created"] as? Date
-                CaApplication.m_Info.dtModified = jo["time_modified"] as? Date
-                CaApplication.m_Info.dtLastLogin = jo["time_last_login"] as? Date
-                CaApplication.m_Info.dtChangePassword = joMemberInfo["time_change_password"] as? Date*/
-                
+   
                 CaApplication.m_Info.m_strAdminName = jo["admin_name"] as! String
                 CaApplication.m_Info.m_strAdminPhone = jo["admin_phone"] as! String
                 CaApplication.m_Info.m_nUnreadNoticeCount = jo["unread_notice_count"] as! Int
@@ -222,36 +199,20 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                     CaApplication.m_Info.m_nReadDay = joListSite["read_day"]! as! Int
                     CaApplication.m_Info.m_nSeqSavePlanActive = joListSite["seq_save_plan_active"]! as! Int
                 }
-                
-                
-                
+
                 print("Login: 성공적으로 불렸습니다")
-                
-                /*
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let view: CustomUIViewController = storyboard.instantiateViewController(identifier: "MainViewController")
-                view.modalPresentationStyle = .fullScreen
-                self.present(view, animated: true, completion: nil)
-                */
                 
                 let date = Date()
                 let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
                 
                 CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, false, self)
-                
-                //done(sender: self)
-                
-                
+
             break
                 
 
         case m_GlobalEngine.CB_GET_SAVE_RESULT_DAILY:
             
             let jo:[String: Any] = Result.JSONResult
-            //print(jo["list_plan_elem"])
-            
-            //let jaPlan: [String: Any] = jo["list_plan_elem"] as! [String: Any]
             let joSave: [String: Any] = jo["save_result_daily"] as! [String: Any]
             let jaPlan: Array<[String: Any]> = joSave["list_plan_elem"] as! Array<[String: Any]>
             
@@ -295,7 +256,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         
         //그 전에 쌓여있던 뷰 모두 제거 후 루트뷰로 전환
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-        //self.dismiss(animated: true, completion: nil)
+     
     }
     
     

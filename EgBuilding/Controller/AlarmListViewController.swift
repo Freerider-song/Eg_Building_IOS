@@ -34,15 +34,15 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
         tableView.layer.cornerRadius = 10
         
-        //CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
+
     }
     
     //Alarm에서 절감조치하고 돌아올 시 viewdidappear 호출 -> 새로고침
     override func viewDidAppear(_ animated: Bool) {
         
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
         
+        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
         CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, today, true, self)
     }
     
@@ -68,11 +68,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         myCell.lbTimeCreated.text = alarm.dtCreated
         
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        
-        //print("알림 날짜는 " + CaApplication.m_Info.dfyyyyMMdd.string(from: CaApplication.m_Info.dfStd.date(from: alarm.dtCreated)!) + " 오늘 날짜는 " + today)
-        
-        
-        
+    
         switch (alarm.nAlarmType) {
         case m_GlobalEngine.ALARM_SAVE_ACT_MISSED, m_GlobalEngine.ALARM_PLAN_ELEM_BEGIN, m_GlobalEngine.ALARM_PLAN_ELEM_END:
     
@@ -83,16 +79,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                 let plan = CaApplication.m_Info.m_alPlan[i]
                 
                 if(plan.nSeqPlanElem == alarm.nSeqSavePlanElem) {
-                    /*
-                    for j in 0..<plan.alAct.count {
-                        let act = plan.alAct[j]
-                        
-                        if (!act.bChecked) {
-                            plan.bAllChecked = false
-                            break
-                        }
-                    }*/
- 
+               
                     if plan.bAllChecked {
                         myCell.btnExecute.setTitle("조치 완료", for: .normal)
                         myCell.btnExecute.isEnabled = false
@@ -162,13 +149,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
         
     }
-    //tableview cell 높이 자동 지정
-    
-    /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }*/
-    
+
     func setAlarmReadStateToDb() {
         let strSeqAlarmList = CaApplication.m_Info.getAlarmReadListString()
         
@@ -213,15 +194,5 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }

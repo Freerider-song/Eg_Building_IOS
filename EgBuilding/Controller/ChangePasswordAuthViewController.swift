@@ -75,11 +75,9 @@ class ChangePasswordAuthViewController: CustomUIViewController, UITextFieldDeleg
         txtAuthCode.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
         
         btnRequest.layer.cornerRadius = 15
-        //btnRequest.layer.borderWidth = 2.0
         btnRequest.layer.masksToBounds = false
         
         btnAuthCheck.layer.cornerRadius = 15
-        //btnAuthCheck.layer.borderWidth = 2.0
         btnAuthCheck.layer.masksToBounds = false
     
         txtTimer.isHidden = true

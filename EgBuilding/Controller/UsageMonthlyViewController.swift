@@ -71,11 +71,6 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         getUsageMonthly(year, month, false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-     
-        getUsageMonthly(year, month, true)
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -146,7 +141,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         
         chartUsageMonthly.rightAxis.enabled = false
         
-        print("viewSetting accomplished...")
+        print("UsageMonthly: viewSetting completed...")
     }
     
     func prepareChartData(_ ja:Array<[String:Any]>){
@@ -173,7 +168,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
                     ca_meterUsage.dKwh = joUsage["kwh"] as! Double
                 }
                
-                print(String(ca_meterUsage.nUnit) + " 미터에 따른 kwh " + String(ca_meterUsage.dKwh))
+     
                 ca_meter.alMeterUsage.append(ca_meterUsage)
             }
             alMeter.append(ca_meter)
@@ -185,7 +180,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
     
     func setChart() {
         
-        print("Drawing Start...")
+        print("UsageMonthly: Drawing Start...")
         
         // (barWidth + barSpace) * 2 + groupSpace = 1
         let groupSpace = 0.4
@@ -194,13 +189,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         
         var kwhAllEntry: [BarChartDataEntry] = []
         var kwhMeterEntry: [BarChartDataEntry] = []
-       
-        // currDataEntry와 prevDataEntry에 데이터가 들어간 순서대로 Chart를 Draw함.
-        // 근데 Chart를 Draw할 때, 아래에서 위로 Draw함. 왜 이렇게 만들었는지는 모르지만 우리는 위에서부터 0시~23시 순서로
-        // Draw해야 하기에 Entry에 데이터를 넣는 순서를 바꿀 필요가 있음.
-        // 마찬가지로, DailyChartFormatter가 "(24-i)시" 를 리턴하는 이유임
-        
-        print("almeterusage는 대체?" + String(allMeter.alMeterUsage.count))
+
         let nCountUsage: Int = allMeter.alMeterUsage.count
         for i in 0..<nCountUsage {
             
@@ -275,7 +264,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         
         chartUsageMonthly.data = chartData
         
-        print("setChart Complished...")
+        print("UsageMonthly: setChart Completed...")
         
     }
     
@@ -292,7 +281,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
                 
                 let jaMeter: Array<[String:Any]> = jo["list_meter"] as! Array<[String:Any]>
                 let jaAllMeter: Array<[String:Any]> = jo["list_usage_for_all_meter"] as! Array<[String:Any]>
-                
+        
                 allMeter = CaMeter() //초기화
                 for usage in jaAllMeter {
                     let ca_usage: CaMeterUsage = CaMeterUsage()
@@ -303,7 +292,7 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
                     else{
                         ca_usage.dKwh = usage["kwh"] as! Double
                     }
-                    print(String(ca_usage.nUnit) + "미터에 따른 전체 kwh " + String(ca_usage.dKwh))
+           
                     allMeter.alMeterUsage.append(ca_usage)
                 }
                 
@@ -362,8 +351,6 @@ class UsageMonthlyViewController: CustomUIViewController, UITextViewDelegate, UI
         
         self.view.endEditing(true)
         
-        // 여기서는 ShowWaitDialog가 True임을 기억하기
-        //getUsageDaily(year, month, day, true)
     }
 
     @objc func cancelDatePicker(){

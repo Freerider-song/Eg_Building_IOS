@@ -45,19 +45,16 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         if nSeqPlanElem > 0 {
             for i in 0..<CaApplication.m_Info.m_alPlan.count {
                 if CaApplication.m_Info.m_alPlan[i].nSeqPlanElem == nSeqPlanElem {
-                    plan = CaApplication.m_Info.m_alPlan[i]
                     
+                    plan = CaApplication.m_Info.m_alPlan[i]
                     lbMeter.text = plan.strMeterDescr
                     lbSavingTime.text = "절감 시간  " + String(plan.nHourFrom) + "시 ~ " + String(plan.nHourTo) + "시"
                     lbKwhPlan.text = "절감 목표  " + String(plan.nPercentToSave) + " %  ( " + String(format: "%.1f", plan.dKwhPlan) + " kWh )"
-                    
-                    
                     
                 }
             }
         }
         
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,33 +73,13 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         }
         else {
             Cell.ivCheckbox.image = UIImage(named: "unchecked_checkbox.png")
-            /*
-            Cell.btnCheckBox.setImage(UIImage(named: "unchecked_checkbox.png"), for: .normal)
-            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
-            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)*/
+           
         }
-        
-        if indexPath.row == checkedRow {
-                //Cell.ivCheckbox.image = UIImage(named: "checked_checkbox.png")
-            }
+
         
         return Cell
     }
-    /*
-    @objc func checkboxTapped(_ sender: UIButton){
-      // use the tag of button as index
-        let act = plan.alAct[sender.tag]
-        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        
-        if !act.bChecked {
-            CaApplication.m_Engine.SetSaveActBegin(act.nSeqAct, CaApplication.m_Info.m_nSeqAdmin, today, false, self)
-            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
-            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
-            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-        }
-    }
- */
-    
+ 
     //셀 선택했을시
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -114,13 +91,8 @@ class AlarmViewController: CustomUIViewController, UITableViewDelegate, UITableV
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         Cell.ivCheckbox.image = UIImage(named: "checked_checkbox.png")
         if !act.bChecked {
-            //checkedRow = indexPath.row
+           
             act.bChecked = true
-            /*
-            Cell.btnCheckBox.setImage(UIImage(named: "checked_checkbox.png"), for: .normal)
-            Cell.btnCheckBox.imageView?.contentMode = .scaleAspectFit
-            Cell.btnCheckBox.imageEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
- */
             CaApplication.m_Engine.SetSaveActBegin(act.nSeqAct, CaApplication.m_Info.m_nSeqAdmin, today, false, self)
             
         }

@@ -107,7 +107,7 @@
                                                             <color key="textColor" name="Dark_cyan"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_cyan_dark.png" translatesAutoresizingMaskIntoConstraints="NO" id="GzV-e8-Ddi">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_dot_pink.png" translatesAutoresizingMaskIntoConstraints="NO" id="GzV-e8-Ddi">
                                                             <rect key="frame" x="15" y="20" width="10" height="10"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="10" id="1XK-Xl-Qbe"/>
@@ -356,7 +356,7 @@
         <image name="alarm_icon.png" width="512" height="512"/>
         <image name="btn_back_colored.png" width="100" height="100"/>
         <image name="btn_menu.png" width="512" height="512"/>
-        <image name="circle_cyan_dark.png" width="72" height="72"/>
+        <image name="small_dot_pink.png" width="60" height="60"/>
         <image name="unchecked_checkbox.png" width="50" height="50"/>
         <namedColor name="Dark_cyan">
             <color red="0.078431372549019607" green="0.46274509803921571" blue="0.61176470588235299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,9 +15,7 @@ class SavingResultCell : UITableViewCell {
     @IBOutlet weak var lbUsageRef: UILabel!
     @IBOutlet weak var lbUsagePlan: UILabel!
     @IBOutlet weak var roundView: UIView!
-    
-    
-    
+
 }
 
 extension Date {
@@ -89,20 +87,17 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         txtDateFrom.text =  CaApplication.m_Info.dfyyyyMMddStd.string(from: dtSavePlanCreated)
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated)
     
-        //CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false,self)
-        
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //조회를 할 시 bshowWating을 true로 하여 로딩바 보임
         CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true, self)
-        
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print(" 테이블 뷰 갯수 왜 안나옴" + String(alMeterGross.count))
         return alMeterGross.count
         
     }
@@ -127,7 +122,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         Cell.lbUsagePlan.text = "절감 목표  " + String(format: "%.1f", meter.dKwhPlan)
         
         if meter.dKwhReal < meter.dKwhPlan {
-            //Cell.roundView.layer.borderColor = CGColor(red: 181, green: 234, blue: 215, alpha: 1) // pastel green
+
             Cell.roundView.layer.borderColor = CGColor.init(red: 0.71, green: 0.918, blue: 0.843, alpha: 1) // pastel green
             Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
         }
@@ -146,14 +141,13 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
    
     
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
         self.tableViewHeight?.constant = self.tableView.contentSize.height
+        
+        //tableView를 리로드해야 layout problem이 생기지 않음.
+        tableView.reloadData()
     }
-    
-
- 
- 
     
     
     func viewSetting() {
@@ -300,9 +294,10 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         chartSavingAction.xAxis.enabled = false
         chartUsageTotal.xAxis.enabled = false
         
+        //chartSavingAction.legend.enabled = false
         chartUsage.legend.enabled = false
         
-        print("viewSetting accomplished...")
+        print("Saving: viewSetting completed...")
     }
     
     func setBarChart() {
@@ -418,8 +413,6 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
                 referenceTimeInterval = minTimeInterval
             }
 
-
-
         // 사용량 보여줄 때
         
         for i in 0..<nCountUsage {
@@ -510,6 +503,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             CaApplication.m_Info.m_nTotalSaveActCount = jo["total_save_act_count"] as! Int
             CaApplication.m_Info.m_nTotalSaveActWithHistoryCount = jo["total_save_act_with_history_count"] as! Int
             CaApplication.m_Info.m_dAvgKwhForAllMeter = jo["avg_kwh_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dKwhRefForAllMeter = jo["kwh_ref_for_all_meter"] as! Double
+            CaApplication.m_Info.m_dKwhPlanForAllMeter = jo["kwh_plan_for_all_meter"] as! Double
             let jaMeter: Array<[String:Any]> = jo["list_meter"] as! Array<[String:Any]>
             let jaUsageForAllMeter = jo["list_usage_for_all_meter"] as! Array<[String: Any]>
             let jaMeterGross = jo["list_meter_gross"] as! Array<[String:Any]>
@@ -562,7 +557,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             
             //self.tableViewHeight?.constant = self.tableView.contentSize.height
             
-            tableView.endUpdates() //이거 지우면 테이블뷰가 안뜨는 현상 발ㅆ
+            tableView.endUpdates() //이거 지우면 테이블뷰가 안뜨는 현상 발생
             
         default:
             print("Saving: ERROR!")
@@ -631,9 +626,7 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         strDateFrom = CaApplication.m_Info.dfyyyyMMdd.string(from: datePickerFrom.date)
         
         self.view.endEditing(true)
-        
-        // 여기서는 ShowWaitDialog가 True임을 기억하기
-        //getUsageDaily(year, month, day, true)
+    
     }
 
     @objc func cancelDatePicker(){
@@ -657,7 +650,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
             alert(title: "오류", message: "절감계획 이전의 데이터는 불러올 수 없습니다.", text: "확인")
         }
         else{
-            CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, false, self)
+            
+            CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true, self)
         }
         
         

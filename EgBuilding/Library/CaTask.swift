@@ -64,7 +64,7 @@ public class CaTask{
                             
                         
                         case .failure(_):
-                            self.toast.showToast(controller: self.viewControl, message: "Network Error!", seconds: 2.0)
+                            self.toast.showToast(controller: self.viewControl, message: "네트워크 오류. 다시 시도해주세요", seconds: 2.0)
                     }
                     
                 }
@@ -88,7 +88,7 @@ public class CaTask{
                         
                     
                     case .failure(_):
-                        self.toast.showToast(controller: self.viewControl, message: "Network Error!", seconds: 2.0)
+                        self.toast.showToast(controller: self.viewControl, message: "네트워크 오류. 다시 시도해주세요", seconds: 2.0)
                 }
             }
         }

@@ -42,13 +42,13 @@ class NoticeViewController: CustomUIViewController {
         
        
         if nNoticeType == 1 {
-            lbNoticeType.text = "관리사무실"
+            lbNoticeType.text = "아파트관리실"
         }
         else if nNoticeType == 2{
-            lbNoticeType.text = "EG서비스 운영자"
+            lbNoticeType.text = "에너넷"
         }
         else {
-            lbNoticeType.text = "동사무소"
+            lbNoticeType.text = "구청관리자"
         }
         
     }
