@@ -638,6 +638,8 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
     @IBAction func onSearchBtnClicked(_ sender: UIButton) {
         let date1 = Int(strDateFrom)!
         let date2 = Int(strDateTo)!
+        let date = Date()
+        let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         
         
         let nSavePlanCreated = Int( CaApplication.m_Info.dfyyyyMMdd.string(from: dtSavePlanCreated))
@@ -649,6 +651,11 @@ class SavingViewController: CustomUIViewController, UITableViewDelegate, UITable
         else if date1 < nSavePlanCreated! {
             alert(title: "오류", message: "절감계획 이전의 데이터는 불러올 수 없습니다.", text: "확인")
         }
+        
+        else if date2 >= Int(today)! {
+            alert(title: "오류", message: "오늘 이후의 데이터는 불러올 수 없습니다.", text: "확인")
+        }
+        
         else{
             
             CaApplication.m_Engine.GetSaveResult(CaApplication.m_Info.m_nSeqSavePlanActive, strDateFrom, strDateTo, true, self)

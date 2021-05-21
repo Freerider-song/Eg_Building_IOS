@@ -179,6 +179,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
                 CaApplication.m_Info.m_bNotiSavingGoal = jo["noti_meter_kwh_over_save_plan"] as! Bool
                 CaApplication.m_Info.m_dThresholdThisMonthKwh = jo["threshold_this_month_kwh"] as! Double
                 CaApplication.m_Info.m_dThresholdThisMonthWon = jo["threshold_this_month_won"] as! Double
+                CaApplication.m_Info.m_nHourNotiThisMonthUsage = jo["hour_noti_this_month_usage"] as! Int
                 
                 for k in 0 ..< jaListSite.count{
                     
@@ -279,7 +280,7 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         let date = Date()
         
         // 정보 가져올 날짜
-        let today: String = CaApplication.m_Info.dfyyMMdd.string(from: date) + "01"
+        let today: String = CaApplication.m_Info.dfyyMMdd.string(from: date) + "1"
         
         CaApplication.m_Engine.CheckBldLogin(self.m_strId, self.m_strPw, "IOS", self.m_strDeviceId, today, self)
     }

@@ -100,7 +100,12 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                     }
                     
                     else {
-                        myCell.btnExecute.isHidden = true
+                        //myCell.btnExecute.isHidden = true
+                        myCell.btnExecute.setTitle("지금조치하기", for: .normal)
+                        myCell.btnExecute.isEnabled = false
+                        alarm.bClickable = false
+                        myCell.btnExecute.backgroundColor = UIColor(named: "EG_Dark_yellow")
+                        myCell.btnExecute.setTitleColor(UIColor.gray, for: .normal)
                     }
                     break
                 }

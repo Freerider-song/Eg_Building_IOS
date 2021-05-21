@@ -125,16 +125,25 @@
                                                                 <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                         </button>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="giP-m5-FvH">
+                                                            <rect key="frame" x="162" y="20" width="10" height="10"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="10" id="Ndt-pr-B5i"/>
+                                                                <constraint firstAttribute="width" constant="10" id="yzt-5b-S3q"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="2mT-57-cAK" secondAttribute="trailing" constant="30" id="0vt-od-DDE"/>
+                                                        <constraint firstItem="giP-m5-FvH" firstAttribute="leading" secondItem="gHC-lM-xcH" secondAttribute="trailing" constant="7.5" id="3dW-lK-dU5"/>
                                                         <constraint firstItem="GzV-e8-Ddi" firstAttribute="leading" secondItem="yI4-82-MQc" secondAttribute="leading" constant="15" id="4P2-3T-l7V"/>
                                                         <constraint firstAttribute="trailing" secondItem="4MR-Dq-J04" secondAttribute="trailing" constant="25" id="5Sh-V9-u3l"/>
                                                         <constraint firstAttribute="bottom" secondItem="4MR-Dq-J04" secondAttribute="bottom" constant="14" id="9Kc-Gv-Uh7"/>
                                                         <constraint firstItem="GzV-e8-Ddi" firstAttribute="centerY" secondItem="gHC-lM-xcH" secondAttribute="centerY" id="L5s-Br-0XA"/>
                                                         <constraint firstItem="gHC-lM-xcH" firstAttribute="top" secondItem="yI4-82-MQc" secondAttribute="top" constant="15" id="Yye-FM-v3L"/>
                                                         <constraint firstItem="vh3-CK-Xvj" firstAttribute="leading" secondItem="gHC-lM-xcH" secondAttribute="leading" id="dme-T8-OSH"/>
+                                                        <constraint firstItem="giP-m5-FvH" firstAttribute="centerY" secondItem="gHC-lM-xcH" secondAttribute="centerY" id="g0E-5i-knL"/>
                                                         <constraint firstItem="vh3-CK-Xvj" firstAttribute="top" secondItem="gHC-lM-xcH" secondAttribute="bottom" constant="10" id="jQ4-Vq-ITx"/>
                                                         <constraint firstAttribute="height" constant="165" id="lOE-2J-XJJ"/>
                                                         <constraint firstItem="4MR-Dq-J04" firstAttribute="top" secondItem="2mT-57-cAK" secondAttribute="bottom" constant="10" id="rjH-hL-o7f"/>
@@ -356,6 +365,7 @@
         <image name="alarm_icon.png" width="512" height="512"/>
         <image name="btn_back_colored.png" width="100" height="100"/>
         <image name="btn_menu.png" width="512" height="512"/>
+        <image name="new_icon.png" width="50" height="50"/>
         <image name="small_dot_pink.png" width="60" height="60"/>
         <image name="unchecked_checkbox.png" width="50" height="50"/>
         <namedColor name="Dark_cyan">

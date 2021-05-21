@@ -27,6 +27,8 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
     
     var lvAct : Array<CaAct> = Array()
     var plan : CaPlan = CaPlan()
+    var tvSaving = UITableView()
+    var SavingListHeight: NSLayoutConstraint!
     
     //tableViewCell 안에 tableView를 넣어 관리하고 싶을 때
     override func awakeFromNib() {
@@ -34,16 +36,19 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         tvCheckList.delegate = self
         tvCheckList.dataSource = self
         
+        
     }
     
     override func layoutSubviews() {
         
-        //super.layoutSubView()를 먼저 실행하게 될 경우 오류 발생.
-        super.layoutSubviews()
+        //처음 스크롤 할떄는 공간이 남지만 다음 스크롤 시에는 정상적으로 작동한다. 이것이 지금 최선인듯
         self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
-        tvCheckList.reloadData()
-        //m_Main.tvSavingList.reloadData() 실패
+        self.SavingListHeight?.constant = self.tvSaving.contentSize.height
+      
         print("checklistheight 조정")
+        
+        //super.layoutSubView()를 먼저 실행하게 될 경우 오류 발생.
+        //super.layoutSubviews()
     
     }
     
@@ -98,6 +103,10 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    
+ 
+    
 }
 
 class SavingCheckCell: UITableViewCell{
@@ -143,6 +152,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
         let getTime = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
         //view가 다 load되어 있는 상태이므로 bshowWating을 true로 하여도 view가 dismiss되지 않는다.
         CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, getTime, true, self)
+        
    
     }
     
@@ -197,6 +207,8 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     // Cell에 lvAct, plan 선언 후 Cell안에 있는 tableView에서 사용할 의도
     Cell.lvAct = plan.alAct
     Cell.plan = plan
+    Cell.tvSaving = tvSavingList
+    Cell.SavingListHeight = SavingListHeight
 
     let date = Date()
     
@@ -307,14 +319,14 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     
     
+    
+    
     override func viewDidLayoutSubviews() {
         super.updateViewConstraints()
-
-        self.SavingListHeight?.constant = self.tvSavingList.contentSize.height
+        //self.SavingListHeight?.constant = self.tvSavingList.contentSize.height
         // Reload 해야 오류가 나지 않는다.
-       
         tvSavingList.reloadData()
-        print("viewDidlayoutsubview: tvsavinglist reloaded...")
+       
     }
     
     override func onResult(_ Result: CaResult) {
@@ -348,6 +360,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
 
             CaApplication.m_Info.setPlanList(jaPlan)
             
+            //오류 나지 않으려면 필수
             tvSavingList.reloadData()
 
             initChart()
