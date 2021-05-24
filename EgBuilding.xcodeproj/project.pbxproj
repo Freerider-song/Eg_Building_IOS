@@ -13,15 +13,6 @@
 		210177F626438D090027899C /* UsageYearlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210177F526438D090027899C /* UsageYearlyViewController.swift */; };
 		210177F926438DF90027899C /* UsageMonthly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210177F826438DF90027899C /* UsageMonthly.storyboard */; };
 		210177FC26438E070027899C /* UsageYearly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210177FB26438E070027899C /* UsageYearly.storyboard */; };
-		2101780F2643913F0027899C /* MonthlyChartFormatter31.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178092643913E0027899C /* MonthlyChartFormatter31.swift */; };
-		210178102643913F0027899C /* YearlyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780A2643913E0027899C /* YearlyChartFormatter.swift */; };
-		210178112643913F0027899C /* MonthlyChartFormatter28.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */; };
-		210178122643913F0027899C /* DailyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780C2643913F0027899C /* DailyChartFormatter.swift */; };
-		210178132643913F0027899C /* MonthlyChartFormatter29.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */; };
-		210178142643913F0027899C /* MonthlyChartFormatter30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */; };
-		21017819264391560027899C /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017816264391560027899C /* RadarMarkerView.swift */; };
-		2101781A264391560027899C /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017817264391560027899C /* XYMarkerView.swift */; };
-		2101781B264391560027899C /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21017818264391560027899C /* BalloonMarker.swift */; };
 		2101781E2643C0470027899C /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2101781D2643C0470027899C /* Notice.storyboard */; };
 		210178212643C6490027899C /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210178202643C6490027899C /* Alarm.storyboard */; };
 		210178242644D3E60027899C /* NoticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210178232644D3E60027899C /* NoticeListViewController.swift */; };
@@ -144,6 +135,15 @@
 		21CCC16B264CF58900EB219E /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */; };
 		21CCC16E264E178F00EB219E /* unchecked_checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC16C264E178F00EB219E /* unchecked_checkbox.png */; };
 		21CCC16F264E178F00EB219E /* checked_checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CCC16D264E178F00EB219E /* checked_checkbox.png */; };
+		21CCC1762657812A00EB219E /* MonthlyChartFormatter30.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1702657812A00EB219E /* MonthlyChartFormatter30.swift */; };
+		21CCC1772657812A00EB219E /* MonthlyChartFormatter31.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1712657812A00EB219E /* MonthlyChartFormatter31.swift */; };
+		21CCC1782657812A00EB219E /* YearlyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1722657812A00EB219E /* YearlyChartFormatter.swift */; };
+		21CCC1792657812A00EB219E /* MonthlyChartFormatter28.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1732657812A00EB219E /* MonthlyChartFormatter28.swift */; };
+		21CCC17A2657812A00EB219E /* MonthlyChartFormatter29.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1742657812A00EB219E /* MonthlyChartFormatter29.swift */; };
+		21CCC17B2657812A00EB219E /* DailyChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC1752657812A00EB219E /* DailyChartFormatter.swift */; };
+		21CCC17F2657816400EB219E /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC17C2657816400EB219E /* XYMarkerView.swift */; };
+		21CCC1802657816400EB219E /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC17D2657816400EB219E /* BalloonMarker.swift */; };
+		21CCC1812657816400EB219E /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCC17E2657816400EB219E /* RadarMarkerView.swift */; };
 		F23D9EF620D848FCE765FB30 /* Pods_EgBuilding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,15 +154,6 @@
 		210177F526438D090027899C /* UsageYearlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageYearlyViewController.swift; sourceTree = "<group>"; };
 		210177F826438DF90027899C /* UsageMonthly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsageMonthly.storyboard; sourceTree = "<group>"; };
 		210177FB26438E070027899C /* UsageYearly.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UsageYearly.storyboard; sourceTree = "<group>"; };
-		210178092643913E0027899C /* MonthlyChartFormatter31.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter31.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter31.swift"; sourceTree = "<group>"; };
-		2101780A2643913E0027899C /* YearlyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YearlyChartFormatter.swift; path = "../../../../EgService 2/EgService/Formatters/YearlyChartFormatter.swift"; sourceTree = "<group>"; };
-		2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter28.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter28.swift"; sourceTree = "<group>"; };
-		2101780C2643913F0027899C /* DailyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DailyChartFormatter.swift; path = "../../../../EgService 2/EgService/Formatters/DailyChartFormatter.swift"; sourceTree = "<group>"; };
-		2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter29.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter29.swift"; sourceTree = "<group>"; };
-		2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthlyChartFormatter30.swift; path = "../../../../EgService 2/EgService/Formatters/MonthlyChartFormatter30.swift"; sourceTree = "<group>"; };
-		21017816264391560027899C /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadarMarkerView.swift; path = "../../../../EgService 2/EgService/Components/RadarMarkerView.swift"; sourceTree = "<group>"; };
-		21017817264391560027899C /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XYMarkerView.swift; path = "../../../../EgService 2/EgService/Components/XYMarkerView.swift"; sourceTree = "<group>"; };
-		21017818264391560027899C /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BalloonMarker.swift; path = "../../../../EgService 2/EgService/Components/BalloonMarker.swift"; sourceTree = "<group>"; };
 		2101781D2643C0470027899C /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		210178202643C6490027899C /* Alarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		210178232644D3E60027899C /* NoticeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeListViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +278,15 @@
 		21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		21CCC16C264E178F00EB219E /* unchecked_checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unchecked_checkbox.png; path = ../../../../../Downloads/unchecked_checkbox.png; sourceTree = "<group>"; };
 		21CCC16D264E178F00EB219E /* checked_checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checked_checkbox.png; path = ../../../../../Downloads/checked_checkbox.png; sourceTree = "<group>"; };
+		21CCC1702657812A00EB219E /* MonthlyChartFormatter30.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyChartFormatter30.swift; sourceTree = "<group>"; };
+		21CCC1712657812A00EB219E /* MonthlyChartFormatter31.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyChartFormatter31.swift; sourceTree = "<group>"; };
+		21CCC1722657812A00EB219E /* YearlyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearlyChartFormatter.swift; sourceTree = "<group>"; };
+		21CCC1732657812A00EB219E /* MonthlyChartFormatter28.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyChartFormatter28.swift; sourceTree = "<group>"; };
+		21CCC1742657812A00EB219E /* MonthlyChartFormatter29.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyChartFormatter29.swift; sourceTree = "<group>"; };
+		21CCC1752657812A00EB219E /* DailyChartFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyChartFormatter.swift; sourceTree = "<group>"; };
+		21CCC17C2657816400EB219E /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
+		21CCC17D2657816400EB219E /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		21CCC17E2657816400EB219E /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		72AA361EB60FA6E603B13638 /* Pods-EgBuilding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.debug.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.debug.xcconfig"; sourceTree = "<group>"; };
 		9FAFFCF6844B3C33829908EC /* Pods_EgBuilding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EgBuilding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA80A6FDF06EE0BAC0E68F8A /* Pods-EgBuilding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EgBuilding.release.xcconfig"; path = "Target Support Files/Pods-EgBuilding/Pods-EgBuilding.release.xcconfig"; sourceTree = "<group>"; };
@@ -317,12 +317,12 @@
 		21017807264391080027899C /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				2101780C2643913F0027899C /* DailyChartFormatter.swift */,
-				2101780B2643913E0027899C /* MonthlyChartFormatter28.swift */,
-				2101780D2643913F0027899C /* MonthlyChartFormatter29.swift */,
-				2101780E2643913F0027899C /* MonthlyChartFormatter30.swift */,
-				210178092643913E0027899C /* MonthlyChartFormatter31.swift */,
-				2101780A2643913E0027899C /* YearlyChartFormatter.swift */,
+				21CCC1752657812A00EB219E /* DailyChartFormatter.swift */,
+				21CCC1732657812A00EB219E /* MonthlyChartFormatter28.swift */,
+				21CCC1742657812A00EB219E /* MonthlyChartFormatter29.swift */,
+				21CCC1702657812A00EB219E /* MonthlyChartFormatter30.swift */,
+				21CCC1712657812A00EB219E /* MonthlyChartFormatter31.swift */,
+				21CCC1722657812A00EB219E /* YearlyChartFormatter.swift */,
 				21CCC168264B969700EB219E /* SavingChartFormatter.swift */,
 				21CCC16A264CF58900EB219E /* ChartXAxisFormatter.swift */,
 			);
@@ -332,9 +332,9 @@
 		21017808264391100027899C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				21017818264391560027899C /* BalloonMarker.swift */,
-				21017816264391560027899C /* RadarMarkerView.swift */,
-				21017817264391560027899C /* XYMarkerView.swift */,
+				21CCC17D2657816400EB219E /* BalloonMarker.swift */,
+				21CCC17E2657816400EB219E /* RadarMarkerView.swift */,
+				21CCC17C2657816400EB219E /* XYMarkerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -765,46 +765,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				215CFA64263152B000F2C3CC /* DesignableUITextField.swift in Sources */,
+				21CCC17B2657812A00EB219E /* DailyChartFormatter.swift in Sources */,
 				2101782D2644D4140027899C /* AlarmViewController.swift in Sources */,
-				2101781A264391560027899C /* XYMarkerView.swift in Sources */,
 				215CF9C62631362100F2C3CC /* CaPref.swift in Sources */,
 				215CF9B62631353A00F2C3CC /* LoginViewController.swift in Sources */,
-				2101780F2643913F0027899C /* MonthlyChartFormatter31.swift in Sources */,
 				215D0E6B26329CA60091CD64 /* ChangePasswordAuthViewController.swift in Sources */,
 				210177F026438CE90027899C /* UsageDailyViewController.swift in Sources */,
+				21CCC1792657812A00EB219E /* MonthlyChartFormatter28.swift in Sources */,
+				21CCC1762657812A00EB219E /* MonthlyChartFormatter30.swift in Sources */,
 				210177F326438CFB0027899C /* UsageMonthlyViewController.swift in Sources */,
 				215CF9CA2631362100F2C3CC /* CaApplication.swift in Sources */,
 				215CF9CB2631362100F2C3CC /* CaTask.swift in Sources */,
 				210177F626438D090027899C /* UsageYearlyViewController.swift in Sources */,
-				21017819264391560027899C /* RadarMarkerView.swift in Sources */,
 				215CFA6B263262F100F2C3CC /* CaAlarm.swift in Sources */,
 				215CF99026310EEB00F2C3CC /* MainViewController.swift in Sources */,
+				21CCC17F2657816400EB219E /* XYMarkerView.swift in Sources */,
+				21CCC17A2657812A00EB219E /* MonthlyChartFormatter29.swift in Sources */,
+				21CCC1812657816400EB219E /* RadarMarkerView.swift in Sources */,
 				215D0F26263904260091CD64 /* SavingViewController.swift in Sources */,
+				21CCC1782657812A00EB219E /* YearlyChartFormatter.swift in Sources */,
 				215CF9C42631362100F2C3CC /* CaResult.swift in Sources */,
 				210178272644D3FB0027899C /* NoticeViewController.swift in Sources */,
 				215CF9B92631359C00F2C3CC /* CustomUIViewController.swift in Sources */,
 				215CF98C26310EEB00F2C3CC /* AppDelegate.swift in Sources */,
 				215CF98E26310EEB00F2C3CC /* SceneDelegate.swift in Sources */,
 				21CCC169264B969700EB219E /* SavingChartFormatter.swift in Sources */,
-				210178102643913F0027899C /* YearlyChartFormatter.swift in Sources */,
 				215CF9CC2631362100F2C3CC /* ServicePush.swift in Sources */,
 				21CCC1662648D26F00EB219E /* SettingViewController.swift in Sources */,
 				215CF9C72631362100F2C3CC /* CaEngine.swift in Sources */,
 				215CFA7B2632678300F2C3CC /* CaMeterUsage.swift in Sources */,
 				215D0E6E26329CC40091CD64 /* ChangePasswordInputViewController.swift in Sources */,
 				215D0EA72636915B0091CD64 /* SideMenuViewController.swift in Sources */,
-				210178122643913F0027899C /* DailyChartFormatter.swift in Sources */,
 				215CFA782632673200F2C3CC /* CaMeter.swift in Sources */,
 				2101782A2644D40A0027899C /* AlarmListViewController.swift in Sources */,
 				215CFA67263152BA00F2C3CC /* CustomSideMenuNavigationController.swift in Sources */,
-				210178132643913F0027899C /* MonthlyChartFormatter29.swift in Sources */,
+				21CCC1772657812A00EB219E /* MonthlyChartFormatter31.swift in Sources */,
 				215CF9C52631362100F2C3CC /* Toast.swift in Sources */,
-				2101781B264391560027899C /* BalloonMarker.swift in Sources */,
-				210178142643913F0027899C /* MonthlyChartFormatter30.swift in Sources */,
 				215CF9C92631362100F2C3CC /* CaArg.swift in Sources */,
 				215CFA752632667E00F2C3CC /* CaActHistory.swift in Sources */,
 				215CF9C82631362100F2C3CC /* CaInfo.swift in Sources */,
-				210178112643913F0027899C /* MonthlyChartFormatter28.swift in Sources */,
+				21CCC1802657816400EB219E /* BalloonMarker.swift in Sources */,
 				215CFA6C263262F100F2C3CC /* CaNotice.swift in Sources */,
 				215CFA722632662300F2C3CC /* CaAct.swift in Sources */,
 				210178242644D3E60027899C /* NoticeListViewController.swift in Sources */,
@@ -960,6 +960,7 @@
 				CODE_SIGN_ENTITLEMENTS = EgBuilding/EgBuilding.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 658RN955X2;
 				INFOPLIST_FILE = EgBuilding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -967,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.iener.EgBuilding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "EGBLD Development";
@@ -985,6 +986,7 @@
 				CODE_SIGN_ENTITLEMENTS = EgBuilding/EgBuilding.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 658RN955X2;
 				INFOPLIST_FILE = EgBuilding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -992,7 +994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.iener.EgBuilding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "EGBLD Distribution";

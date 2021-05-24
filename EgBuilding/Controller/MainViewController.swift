@@ -44,8 +44,7 @@ class SavingCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource{
         //처음 스크롤 할떄는 공간이 남지만 다음 스크롤 시에는 정상적으로 작동한다. 이것이 지금 최선인듯
         self.CheckListHeight?.constant = self.tvCheckList.contentSize.height
         self.SavingListHeight?.constant = self.tvSaving.contentSize.height
-      
-        print("checklistheight 조정")
+
         
         //super.layoutSubView()를 먼저 실행하게 될 경우 오류 발생.
         //super.layoutSubviews()
@@ -246,14 +245,14 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     }
     
     if plan.nHourFrom > nNow {
-        print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
+        
         Cell.roundView.layer.borderWidth = 2
         Cell.roundView.layer.borderColor = CGColor.init(red: 0.7, green: 0.7, blue: 0.7, alpha: 1) //light gray
         Cell.roundView.backgroundColor = UIColor.white
     }
     else {
         if plan.dKwhReal <= plan.dKwhPlan{
-            print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
+         
             if plan.nHourTo > nNow {
             
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_green")
@@ -268,7 +267,7 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
             }
         }
         else if plan.dKwhReal <= plan.dKwhRef{
-            print("계측기 이름: " + plan.strMeterDescr + " plan.hourfrom is  " + String(plan.nHourFrom) + " nNow is " + String(nNow))
+         
             if plan.nHourTo > nNow {
                
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")

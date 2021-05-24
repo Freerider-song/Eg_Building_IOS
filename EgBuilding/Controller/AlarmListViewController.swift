@@ -13,6 +13,7 @@ class AlarmCell: UITableViewCell {
     @IBOutlet var lbTimeCreated: UILabel!
     @IBOutlet var lbContent: UILabel!
     @IBOutlet var btnExecute: UIButton!
+    @IBOutlet weak var ivNew: UIImageView!
     
     @IBOutlet var roundView: UIView!
 }
@@ -21,10 +22,12 @@ class AlarmCell: UITableViewCell {
 class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
  
+    @IBOutlet weak var lblTotal: UILabel!
     @IBOutlet var tableView: UITableView!
     
     let date = Date()
     
+    var fetchingMore = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +44,10 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
         
         let today: String = CaApplication.m_Info.dfyyyyMMdd.string(from: date)
-        
-        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, 30, false, self)
+     
+        CaApplication.m_Info.m_alAlarm.removeAll()
+        let getTime = CaApplication.m_Info.dfyyyyMMddHHmmss.string(from: date)
+        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, getTime, 20, false, self)
         CaApplication.m_Engine.GetSaveResultDaily(CaApplication.m_Info.m_nSeqSavePlanActive, today, true, self)
     }
     
@@ -73,6 +78,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         case m_GlobalEngine.ALARM_SAVE_ACT_MISSED, m_GlobalEngine.ALARM_PLAN_ELEM_BEGIN, m_GlobalEngine.ALARM_PLAN_ELEM_END:
     
             myCell.btnExecute.isHidden = false
+            myCell.btnExecute.isEnabled = false
             
             
             for i in 0..<CaApplication.m_Info.m_alPlan.count {
@@ -82,18 +88,18 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                
                     if plan.bAllChecked {
                         myCell.btnExecute.setTitle("조치 완료", for: .normal)
-                        myCell.btnExecute.isEnabled = false
+                      
                         myCell.btnExecute.backgroundColor = UIColor(named: "Pastel_blue")
                     }
                     else if plan.nHourTo<=Int(CaApplication.m_Info.dfHH.string(from: date))! {
                         myCell.btnExecute.setTitle("조치 미흡", for: .normal)
-                        myCell.btnExecute.isEnabled = false
+                    
                         myCell.btnExecute.backgroundColor = UIColor(named: "Pastel_blue")
                         
                     }
                     else if (plan.nHourTo > Int(CaApplication.m_Info.dfHH.string(from: date))!) && (plan.nHourFrom <= Int(CaApplication.m_Info.dfHH.string(from: date))!) {
                         myCell.btnExecute.setTitle("지금조치하기", for: .normal)
-                        myCell.btnExecute.isEnabled = true
+                        
                         alarm.bClickable = true
                         myCell.btnExecute.backgroundColor = UIColor(named: "EG_Dark_yellow")
                         
@@ -102,7 +108,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                     else {
                         //myCell.btnExecute.isHidden = true
                         myCell.btnExecute.setTitle("지금조치하기", for: .normal)
-                        myCell.btnExecute.isEnabled = false
+                   
                         alarm.bClickable = false
                         myCell.btnExecute.backgroundColor = UIColor(named: "EG_Dark_yellow")
                         myCell.btnExecute.setTitleColor(UIColor.gray, for: .normal)
@@ -121,7 +127,14 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         if CaApplication.m_Info.dfyyyyMMdd.string(from: CaApplication.m_Info.dfStd.date(from: alarm.dtCreated)!) != today {
             myCell.btnExecute.isHidden = true
         }
-     
+        
+        if alarm.bRead {
+            myCell.ivNew.isHidden = true
+        }
+        else{
+            myCell.ivNew.isHidden = false
+        }
+        
         
         return myCell
         
@@ -154,13 +167,21 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
         
     }
+    
+    func viewSetting() {
+        print("AlarmList: View Setting")
+       
+        lblTotal.text = "*총 " + String(CaApplication.m_Info.m_alAlarm.count) + " 건"
+        
+        
+    }
 
     func setAlarmReadStateToDb() {
         let strSeqAlarmList = CaApplication.m_Info.getAlarmReadListString()
         
         if strSeqAlarmList.isEmpty {return}
         else {
-            //CaApplication.m_Engine.SetAlarmListAsRead(CaApplication.m_Info.nSeqMember, strSeqAlarmList, false, self)
+            CaApplication.m_Engine.SetBldAlarmListAsRead(CaApplication.m_Info.m_nSeqAdmin, strSeqAlarmList, false, self)
         }
     }
 
@@ -175,6 +196,9 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                 if ja.count != 0 {
                     CaApplication.m_Info.setAlarmList(ja)
                 }
+                viewSetting()
+                tableView.reloadData()
+                
                 
                 
         case m_GlobalEngine.CB_GET_SAVE_RESULT_DAILY:

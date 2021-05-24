@@ -34,7 +34,7 @@ public class CaEngine{
     public let CB_SET_SAVE_ACT_END = 1019;
     public let CB_GET_UNREAD_BLD_NOTICE_COUNT = 1020
     public let CB_GET_UNREAD_BLD_ALARM_COUNT = 1021
-    
+    public let CB_SET_BLD_ALARM_LIST_AS_READ = 1022
 
 
 
@@ -147,6 +147,16 @@ public class CaEngine{
 
         executeCommand(Arg, CB_SET_BLD_NOTICE_AS_READ, bShowWaitDialog, viewControl)
     }
+    
+    func SetBldAlarmListAsRead(_ SeqAdmin: Int, _ strSeqAlarmList: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
+        
+
+        let Arg = CaArg("SetBldAlarmListAsRead", NO_CMD_ARGS)
+        Arg.addArg("SeqAdmin", SeqAdmin)
+        Arg.addArg("SeqAlarmList", strSeqAlarmList)
+
+        executeCommand(Arg, CB_SET_BLD_ALARM_LIST_AS_READ, bShowWaitDialog, viewControl)
+    }
 
     func GetSaveResultDaily(_ SeqSavePlanActive: Int,_ DateTarget: String, _ bShowWaitDialog: Bool,_ viewControl: AnyObject){
         
@@ -222,10 +232,11 @@ public class CaEngine{
         executeCommand(Arg, CB_CHANGE_ADMIN_BLD_SETTINGS,  bShowWaitDialog, viewControl)
     }
 
-    func GetBldAlarmList(_ SeqAdmin: Int, _ CountMax: Int,_ bShowWaitDialog: Bool, _ viewControl: AnyObject){
+    func GetBldAlarmList(_ SeqAdmin: Int, _ TimeCreatedMax: String,_ CountMax: Int,_ bShowWaitDialog: Bool, _ viewControl: AnyObject){
 
         let Arg = CaArg("GetBldAlarmList", NO_CMD_ARGS)
         Arg.addArg("SeqAdmin", SeqAdmin)
+        Arg.addArg("TimeCreatedMax", TimeCreatedMax)
         Arg.addArg("CountMax", CountMax)
 
         executeCommand(Arg, CB_GET_BLD_ALARM_LIST, bShowWaitDialog, viewControl)

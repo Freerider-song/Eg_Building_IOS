@@ -111,6 +111,7 @@ public class CaInfo {
 
     //public var m_dtNoticeCreatedMaxForNextRequest: Date? = nil
     public var m_dtNoticeCreatedMaxForNextRequest: String = ""
+    public var m_dtAlarmCreatedMaxForNextRequest: String = ""
 
 
     public var m_strPushId: String = "";
@@ -129,6 +130,7 @@ public class CaInfo {
     
     // 공지사항 요청 시간
     public var dtNoticeCreatedMaxForNextRequest: Date? = nil
+    public var dtAlarmCreatedMaxForNextRequest: Date? = nil
     
     init() {
         dfStd.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -149,7 +151,7 @@ public class CaInfo {
     
     public func setAlarmList(_ ja: Array<[String:Any]>){
         
-        m_alAlarm.removeAll()
+        //m_alAlarm.removeAll()
         
         for joAlarm in ja {
             let alarm: CaAlarm = CaAlarm()
@@ -166,6 +168,10 @@ public class CaInfo {
             if (alarm.bRead){
                 alarm.dtRead = joAlarm["time_read"] as! String
             }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            //notice.dtCreated가 String 타입이므로 dtNoticeCreatedMaxForNextRequest에는 date형식으로 변환 후 입력
+            dtAlarmCreatedMaxForNextRequest = dateFormatter.date(from: alarm.dtCreated)
             
             
             m_alAlarm.append(alarm)
@@ -260,7 +266,7 @@ public class CaInfo {
         
         for alarm in m_alAlarm {
             if alarm.bReadStateChanged {
-                strResult = strResult + "\(alarm.nSeqAlarm) ,"
+                strResult = strResult + "\(alarm.nSeqAlarm),"
             }
         }
         if strResult.isEmpty {return strResult}
@@ -340,7 +346,7 @@ public class CaInfo {
                     let actHistory = ca_act.alActHistory[i]
                     let dtBegin = CaApplication.m_Info.dfStd.date(from: actHistory.dtBegin)!
                     if(today == CaApplication.m_Info.dfyyyyMMdd.string(from: dtBegin)){
-                        print("CaInfo: 절감조치: " + ca_act.strActContent + "의 체크박스가 체크 되었슴")
+                    
                         flag = true
                         break
                     }

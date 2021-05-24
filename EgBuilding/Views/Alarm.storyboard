@@ -161,6 +161,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnExecute" destination="4MR-Dq-J04" id="fsI-Ad-QQY"/>
+                                            <outlet property="ivNew" destination="giP-m5-FvH" id="a62-TH-ZUZ"/>
                                             <outlet property="lbContent" destination="2mT-57-cAK" id="LtS-nl-P5i"/>
                                             <outlet property="lbTimeCreated" destination="vh3-CK-Xvj" id="ob3-bb-fQp"/>
                                             <outlet property="lbTitle" destination="gHC-lM-xcH" id="G7h-ya-TSp"/>
@@ -187,6 +188,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblTotal" destination="H72-pW-Ufx" id="axa-4h-Nwg"/>
                         <outlet property="tableView" destination="HG4-mF-g5I" id="IUl-eY-yFd"/>
                     </connections>
                 </viewController>
