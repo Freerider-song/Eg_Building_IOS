@@ -27,6 +27,9 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
     
     let date = Date()
     
+    // 추가 공지사항 데이터
+    var dataArray:Array<[String:Any]> = []
+    
     var fetchingMore = false
     
     override func viewDidLoad() {
@@ -168,6 +171,34 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+        {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = tableView.contentSize.height - 1
+            
+            if offsetY > contentHeight - scrollView.frame.height
+            {
+                if !fetchingMore
+                {   print("fetch more")
+                    fetchingMore = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                    
+                        self.getAlarmList(CaApplication.m_Info.dfyyyyMMddHHmmss.string(from: CaApplication.m_Info.dtAlarmCreatedMaxForNextRequest!), 5, false)
+                        if self.dataArray.isEmpty {
+                            self.fetchingMore = true
+                        }
+                        self.fetchingMore = false
+                        self.tableView.reloadData()
+                        self.viewSetting()
+                    })
+                        
+                    }
+                    
+            }
+  
+        }
+    
+    
     func viewSetting() {
         print("AlarmList: View Setting")
        
@@ -184,6 +215,12 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             CaApplication.m_Engine.SetBldAlarmListAsRead(CaApplication.m_Info.m_nSeqAdmin, strSeqAlarmList, false, self)
         }
     }
+    
+    func getAlarmList(_ timeCreatedMax: String, _ countNotice: Int, _ bShowWaitDialog:Bool) {
+        
+        CaApplication.m_Engine.GetBldAlarmList(CaApplication.m_Info.m_nSeqAdmin, timeCreatedMax, countNotice, bShowWaitDialog, self)
+
+    }
 
     
     override func onResult(_ Result: CaResult) {
@@ -191,7 +228,10 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             case m_GlobalEngine.CB_GET_BLD_ALARM_LIST:
                 print("Result of GetAlarmList Received...")
                 let jo:[String:Any] = Result.JSONResult
+                
+                
                 let ja:Array<[String:Any]> = jo["list_alarm"] as! Array<[String:Any]>
+                dataArray = ja
                 
                 if ja.count != 0 {
                     CaApplication.m_Info.setAlarmList(ja)
@@ -210,6 +250,15 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
             CaApplication.m_Info.setPlanList(jaPlan)
             
             tableView.reloadData()
+        
+        case m_GlobalEngine.CB_SET_BLD_ALARM_LIST_AS_READ:
+            print("Result of SetNoticeListAsRead Received...")
+            CaApplication.m_Engine.GetUnreadBldAlarmCount(CaApplication.m_Info.m_nSeqAdmin, false, self)
+            
+        case m_GlobalEngine.CB_GET_UNREAD_BLD_ALARM_COUNT:
+            let jo:[String:Any] = Result.JSONResult
+            
+            CaApplication.m_Info.m_nUnreadAlarmCount = jo["count_unread"] as! Int
             
           
             
@@ -220,7 +269,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
     
 
     @IBAction func onBackBtnClicked(_ sender: UIButton) {
-        
+        setAlarmReadStateToDb()
         self.dismiss(animated: true, completion: nil)
     }
   

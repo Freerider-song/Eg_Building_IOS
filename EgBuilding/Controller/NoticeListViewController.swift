@@ -113,6 +113,7 @@ class NoticeListViewController: CustomUIViewController, UITableViewDelegate, UIT
         //선택된 셀 음영 제거
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
     
         let storyboard = UIStoryboard(name: "Notice", bundle: nil)
         let view = storyboard.instantiateViewController(identifier: "NoticeViewController") as? NoticeViewController
