@@ -216,6 +216,8 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
     
     if (!plan.bAllChecked && plan.nHourTo > nNow && plan.nHourFrom <= nNow) {
         Cell.btnSavingResult.setTitle("지금조치하기", for: .normal)
+        Cell.btnSavingResult.blink()
+        Cell.roundView.blink2()
         Cell.btnSavingResult.backgroundColor = UIColor(named: "Light_cyan")
         Cell.btnSavingResult.layer.cornerRadius = 10
         Cell.btnSavingResult.setTitleColor(UIColor.white, for: .normal)
@@ -272,7 +274,8 @@ class MainViewController: CustomUIViewController, UITableViewDelegate, UITableVi
                
                 Cell.roundView.backgroundColor = UIColor(named: "Pastel_yellow")
                 Cell.roundView.layer.borderWidth = 2
-                Cell.roundView.layer.borderColor = CGColor(red: 128/255, green: 128/255, blue: 0, alpha: 1) // olive
+                Cell.roundView.layer.borderColor = CGColor(red: 128/255, green: 128/255, blue: 0, alpha: 1)
+                // olive
             }
             else{
                 

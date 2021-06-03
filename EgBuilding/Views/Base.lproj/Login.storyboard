@@ -18,20 +18,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EG 건물관리자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ou-55-AzD">
-                                <rect key="frame" x="111.5" y="50" width="152" height="32"/>
+                                <rect key="frame" x="111.5" y="100.5" width="152" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" name="Light_Cyan"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_logo_a.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M17-YN-Hhv">
-                                <rect key="frame" x="126.5" y="103" width="122" height="160"/>
+                                <rect key="frame" x="126.5" y="153.5" width="122" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="3Ow-eq-aEs"/>
                                     <constraint firstAttribute="width" constant="122" id="e6e-Fd-IQl"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nx-4p-WK1" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
-                                <rect key="frame" x="37" y="364" width="300" height="40"/>
+                                <rect key="frame" x="37" y="417.5" width="300" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WLT-9J-l7H"/>
@@ -46,8 +46,42 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-HZ-1yM">
+                                <rect key="frame" x="37" y="484.5" width="300" height="40"/>
+                                <color key="backgroundColor" name="Light_Cyan"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PKP-ME-yAX"/>
+                                </constraints>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnBtnLoginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w4j-9X-LLm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 잊으셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmw-pH-Iql">
+                                <rect key="frame" x="51.5" y="559.5" width="132" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntF-cA-qn7">
+                                <rect key="frame" x="201.5" y="552.5" width="108" height="30"/>
+                                <state key="normal" title="비밀번호 변경하기">
+                                    <color key="titleColor" name="Light_Cyan"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnBtnChangePwClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JFJ-ZG-tcU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6K-Nv-Y9C">
+                                <rect key="frame" x="332" y="644" width="27" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="Light_gray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아이디" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-VG-VPo" customClass="DesignableUITextField" customModule="EgBuilding" customModuleProvider="target">
-                                <rect key="frame" x="37" y="316" width="300" height="40"/>
+                                <rect key="frame" x="37" y="369.5" width="300" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Cv2-sN-jxI"/>
@@ -62,40 +96,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-HZ-1yM">
-                                <rect key="frame" x="37" y="431" width="300" height="40"/>
-                                <color key="backgroundColor" name="Light_Cyan"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PKP-ME-yAX"/>
-                                </constraints>
-                                <state key="normal" title="로그인">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="OnBtnLoginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w4j-9X-LLm"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호를 잊으셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmw-pH-Iql">
-                                <rect key="frame" x="51.5" y="506" width="132" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntF-cA-qn7">
-                                <rect key="frame" x="201.5" y="499" width="108" height="30"/>
-                                <state key="normal" title="비밀번호 변경하기">
-                                    <color key="titleColor" name="Light_Cyan"/>
-                                </state>
-                                <connections>
-                                    <action selector="OnBtnChangePwClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JFJ-ZG-tcU"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6K-Nv-Y9C">
-                                <rect key="frame" x="332" y="644" width="27" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="Light_gray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Pastel_blue"/>
@@ -108,10 +108,10 @@
                             <constraint firstItem="3Nx-4p-WK1" firstAttribute="top" secondItem="Qwc-VG-VPo" secondAttribute="bottom" constant="8" symbolic="YES" id="JeN-Rb-dob"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Nx-4p-WK1" secondAttribute="trailing" constant="38" id="Kzw-bb-aTe"/>
                             <constraint firstItem="Y1H-HZ-1yM" firstAttribute="top" secondItem="3Nx-4p-WK1" secondAttribute="bottom" constant="27" id="NxY-gs-1LT"/>
-                            <constraint firstItem="Qwc-VG-VPo" firstAttribute="top" secondItem="M17-YN-Hhv" secondAttribute="bottom" constant="53" id="T2t-US-ISk"/>
+                            <constraint firstItem="0ou-55-AzD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.35" id="RIR-ml-xq8"/>
+                            <constraint firstItem="Qwc-VG-VPo" firstAttribute="top" secondItem="M17-YN-Hhv" secondAttribute="bottom" constant="56" id="T2t-US-ISk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="R6K-Nv-Y9C" secondAttribute="bottom" constant="8" id="Vlb-AU-gBr"/>
                             <constraint firstItem="M17-YN-Hhv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XBU-Sc-1vS"/>
-                            <constraint firstItem="0ou-55-AzD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="dex-hu-wKS"/>
                             <constraint firstItem="Tmw-pH-Iql" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-70" id="exA-u0-9t1"/>
                             <constraint firstItem="3Nx-4p-WK1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="kDO-cx-ca0"/>
                             <constraint firstItem="ntF-cA-qn7" firstAttribute="top" secondItem="Y1H-HZ-1yM" secondAttribute="bottom" constant="28" id="kFC-OD-qOr"/>
@@ -136,10 +136,10 @@
     </scenes>
     <designables>
         <designable name="3Nx-4p-WK1">
-            <size key="intrinsicContentSize" width="103.5" height="17"/>
+            <size key="intrinsicContentSize" width="48.5" height="17"/>
         </designable>
         <designable name="Qwc-VG-VPo">
-            <size key="intrinsicContentSize" width="91.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="36.5" height="18.5"/>
         </designable>
     </designables>
     <resources>

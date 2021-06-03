@@ -183,7 +183,7 @@ class AlarmListViewController: CustomUIViewController, UITableViewDelegate, UITa
                     fetchingMore = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
                     
-                        self.getAlarmList(CaApplication.m_Info.dfyyyyMMddHHmmss.string(from: CaApplication.m_Info.dtAlarmCreatedMaxForNextRequest!), 5, false)
+                        self.getAlarmList(CaApplication.m_Info.dfyyyyMMddHHmmss.string(from: CaApplication.m_Info.dtAlarmCreatedMaxForNextRequest!), 10, false)
                         if self.dataArray.isEmpty {
                             self.fetchingMore = true
                         }

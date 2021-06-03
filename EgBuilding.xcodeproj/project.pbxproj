@@ -960,7 +960,7 @@
 				CODE_SIGN_ENTITLEMENTS = EgBuilding/EgBuilding.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 658RN955X2;
 				INFOPLIST_FILE = EgBuilding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -986,7 +986,7 @@
 				CODE_SIGN_ENTITLEMENTS = EgBuilding/EgBuilding.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 658RN955X2;
 				INFOPLIST_FILE = EgBuilding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

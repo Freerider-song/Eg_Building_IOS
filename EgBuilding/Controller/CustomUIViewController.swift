@@ -160,3 +160,14 @@ class CustomUIViewController: UIViewController {
  
 
 }
+
+extension UIView {
+    func blink() {
+             self.alpha = 0.2
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.alpha = 1.0}, completion: nil)
+         }
+    func blink2() {
+             self.alpha = 0.5
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.alpha = 1.0}, completion: nil)
+         }
+}

@@ -49,6 +49,11 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+   
+        //BtnLogin.blink()
+    }
+    
     func viewSetting() {
         
         // ID TextField 외관 둥글게 설정 + 회색
@@ -68,6 +73,9 @@ class LoginViewController: CustomUIViewController, UITextFieldDelegate {
         BtnLogin.layer.shadowOffset = CGSize(width: 0, height: 1) // 위치조정
         BtnLogin.layer.shadowRadius = 1 // 반경
         BtnLogin.layer.shadowOpacity = 0.3 // alpha값
+        //BtnLogin.blink()
+        
+        
         
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
